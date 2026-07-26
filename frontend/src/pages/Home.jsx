@@ -41,13 +41,13 @@ function Hero() {
           className="w-full h-full object-cover"
         />
       </motion.div>
-      {/* Navy gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/70 via-[#0A192F]/40 to-[#0A192F]/60" />
-      <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_10%,transparent,rgba(10,25,47,0.35))]" />
+      {/* Navy gradient overlay — stronger at bottom for legible text */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B2E]/45 via-[#0B1B2E]/55 to-[#0B1B2E]/85" />
+      <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_10%,transparent,rgba(11,27,46,0.35))]" />
 
       <div className="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 flex flex-col justify-end pb-14 md:pb-20">
         <motion.div
-          className="tracking-eyebrow text-[color:var(--off-white)]/85"
+          className="tracking-eyebrow text-[color:var(--gold)]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease, delay: 0.15 }}
@@ -68,7 +68,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.9 }}
-            className="max-w-md text-[color:var(--off-white)]/85 text-[15px] md:text-base font-light"
+            className="max-w-md text-white text-[15px] md:text-base font-normal"
             data-testid="hero-sub"
           >
             Custom homes, full renovations and extensions built with care across Melbourne&rsquo;s South-East.
@@ -78,7 +78,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 1.05 }}
           >
-            <Link to="/contact" data-testid="hero-cta" className="btn-ghost-light">
+            <Link to="/contact" data-testid="hero-cta" className="btn-gold">
               Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </motion.div>
@@ -94,13 +94,13 @@ function Intro() {
     <section data-testid="intro-section" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pt-24 md:pt-36 pb-16 md:pb-24">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
         <Reveal className="md:col-span-4">
-          <div className="tracking-eyebrow text-[color:var(--navy)]/70">01 · Studio</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">01 · Studio</div>
         </Reveal>
         <Reveal className="md:col-span-8" delay={0.06}>
           <h2 className="font-display text-[36px] md:text-[54px] lg:text-[62px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] max-w-[22ch]">
             Quality renovations &amp; custom homes across Melbourne&rsquo;s South-East.
           </h2>
-          <p className="mt-8 max-w-2xl text-[color:var(--ink)]/80 text-lg font-light">
+          <p className="mt-8 max-w-2xl text-[color:var(--ink)] text-lg font-light">
             Apollo Builders specialises in high-quality renovations, extensions and custom home builds. From the
             initial consultation through to completion, we focus on quality workmanship, clear communication and
             projects that stand the test of time.
@@ -121,7 +121,7 @@ function Intro() {
               data-testid={`trust-${i}`}
               className="py-6 md:py-8 px-4 md:px-8 first:pl-0 last:pr-0 flex items-baseline gap-4"
             >
-              <span className="tracking-eyebrow text-[color:var(--navy)]/60">
+              <span className="tracking-eyebrow text-[color:var(--gold-dark)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="text-[color:var(--ink)] text-[15px] md:text-[16px] font-normal">{t}</span>
@@ -140,13 +140,13 @@ function Gallery() {
     <section data-testid="gallery-section" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end mb-14">
         <Reveal className="md:col-span-6">
-          <div className="tracking-eyebrow text-[color:var(--navy)]/70">02 · Selected Work</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">02 · Selected Work</div>
           <h2 className="font-display text-[36px] md:text-[56px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Before &amp; after,<br /> quietly transformative.
           </h2>
         </Reveal>
         <Reveal className="md:col-span-6 md:pl-10" delay={0.08}>
-          <p className="text-[color:var(--ink)]/75 text-lg font-light max-w-md ml-auto">
+          <p className="text-[color:var(--ink-soft)] text-lg font-light max-w-md ml-auto">
             A curated set of frames from recent projects — kitchens, bathrooms, full renovations and new builds
             across Bentleigh, Drouin, Berwick and beyond.
           </p>
@@ -210,7 +210,7 @@ function Featured() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16 md:mb-24">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--navy)]/70">03 · Projects</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">03 · Projects</div>
           </Reveal>
           <Reveal className="md:col-span-8" delay={0.05}>
             <h2 className="font-display text-[36px] md:text-[56px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)]">
@@ -241,16 +241,16 @@ function Featured() {
                   y={20}
                   delay={0.08}
                 >
-                  <div className="tracking-eyebrow text-[color:var(--navy)]/60">
+                  <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
                     Project {String(i + 1).padStart(2, "0")} · {p.suburb}
                   </div>
                   <h3 className="font-display text-[32px] md:text-[42px] leading-[1.05] font-light tracking-[-0.02em] text-[color:var(--navy)] mt-3">
                     {p.name}
                   </h3>
-                  <p className="text-[color:var(--ink)]/75 mt-4 text-[15px] md:text-base font-light">
+                  <p className="text-[color:var(--ink-soft)] mt-4 text-[15px] md:text-base font-light">
                     {p.description}
                   </p>
-                  <div className="mt-6 flex items-center gap-3 text-[12px] tracking-[0.18em] uppercase text-[color:var(--navy)]/70">
+                  <div className="mt-6 flex items-center gap-3 text-[12px] tracking-[0.18em] uppercase text-[color:var(--gold-dark)]">
                     <span>{p.type}</span>
                     <span>·</span>
                     <span>{p.year}</span>
@@ -271,11 +271,11 @@ function Manifesto() {
     <section data-testid="why-us" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-28 md:py-40">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <Reveal className="md:col-span-4">
-          <div className="tracking-eyebrow text-[color:var(--navy)]/70">04 · Why Apollo</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">04 · Why Apollo</div>
           <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Six reasons the right builder matters.
           </h2>
-          <p className="mt-6 text-[color:var(--ink)]/75 font-light text-lg max-w-sm">
+          <p className="mt-6 text-[color:var(--ink-soft)] font-light text-lg max-w-sm">
             Choosing the right builder is one of the most important decisions you&rsquo;ll make. We combine
             quality workmanship, transparent communication and reliable delivery on every project.
           </p>
@@ -286,7 +286,7 @@ function Manifesto() {
             {whyUs.map((line, i) => (
               <Reveal key={line} delay={i * 0.05} y={20}>
                 <li className="grid grid-cols-12 items-baseline gap-4 py-8 border-b border-[color:var(--hair)] first:border-t">
-                  <span className="col-span-2 md:col-span-1 font-display text-[color:var(--navy)]/60 text-2xl font-light">
+                  <span className="col-span-2 md:col-span-1 font-display text-[color:var(--gold-dark)] text-2xl font-light">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="col-span-10 md:col-span-11 font-display text-[color:var(--navy)] text-2xl md:text-[30px] font-light tracking-[-0.01em]">
@@ -312,7 +312,7 @@ function Process() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--off-white)]/60">05 · Process</div>
+            <div className="tracking-eyebrow text-[color:var(--gold)]">05 · Process</div>
           </Reveal>
           <Reveal className="md:col-span-8" delay={0.05}>
             <h2 className="font-display text-[36px] md:text-[56px] leading-[1.05] tracking-[-0.02em] font-light">
@@ -332,13 +332,13 @@ function Process() {
               delay={i * 0.05}
             >
               <div className={`pl-8 md:pl-0 ${i % 2 === 1 ? "md:pl-16" : "md:pr-16 md:text-right"}`}>
-                <div className="tracking-eyebrow text-[color:var(--off-white)]/50">Stage {s.n}</div>
+                <div className="tracking-eyebrow text-[color:var(--gold)]">Stage {s.n}</div>
                 <h3 className="font-display text-3xl md:text-4xl mt-2 font-light tracking-[-0.02em]">
                   {s.title}
                 </h3>
               </div>
               <div className={`pl-8 md:pl-16 ${i % 2 === 1 ? "md:pr-16 md:pl-0 md:text-right" : ""}`}>
-                <p className="text-[color:var(--off-white)]/75 max-w-md font-light leading-relaxed">
+                <p className="text-[color:var(--off-white)]/95 max-w-md font-light leading-relaxed">
                   {s.body}
                 </p>
               </div>
@@ -360,11 +360,11 @@ function FAQ() {
     <section data-testid="faq-section" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-28 md:py-40">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <Reveal className="md:col-span-5">
-          <div className="tracking-eyebrow text-[color:var(--navy)]/70">06 · FAQ</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">06 · FAQ</div>
           <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Answers before you ask.
           </h2>
-          <p className="mt-6 text-[color:var(--ink)]/75 font-light max-w-sm">
+          <p className="mt-6 text-[color:var(--ink-soft)] font-light max-w-sm">
             Timelines, insurance, fixed-price contracts — the practical questions homeowners bring to us most.
           </p>
         </Reveal>
@@ -381,7 +381,7 @@ function FAQ() {
                 <AccordionTrigger className="font-display text-left text-xl md:text-2xl font-light py-6 text-[color:var(--navy)] hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-[color:var(--ink)]/75 text-[15px] leading-relaxed pb-8 font-light max-w-2xl">
+                <AccordionContent className="text-[color:var(--ink-soft)] text-[15px] leading-relaxed pb-8 font-light max-w-2xl">
                   {f.a}
                 </AccordionContent>
               </AccordionItem>
@@ -402,7 +402,7 @@ function Testimonials() {
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <Reveal>
-          <div className="tracking-eyebrow text-[color:var(--navy)]/70">07 · Homeowners</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">07 · Homeowners</div>
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
@@ -413,13 +413,13 @@ function Testimonials() {
               className="border-t border-[color:var(--hair)] pt-10"
               testId={`testimonial-${i}`}
             >
-              <span className="font-display text-6xl leading-none text-[color:var(--navy)]/40">“</span>
+              <span className="font-display text-6xl leading-none text-[color:var(--gold)]">“</span>
               <p className="font-display text-[color:var(--navy)] text-2xl md:text-[28px] font-light leading-[1.35] tracking-[-0.01em] mt-2 max-w-xl">
                 {t.quote}
               </p>
               <div className="mt-8 flex items-baseline justify-between">
-                <div className="tracking-eyebrow text-[color:var(--navy)]/70">— {t.name}</div>
-                <div className="text-[12px] uppercase tracking-[0.15em] text-[color:var(--ink)]/50">{t.project}</div>
+                <div className="tracking-eyebrow text-[color:var(--gold-dark)]">— {t.name}</div>
+                <div className="text-[12px] uppercase tracking-[0.15em] text-[color:var(--gold-dark)]">{t.project}</div>
               </div>
             </Reveal>
           ))}
@@ -438,17 +438,17 @@ function CTABand() {
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
         <Reveal className="md:col-span-8">
-          <div className="tracking-eyebrow text-[color:var(--off-white)]/60">Get In Touch</div>
+          <div className="tracking-eyebrow text-[color:var(--gold)]">Get In Touch</div>
           <h2 className="font-display text-[42px] md:text-[72px] lg:text-[88px] leading-[1] tracking-[-0.03em] font-light mt-4 max-w-[16ch]">
             Ready to start your renovation or new build?
           </h2>
-          <p className="mt-6 max-w-md text-[color:var(--off-white)]/75 font-light">
+          <p className="mt-6 max-w-md text-[color:var(--off-white)]/95 font-light">
             Speak with Apollo Builders about your project — expert advice, realistic timelines and a
             no-obligation fixed price quote.
           </p>
         </Reveal>
         <Reveal className="md:col-span-4" delay={0.05}>
-          <Link to="/contact" data-testid="final-cta-btn" className="btn-ghost-light">
+          <Link to="/contact" data-testid="final-cta-btn" className="btn-gold">
             Get a Free Quote <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

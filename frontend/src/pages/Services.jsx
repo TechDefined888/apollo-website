@@ -19,11 +19,11 @@ export default function Services() {
     <div data-testid="services-page">
       {/* Header */}
       <section className="pt-32 md:pt-44 pb-14 md:pb-20 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
-        <div className="tracking-eyebrow text-[color:var(--navy)]/70">Services</div>
+        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Services</div>
         <h1 className="font-display text-[48px] md:text-[92px] lg:text-[108px] leading-[0.98] tracking-[-0.03em] font-light text-[color:var(--navy)] mt-4 max-w-[16ch]">
           <MaskLines lines={["What we build,", "how we build it."]} />
         </h1>
-        <p className="mt-8 max-w-2xl text-[color:var(--ink)]/75 text-lg font-light">
+        <p className="mt-8 max-w-2xl text-[color:var(--ink-soft)] text-lg font-light">
           Apollo Builders specialises in new home builds, major renovations and custom transformations that bring
           lasting value to Melbourne homeowners.
         </p>
@@ -49,27 +49,27 @@ export default function Services() {
                   </div>
                 </Reveal>
                 <Reveal className={`md:col-span-6 ${i % 2 ? "md:order-1" : ""}`} y={20} delay={0.05}>
-                  <div className="tracking-eyebrow text-[color:var(--navy)]/60">
+                  <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
                     {String(i + 1).padStart(2, "0")} · Service
                   </div>
                   <h2 className="font-display text-[32px] md:text-[54px] leading-[1.03] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-3">
                     {s.title}
                   </h2>
-                  <p className="mt-4 text-[color:var(--ink)]/75 font-light text-lg max-w-lg">{s.tagline}</p>
-                  <p className="mt-4 text-[color:var(--ink)]/75 font-light">{s.body}</p>
+                  <p className="mt-4 text-[color:var(--ink-soft)] font-light text-lg max-w-lg">{s.tagline}</p>
+                  <p className="mt-4 text-[color:var(--ink-soft)] font-light">{s.body}</p>
 
                   <ul className="mt-8 space-y-3">
                     {s.scope.map((item) => (
                       <li key={item} className="flex items-baseline gap-3 text-[color:var(--ink)] font-light">
-                        <Minus className="h-3 w-3 mt-2 text-[color:var(--navy)]/50" strokeWidth={2} />
+                        <Minus className="h-3 w-3 mt-2 text-[color:var(--gold-dark)]" strokeWidth={2} />
                         {item}
                       </li>
                     ))}
                   </ul>
 
                   <div className="mt-8 pt-6 border-t border-[color:var(--hair)]">
-                    <div className="tracking-eyebrow text-[color:var(--navy)]/50">Search Focus</div>
-                    <p className="mt-2 text-[13px] text-[color:var(--ink)]/60 font-light">{s.keywords}</p>
+                    <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Search Focus</div>
+                    <p className="mt-2 text-[13px] text-[color:var(--ink-soft)] font-light">{s.keywords}</p>
                   </div>
 
                   <div className="mt-8">

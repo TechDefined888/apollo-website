@@ -3,33 +3,39 @@
 @tailwind utilities;
 
 :root {
-    --navy: #0A192F;
-    --navy-2: #112240;
-    --off-white: #F9F9F8;
-    --warm-grey: #E5E4E2;
-    --hair: #D1D1D1;
-    --ink: #1A1A1A;
+    /* Palette derived from apollobuilders.com.au */
+    --navy: #0B1B2E;          /* deep anchor navy (headings, dark bg) */
+    --navy-2: #12294A;
+    --off-white: #F7F5F1;     /* warm off-white background */
+    --paper: #FFFFFF;
+    --warm-grey: #E6E2DA;     /* neutral warm grey */
+    --hair: #C9C4B9;          /* hairline dividers */
+    --ink: #1E293B;           /* slate-800 for body text (accessible) */
+    --ink-soft: #475569;      /* slate-600 for secondary text */
+    --gold: #C5892D;          /* Apollo signature CTA amber */
+    --gold-dark: #A0691A;
+    --accent-blue: #046BD2;   /* Apollo accent blue */
 
-    /* shadcn tokens (kept for library components; overridden with brand palette) */
-    --background: 40 12% 97%;
-    --foreground: 0 0% 10%;
+    /* shadcn tokens */
+    --background: 40 25% 96%;
+    --foreground: 217 33% 17%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 217 33% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 217 79% 11%;
-    --primary-foreground: 40 12% 97%;
-    --secondary: 40 6% 92%;
-    --secondary-foreground: 217 79% 11%;
-    --muted: 40 6% 92%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 40 6% 92%;
-    --accent-foreground: 217 79% 11%;
+    --popover-foreground: 217 33% 17%;
+    --primary: 213 66% 12%;
+    --primary-foreground: 40 25% 96%;
+    --secondary: 40 15% 92%;
+    --secondary-foreground: 213 66% 12%;
+    --muted: 40 15% 92%;
+    --muted-foreground: 215 20% 35%;
+    --accent: 40 15% 92%;
+    --accent-foreground: 213 66% 12%;
     --destructive: 0 65% 42%;
-    --destructive-foreground: 40 12% 97%;
-    --border: 0 0% 82%;
-    --input: 0 0% 82%;
-    --ring: 217 79% 11%;
+    --destructive-foreground: 40 25% 96%;
+    --border: 40 10% 78%;
+    --input: 40 10% 78%;
+    --ring: 213 66% 12%;
     --radius: 2px;
 }
 
@@ -43,10 +49,9 @@ body {
     background: var(--off-white);
     color: var(--ink);
     font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
     text-rendering: optimizeLegibility;
 }
 
@@ -55,13 +60,11 @@ body {
     overflow-x: hidden;
 }
 
-/* Custom text selection */
 ::selection {
-    background: var(--navy);
-    color: var(--off-white);
+    background: var(--gold);
+    color: var(--navy);
 }
 
-/* Reset native focus */
 button,
 a,
 input,
@@ -74,25 +77,25 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-    outline: 1px solid var(--navy);
+    outline: 2px solid var(--gold);
     outline-offset: 2px;
 }
 
-/* Typographic tokens */
+/* Typography utilities */
 .font-display {
     font-family: "Fraunces", ui-serif, Georgia, serif;
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 400;
     font-variation-settings: "SOFT" 30, "WONK" 0;
 }
 .font-body {
     font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
 }
 .tracking-eyebrow {
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Hero mask reveal */
@@ -120,13 +123,11 @@ select:focus-visible {
     }
 }
 
-/* Outlined display type (used inside marquee) */
 .text-outline {
     -webkit-text-stroke: 1px currentColor;
     color: transparent;
 }
 
-/* Custom underline for links */
 .link-under {
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
@@ -139,16 +140,44 @@ select:focus-visible {
     background-size: 100% 1px;
 }
 
-/* Sharp button style, brand navy */
+/* ── BUTTONS ─────────────────────────────────────────────────── */
+/* Primary — signature amber CTA (matches live site) */
+.btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    border-radius: 0;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+    cursor: pointer;
+}
+.btn-gold:hover {
+    background: var(--gold-dark);
+    border-color: var(--gold-dark);
+    color: #ffffff;
+}
+
+/* Secondary — solid navy */
 .btn-navy {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.95rem 1.35rem;
+    padding: 1rem 1.5rem;
     background: var(--navy);
     color: var(--off-white);
     font-family: "Inter Tight", sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -156,24 +185,24 @@ select:focus-visible {
     border-radius: 0;
     transition:
         background 0.35s ease,
-        color 0.35s ease,
-        transform 0.35s ease;
+        color 0.35s ease;
     cursor: pointer;
 }
 .btn-navy:hover {
     background: transparent;
     color: var(--navy);
 }
+
 .btn-ghost {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.95rem 1.35rem;
+    padding: 1rem 1.5rem;
     background: transparent;
     color: var(--navy);
     border: 1px solid var(--navy);
     border-radius: 0;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -190,12 +219,12 @@ select:focus-visible {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.95rem 1.35rem;
+    padding: 1rem 1.5rem;
     background: transparent;
-    color: var(--off-white);
-    border: 1px solid var(--off-white);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: 0;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -205,11 +234,12 @@ select:focus-visible {
     cursor: pointer;
 }
 .btn-ghost-light:hover {
-    background: var(--off-white);
+    background: var(--gold);
+    border-color: var(--gold);
     color: var(--navy);
 }
 
-/* Inputs — flushed underline style */
+/* Inputs */
 .field-flush {
     background: transparent;
     border: 0;
@@ -220,15 +250,15 @@ select:focus-visible {
     color: var(--ink);
     font-family: "Inter Tight", sans-serif;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 400;
     transition: border-color 0.4s ease;
 }
 .field-flush::placeholder {
-    color: #8a8a8a;
-    font-weight: 300;
+    color: #7a7570;
+    font-weight: 400;
 }
 .field-flush:focus {
-    border-bottom-color: var(--navy);
+    border-bottom-color: var(--gold);
 }
 
 /* Clipped image frame */
@@ -249,7 +279,7 @@ select:focus-visible {
     transform: scale(1.045);
 }
 
-/* Grain overlay — very subtle */
+/* Grain overlay */
 .grain::before {
     content: "";
     position: fixed;
@@ -257,23 +287,32 @@ select:focus-visible {
     pointer-events: none;
     z-index: 100;
     mix-blend-mode: multiply;
-    opacity: 0.035;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.1 0 0 0 0 0.18 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-/* Nav shadow-on-scroll */
 .nav-solid {
-    background: rgba(249, 249, 248, 0.92);
+    background: rgba(247, 245, 241, 0.95);
     backdrop-filter: saturate(140%) blur(14px);
     -webkit-backdrop-filter: saturate(140%) blur(14px);
     border-bottom: 1px solid var(--hair);
 }
 
-/* Hairline divider */
 .hair {
     height: 1px;
     background: var(--hair);
     width: 100%;
+}
+
+/* Accessible body text helpers — enforce readable contrast on off-white */
+.text-body {
+    color: var(--ink);
+}
+.text-body-soft {
+    color: var(--ink-soft);
+}
+.text-eyebrow-navy {
+    color: var(--navy);
 }
 
 @layer base {

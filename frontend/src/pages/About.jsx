@@ -14,7 +14,7 @@ export default function About() {
     <div data-testid="about-page">
       {/* Header */}
       <section className="pt-32 md:pt-44 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
-        <div className="tracking-eyebrow text-[color:var(--navy)]/70">About</div>
+        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">About</div>
         <h1 className="font-display text-[48px] md:text-[92px] lg:text-[112px] leading-[0.98] tracking-[-0.03em] font-light text-[color:var(--navy)] mt-4 max-w-[16ch]">
           <MaskLines lines={["A building studio", "shaped by craft, not scale."]} />
         </h1>
@@ -31,16 +31,16 @@ export default function About() {
           </div>
         </Reveal>
         <Reveal className="md:col-span-6 md:col-start-7" delay={0.06}>
-          <div className="tracking-eyebrow text-[color:var(--navy)]/70">01 · What We Do</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">01 · What We Do</div>
           <h2 className="font-display text-[32px] md:text-[46px] leading-[1.1] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Homes that blend modern design, functionality and quiet craft.
           </h2>
-          <p className="mt-6 text-[color:var(--ink)]/80 text-lg font-light">
+          <p className="mt-6 text-[color:var(--ink)] text-lg font-light">
             At Apollo Builders, we specialise in creating homes that blend modern design, functionality and
             craftsmanship. From full home renovations to brand-new builds, our team delivers every project with
             precision, reliability and a personal touch.
           </p>
-          <p className="mt-6 text-[color:var(--ink)]/80 text-lg font-light">
+          <p className="mt-6 text-[color:var(--ink)] text-lg font-light">
             Based in Melbourne&rsquo;s South and South-Eastern suburbs, we focus on larger residential projects — where
             quality, planning and finish truly matter.
           </p>
@@ -51,13 +51,13 @@ export default function About() {
       <section className="bg-[color:var(--navy)] text-[color:var(--off-white)] py-24 md:py-36 border-y border-[color:var(--hair)]">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--off-white)]/60">02 · Our Mission</div>
+            <div className="tracking-eyebrow text-[color:var(--gold)]">02 · Our Mission</div>
           </Reveal>
           <Reveal className="md:col-span-8" delay={0.05}>
             <h2 className="font-display text-[32px] md:text-[52px] leading-[1.05] tracking-[-0.02em] font-light">
               Communication is the cornerstone of every successful project.
             </h2>
-            <p className="mt-6 text-[color:var(--off-white)]/75 font-light text-lg max-w-2xl">
+            <p className="mt-6 text-[color:var(--off-white)]/95 font-light text-lg max-w-2xl">
               From the first conversation to the final walkthrough, we keep you in the loop — ensuring your vision
               comes to life exactly as you imagined. Our team tackles each job with an unmatched work ethic,
               treating your home with the same care we&rsquo;d give our own.
@@ -70,7 +70,7 @@ export default function About() {
       <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-36">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--navy)]/70">03 · Approach</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">03 · Approach</div>
             <h2 className="font-display text-[32px] md:text-[46px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
               Licensed, insured, and accountable.
             </h2>
@@ -80,7 +80,7 @@ export default function About() {
               {whyUs.map((line, i) => (
                 <Reveal key={line} delay={i * 0.04}>
                   <li className="grid grid-cols-12 items-baseline gap-4 py-7 border-b border-[color:var(--hair)] first:border-t">
-                    <span className="col-span-2 md:col-span-1 font-display text-[color:var(--navy)]/60 text-xl font-light">
+                    <span className="col-span-2 md:col-span-1 font-display text-[color:var(--gold-dark)] text-xl font-light">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="col-span-10 md:col-span-11 font-display text-[color:var(--navy)] text-xl md:text-2xl font-light">
@@ -100,13 +100,13 @@ export default function About() {
       <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-36">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end mb-10">
           <Reveal className="md:col-span-6">
-            <div className="tracking-eyebrow text-[color:var(--navy)]/70">04 · Service Area</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">04 · Service Area</div>
             <h2 className="font-display text-[32px] md:text-[52px] leading-[1.05] font-light tracking-[-0.02em] text-[color:var(--navy)] mt-4">
               Building across Melbourne&rsquo;s South-East.
             </h2>
           </Reveal>
           <Reveal className="md:col-span-6" delay={0.06}>
-            <p className="text-[color:var(--ink)]/75 md:text-right font-light text-lg">
+            <p className="text-[color:var(--ink-soft)] md:text-right font-light text-lg">
               We service homeowners throughout Bayside, Bentleigh, Brighton, Clayton, Glen Waverley, Hampton,
               Mentone and surrounding suburbs.
             </p>

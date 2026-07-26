@@ -40,7 +40,7 @@ export default function Nav() {
               <span className="font-display text-[22px] md:text-[24px] leading-none text-[color:var(--navy)] tracking-tight">
                 Apollo
               </span>
-              <span className="tracking-eyebrow text-[color:var(--navy)]/70 hidden sm:inline">
+              <span className="tracking-eyebrow text-[color:var(--gold-dark)] hidden sm:inline">
                 Builders · Est. Melbourne
               </span>
             </Link>
@@ -53,8 +53,8 @@ export default function Nav() {
                   end={l.to === "/"}
                   data-testid={`nav-link-${l.label.toLowerCase()}`}
                   className={({ isActive }) =>
-                    `link-under text-[13px] tracking-[0.14em] uppercase font-medium ${
-                      isActive ? "text-[color:var(--navy)]" : "text-[color:var(--ink)]/75 hover:text-[color:var(--navy)]"
+                    `link-under text-[13px] tracking-[0.14em] uppercase font-semibold ${
+                      isActive ? "text-[color:var(--navy)]" : "text-[color:var(--ink)] hover:text-[color:var(--gold-dark)]"
                     }`
                   }
                 >
@@ -72,7 +72,7 @@ export default function Nav() {
                 <Phone className="h-3.5 w-3.5" strokeWidth={1.5} />
                 {brand.phone}
               </a>
-              <Link to="/contact" data-testid="nav-cta" className="btn-navy hidden md:inline-flex">
+              <Link to="/contact" data-testid="nav-cta" className="btn-gold hidden md:inline-flex">
                 Get a Quote
               </Link>
               <button
@@ -105,7 +105,7 @@ export default function Nav() {
             <a href={`tel:${brand.phoneRaw}`} className="text-[13px] tracking-[0.18em] uppercase">
               {brand.phone}
             </a>
-            <Link to="/contact" className="btn-navy w-max">
+            <Link to="/contact" className="btn-gold w-max">
               Get a Quote
             </Link>
           </div>
