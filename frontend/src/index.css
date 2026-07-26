@@ -126,12 +126,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .link-under:hover, .link-under:focus-visible { background-size: 100% 1px; }
 
-/* Buttons — using :where() to keep specificity at 0 so Tailwind utilities (hidden, flex) can override */
+/* Buttons — :where() around layout so Tailwind display utilities can override, colour rules stay at normal specificity for accessibility contrast */
 :where(.btn-gold) {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+}
+.btn-gold {
     background: var(--gold);
     color: var(--ink-black);
     font-weight: 600;
@@ -139,9 +144,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     letter-spacing: 0.18em;
     text-transform: uppercase;
     border: 1px solid var(--gold);
-    border-radius: 0;
-    transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
-    cursor: pointer;
 }
 .btn-gold:hover { background: transparent; color: var(--paper); border-color: var(--gold); }
 .btn-gold.on-light:hover { color: var(--gold); }
@@ -151,6 +153,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s;
+}
+.btn-navy {
     background: var(--ink-black);
     color: var(--paper);
     font-weight: 600;
@@ -158,9 +165,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     letter-spacing: 0.18em;
     text-transform: uppercase;
     border: 1px solid var(--ink-black);
-    border-radius: 0;
-    transition: background 0.4s, color 0.4s;
-    cursor: pointer;
 }
 .btn-navy:hover { background: transparent; color: var(--ink-black); }
 
@@ -169,6 +173,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s;
+}
+.btn-ghost {
     background: transparent;
     color: var(--ink-black);
     border: 1px solid var(--ink-black);
@@ -176,9 +185,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     font-size: 12px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    border-radius: 0;
-    transition: background 0.4s, color 0.4s;
-    cursor: pointer;
 }
 .btn-ghost:hover { background: var(--ink-black); color: var(--paper); }
 
@@ -187,6 +193,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+.btn-ghost-light {
     background: transparent;
     color: var(--paper);
     border: 1px solid rgba(244, 241, 234, 0.9);
@@ -194,9 +205,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     font-size: 12px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    border-radius: 0;
-    transition: background 0.4s, color 0.4s, border-color 0.4s;
-    cursor: pointer;
 }
 .btn-ghost-light:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-black); }
 
