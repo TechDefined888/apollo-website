@@ -42,7 +42,7 @@ export default function Contact() {
   return (
     <div data-testid="contact-page" className="bg-[color:var(--ink-black)] text-[color:var(--paper)]">
       {/* Editorial hero with real project photograph */}
-      <section className="relative pt-36 md:pt-48 pb-24 md:pb-32 overflow-hidden">
+      <section className="relative pt-16 md:pt-28 pb-24 md:pb-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg"

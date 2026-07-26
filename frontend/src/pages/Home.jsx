@@ -43,7 +43,7 @@ function Hero() {
       ref={wrap}
       onMouseMove={onMove}
       data-testid="hero-section"
-      className="relative w-full overflow-hidden h-[100svh] min-h-[640px] bg-[color:var(--ink-black)] text-[color:var(--paper)]"
+      className="relative w-full overflow-hidden h-[calc(100svh_-_86px)] md:h-[calc(100svh_-_100px)] min-h-[560px] max-h-[880px] bg-[color:var(--ink-black)] text-[color:var(--paper)]"
       aria-labelledby="hero-heading"
     >
       <motion.div className="absolute inset-0" style={{ y, scale, x: px, translateY: py }}>
