@@ -59,7 +59,7 @@ function Hero() {
           src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg"
           alt="Berwick two-storey new home build by Apollo Builders — Melbourne South-East"
           className="w-full h-full object-cover"
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </motion.div>
       {/* Cinematic overlay — deep bottom, softer top */}
