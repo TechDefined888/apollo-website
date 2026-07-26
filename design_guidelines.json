@@ -1,0 +1,178 @@
+{
+  "brand_identity": {
+    "name": "Apollo Builders",
+    "archetype": "Premium Architectural / Editorial",
+    "vibe": "Authoritative, physical, crafted, bespoke, structural",
+    "core_directive": "Avoid AI template-slop. No generic shadow cards, rounded bubbles, or standard gradients. Think 'Award-winning architecture firm'. Layout must rely on negative space, clipped framing, and precise typography."
+  },
+  "typography": {
+    "strategy": "The 'Old Money Tech' & Editorial Hybrid. High contrast between elegant serif headings and sterile, precise sans-serif body text.",
+    "fonts": {
+      "heading": "'Fraunces', serif",
+      "body": "'Inter Tight', sans-serif"
+    },
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl lg:text-7xl font-light tracking-tighter leading-[1.1]",
+      "h2": "text-3xl md:text-5xl font-light tracking-tight leading-[1.2]",
+      "h3": "text-xl md:text-2xl font-normal tracking-tight",
+      "body": "text-base md:text-lg font-light leading-relaxed tracking-normal",
+      "overline": "text-xs uppercase tracking-[0.2em] font-medium"
+    },
+    "rules": [
+      "NEVER center-align paragraphs. Use left alignment for readable content.",
+      "Use 'font-light' or 'font-normal' for Fraunces to emphasize the editorial look. Do not default to bold.",
+      "Add 'tracking-tighter' to large headings to maintain sophisticated tension."
+    ]
+  },
+  "colors": {
+    "strategy": "Strict restraint. Let the photography provide the color. UI is structural.",
+    "palette": {
+      "primary_navy": "#0A192F",
+      "primary_navy_light": "#112240",
+      "neutral_white": "#FFFFFF",
+      "neutral_off_white": "#F9F9F8",
+      "neutral_warm_grey": "#E5E4E2",
+      "text_dark": "#1A1A1A",
+      "text_light": "#F9F9F8",
+      "accent_border": "#D1D1D1"
+    },
+    "usage": {
+      "backgrounds": ["neutral_off_white", "primary_navy", "neutral_white"],
+      "text": ["primary_navy", "text_dark", "text_light"],
+      "borders": ["accent_border", "primary_navy_light"]
+    },
+    "rules": [
+      "DO NOT INTRODUCE NEW COLORS.",
+      "No generic gradients. Use solid colors. The only exception is the subtle navy gradient overlay for the hero image.",
+      "Never use pure black #000000. Use text_dark or primary_navy."
+    ]
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous negative space. Elements must breathe.",
+    "scale": "Use 2x standard Tailwind spacing (e.g., py-24, py-32 for sections, gap-12, gap-16 for grids).",
+    "grids": [
+      "Asymmetrical Bento: Offset images and text blocks. Do not make perfect 50/50 splits everywhere.",
+      "Clipped Frames: Images should not have rounded corners (rounded-none). They should act as structural blocks within the grid.",
+      "Inline Rows: Trust points and metrics should sit in a clean row, separated by thin borders or dots, not inside boxed cards."
+    ]
+  },
+  "motion_and_interaction": {
+    "engine": "framer-motion and lenis",
+    "scrolling": "Lenis for smooth momentum scrolling. Mandatory for the premium feel.",
+    "animations": {
+      "hero_reveal": "Masked line-by-line reveal (staggered translateY with overflow-hidden wrapper).",
+      "scroll_reveal": "Subtle fade + Y translation (y: 20, opacity: 0 to 1, duration: 0.8, ease: [0.16, 1, 0.3, 1]).",
+      "marquee": "Slow, constant x-axis translation. Use Framer Motion or react-fast-marquee. Must feel editorial and deliberate, not frantic.",
+      "hover_states": "Images scale up slightly (1.03) inside an overflow-hidden clipped frame. Buttons use reverse contrast fill, no bouncy scales."
+    }
+  },
+  "components_and_sections": {
+    "buttons": {
+      "style": "Sharp (rounded-none) or minimally rounded (rounded-sm). Bordered or solid fill. No shadows. No gradients.",
+      "primary": "bg-primary_navy text-neutral_white hover:bg-primary_navy_light transition-colors",
+      "secondary": "bg-transparent border border-primary_navy text-primary_navy hover:bg-primary_navy hover:text-neutral_white transition-colors"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "description": "Thin cinematic hero banner.",
+        "height": "h-[45vh] md:h-[55vh]",
+        "content": "Single background image with subtle navy gradient overlay (bg-primary_navy/40). Headline 'Welcome to Apollo Builders' using kinetic on-load reveal. One supporting line, one sharp CTA 'Get a Free Quote'. NO SLIDERS."
+      },
+      {
+        "id": "intro_trust_points",
+        "description": "Clean inline row.",
+        "content": "Short intro text. Trust points (Fully Insured, Fixed Price Quotes, etc.) aligned horizontally separated by interpuncts (·) or thin vertical lines. NO CARDS."
+      },
+      {
+        "id": "before_and_after_gallery",
+        "description": "Curated editorial gallery.",
+        "content": "6-8 strong images using 'clipped frames' strategy. Asymmetrical grid. Hover reveals the 'After' image or transitions between states seamlessly without jarring jumps."
+      },
+      {
+        "id": "featured_projects",
+        "description": "Magazine-like project showcase.",
+        "content": "Alternating left/right large imagery with precise typography identifying locations (Drouin, Bentleigh East, etc.). Use clipping masks or distinct aspect ratios (e.g., 3:4 portrait mixed with 16:9 landscape)."
+      },
+      {
+        "id": "manifesto_why_us",
+        "description": "Numbered manifesto chapters.",
+        "content": "Large editorial numbers (e.g., '01', '02') paired with oversized headings. Generous padding."
+      },
+      {
+        "id": "process_timeline",
+        "description": "Clean horizontal/vertical flow.",
+        "content": "No default plugin icons. Use thin lines to connect stages, raw text, and simple dots/numbers. Minimalist and structural."
+      },
+      {
+        "id": "editorial_marquee",
+        "description": "Slow, massive text band.",
+        "content": "A single instance of oversized, outline or low-opacity text (e.g., 'CRAFTING MELBOURNE CUSTOM HOMES') panning slowly across the screen."
+      },
+      {
+        "id": "faq",
+        "description": "Minimalist accordion.",
+        "content": "Use Shadcn Accordion but strip all borders except bottom. Use thin line separators. Title in Fraunces, body in Inter Tight."
+      },
+      {
+        "id": "testimonials",
+        "description": "Understated quote blocks.",
+        "content": "No star ratings. Large serif quotation marks, elegant text setting. Minimalist attribution."
+      },
+      {
+        "id": "cta_band",
+        "description": "Final Navy CTA band.",
+        "content": "Solid primary_navy background, neutral_white text. Large call to action to Contact."
+      }
+    ],
+    "forms": {
+      "style": "Minimalist inputs. border-b only (flushed inputs) or very thin complete borders with rounded-none. Muted placeholder text.",
+      "tech": "Store in MongoDB + Resend for email notification."
+    }
+  },
+  "image_urls": {
+    "projects": [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-1-1024x686.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg"
+    ],
+    "gallery_pool": [
+      "https://apollobuilders.com.au/wp-content/uploads/2026/07/gallery-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/07/gallery-2.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/07/gallery-3.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/07/gallery-4.jpg"
+    ]
+  },
+  "data_management": {
+    "projects_and_testimonials": "Hardcoded in frontend as clean array/config objects inside constants/data.js or similar."
+  },
+  "accessibility": {
+    "contrast": "Ensure text over images has sufficient contrast. Use subtle overlays or text-shadow.",
+    "motion": "Respect prefers-reduced-motion media query for all framer-motion animations.",
+    "testing": "All interactive elements MUST include a data-testid attribute in kebab-case."
+  },
+  "instructions_to_main_agent": [
+    "This is a premium architectural site, NOT a generic SaaS template.",
+    "DO NOT use Shadcn Card component if it retains its default rounded borders and shadows. Strip them out.",
+    "Ensure the hero is THIN (max 55vh). Do not use a full 100vh hero screen.",
+    "Apply Framer Motion for scroll-reveals (useInView) on every major section, but keep it elegant (slow fades/translations), no wild bouncing.",
+    "Implement Lenis for smooth scrolling at the root level.",
+    "Strictly adhere to the provided colors. Navy is the anchor. Backgrounds should largely be off-white or white.",
+    "Use the exact URLs provided for images. Fallback to similar structure if generating array."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "Avoid the 'AI slop' aesthetic: no generic centered layouts, simplistic gradients, or uniform styling.",
+    "Create depth through layered design elements and precise typography rather than heavy drop shadows.",
+    "You MUST NOT apply universal transition (e.g., transition: all).",
+    "You MUST NOT center align the app container (.App { text-align: center; }).",
+    "NEVER use placeholder AI emoji characters for icons. Use lucide-react or phosphor-icons.",
+    "Every interaction needs micro-animations (hover states, focus).",
+    "Use 2-3x more spacing than default Tailwind padding.",
+    "Do not use complete transparent backgrounds for header menus over content."
+  ]
+}
