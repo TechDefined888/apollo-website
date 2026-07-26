@@ -19,7 +19,6 @@ function ScrollTop() {
 }
 
 function SmoothScroll({ children }) {
-  const lenisRef = useRef(null);
   useEffect(() => {
     const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduce) return;
@@ -29,7 +28,6 @@ function SmoothScroll({ children }) {
       smoothWheel: true,
       wheelMultiplier: 0.9,
     });
-    lenisRef.current = lenis;
     let rafId;
     function raf(time) {
       lenis.raf(time);
@@ -50,8 +48,9 @@ function App() {
       <BrowserRouter>
         <SmoothScroll>
           <ScrollTop />
+          <a href="#main" className="skip-nav">Skip to main content</a>
           <Nav />
-          <main>
+          <main id="main">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
