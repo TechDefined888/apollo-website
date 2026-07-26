@@ -1,0 +1,23 @@
+{
+  "summary": "Verified all 8 bug fixes for Apollo Builders redesign. Backend regression: 5/5 pytest pass (health stubbed, POST/GET /api/enquiries, 422 validation, no _id leak). Frontend: All 8 explicit fixes verified via Playwright at 1440x900. (1) Fonts: hero h1 + About/Services H1 computed font-family = 'Fraunces, ui-serif, Georgia, serif'; hero-sub p and About p = '\"Inter Tight\", ui-sans-serif, system-ui, sans-serif'. (2) Logo: nav-logo <img src> = 'https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png', naturalWidth=873. Footer uses same brand.logo. (3) Services tiles: [data-testid=services-tiles] contains 4 tiles new-home-builds/home-renovations/bathroom-renovations/kitchen-renovations, each with real apollobuilders.com.au project photo (Clyde/Altona/drouin-7/endevour-hills-after-4) with naturalWidth>1000. SVG present is only the small 'Explore' ArrowUpRight chevron in the CTA label — primary visual is the img. (4) Nav-logo is <img>, textContent empty; 'BUILDERS · EST. MELBOURNE' string absent from DOM. (5) Hero overlay: gradient overlay div found inside hero-section; hero-heading color = rgb(255,255,255). (6) One CTA above the fold: at scrollY=0 on /, page.$('[data-testid=nav-cta]') returned null; after scrolling to 400px, nav-cta appears. (7) Hero height = 486px at 1440x900 (within 360-540 spec, corresponds to 54vh). (8) Hero <img src> contains 'Berwick-New-Build-5-e1762576152191.jpg', naturalWidth=1013. Contact form end-to-end submit produced [data-testid=thanks] with 'Thank you — we’ll be in touch soon.' text.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/test_api.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Font enforcement in index.css uses element selectors (h1..h6 + p/span/a/li) — clean, but note that Nav.jsx <a> links inherit Inter Tight correctly.",
+    "Nav.jsx conditionally renders nav-cta (!overHero) — correct DOM-level removal (not just CSS hidden), which the test explicitly validates.",
+    "Hero overlay uses double gradient stack (top-to-bottom + left-to-right) for legibility — solid approach for text over variable-brightness project photography.",
+    "brand.logo hotlinks from apollobuilders.com.au — works today but consider caching a local copy in /public to avoid CDN dependence and CORS/hotlink protection risks."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "seed_data_creation": "TEST_ enquiries created via API (TEST_John Doe) and UI form (TEST_Playwright Bug8).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All 8 user-reported bugs verified fixed at https://premium-apollo.preview.emergentagent.com. Backend tests: pytest backend/tests/test_api.py. Key testids used: hero-section, hero-heading, hero-cta, hero-sub, nav-logo, nav-cta, services-tiles, service-tile-{new-home-builds|home-renovations|bathroom-renovations|kitchen-renovations}, input-name/phone/email/address/project-type/message, submit-enquiry, thanks. Note: service tiles contain a small SVG (ArrowUpRight 'Explore' chevron) — this is NOT the primary visual; primary is the <img> project photo."
+}

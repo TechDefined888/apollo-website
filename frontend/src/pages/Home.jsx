@@ -13,6 +13,7 @@ import {
   whyUs,
   faqs,
   testimonials,
+  serviceTiles,
   brand,
 } from "@/lib/data";
 
@@ -25,27 +26,27 @@ function Hero() {
     target: wrap,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.14]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
 
   return (
     <section
       ref={wrap}
       data-testid="hero-section"
-      className="relative w-full overflow-hidden h-[62svh] md:h-[58vh] lg:h-[55vh] min-h-[440px]"
+      className="relative w-full overflow-hidden h-[46vh] md:h-[50vh] lg:h-[54vh] min-h-[380px] max-h-[720px]"
     >
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <img
-          src="https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg"
-          alt="Drouin new home build — custom family home by Apollo Builders, Melbourne South-East"
+          src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg"
+          alt="Berwick two-storey new home build by Apollo Builders — Melbourne South-East"
           className="w-full h-full object-cover"
         />
       </motion.div>
-      {/* Navy gradient overlay — stronger at bottom for legible text */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B2E]/45 via-[#0B1B2E]/55 to-[#0B1B2E]/85" />
-      <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_10%,transparent,rgba(11,27,46,0.35))]" />
+      {/* Strong navy overlay for legibility on any project photo */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B2E]/70 via-[#0B1B2E]/65 to-[#0B1B2E]/90" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,27,46,0.55)_0%,rgba(11,27,46,0.25)_60%,rgba(11,27,46,0.5)_100%)]" />
 
-      <div className="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 flex flex-col justify-end pb-14 md:pb-20">
+      <div className="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 flex flex-col justify-end pb-10 md:pb-16">
         <motion.div
           className="tracking-eyebrow text-[color:var(--gold)]"
           initial={{ opacity: 0 }}
@@ -58,17 +59,17 @@ function Hero() {
 
         <h1
           data-testid="hero-heading"
-          className="font-display text-[color:var(--off-white)] text-[44px] sm:text-[64px] md:text-[84px] lg:text-[100px] leading-[0.98] tracking-[-0.03em] font-light mt-5 max-w-[16ch]"
+          className="font-display text-white text-[38px] sm:text-[54px] md:text-[68px] lg:text-[80px] leading-[0.98] tracking-[-0.03em] font-normal mt-4 max-w-[18ch] drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)]"
         >
-          <MaskLines lines={["Welcome to", "Apollo Builders."]} delay={0.2} />
+          <MaskLines lines={["Welcome to Apollo Builders."]} delay={0.2} />
         </h1>
 
-        <div className="mt-6 md:mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="mt-5 md:mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.9 }}
-            className="max-w-md text-white text-[15px] md:text-base font-normal"
+            className="max-w-lg text-white text-[15px] md:text-[17px] font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]"
             data-testid="hero-sub"
           >
             Custom homes, full renovations and extensions built with care across Melbourne&rsquo;s South-East.
@@ -134,13 +135,72 @@ function Intro() {
   );
 }
 
+/* ── SERVICE TILES (real project photography, not icons) ─────────── */
+function ServicesTiles() {
+  return (
+    <section
+      data-testid="services-tiles"
+      className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end mb-10">
+        <Reveal className="md:col-span-8">
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">02 · Services</div>
+          <h2 className="font-display text-[32px] md:text-[46px] leading-[1.05] tracking-[-0.02em] text-[color:var(--navy)] mt-3">
+            What we build.
+          </h2>
+        </Reveal>
+        <Reveal className="md:col-span-4" delay={0.05}>
+          <p className="text-[color:var(--ink-soft)] font-normal md:text-right">
+            Four services, one standard — quality workmanship, fixed price, on time.
+          </p>
+        </Reveal>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        {serviceTiles.map((s) => (
+          <Reveal key={s.slug} y={30}>
+            <Link
+              to={`/services/${s.slug}`}
+              data-testid={`service-tile-${s.slug}`}
+              className="group block relative overflow-hidden aspect-[4/5] bg-[color:var(--navy)]"
+            >
+              <img
+                src={s.image}
+                alt={s.alt}
+                className="w-full h-full object-cover opacity-[0.72] transition-all duration-[900ms] group-hover:opacity-90 group-hover:scale-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B2E]/95 via-[#0B1B2E]/50 to-transparent" />
+              <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-between text-white">
+                <div className="tracking-eyebrow text-[color:var(--gold)]">
+                  Service
+                </div>
+                <div>
+                  <h3 className="font-display text-[26px] md:text-[30px] leading-[1.05] tracking-[-0.02em]">
+                    {s.label}
+                  </h3>
+                  <p className="text-[13px] tracking-[0.02em] text-white/85 mt-2">
+                    {s.caption}
+                  </p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase text-[color:var(--gold)] font-semibold">
+                    Explore <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* ── BEFORE & AFTER GALLERY ───────────────────────────────────────── */
 function Gallery() {
   return (
     <section data-testid="gallery-section" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end mb-14">
         <Reveal className="md:col-span-6">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">02 · Selected Work</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">03 · Selected Work</div>
           <h2 className="font-display text-[36px] md:text-[56px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Before &amp; after,<br /> quietly transformative.
           </h2>
@@ -210,7 +270,7 @@ function Featured() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16 md:mb-24">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">03 · Projects</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">04 · Projects</div>
           </Reveal>
           <Reveal className="md:col-span-8" delay={0.05}>
             <h2 className="font-display text-[36px] md:text-[56px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)]">
@@ -271,7 +331,7 @@ function Manifesto() {
     <section data-testid="why-us" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-28 md:py-40">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <Reveal className="md:col-span-4">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">04 · Why Apollo</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">05 · Why Apollo</div>
           <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Six reasons the right builder matters.
           </h2>
@@ -312,7 +372,7 @@ function Process() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--gold)]">05 · Process</div>
+            <div className="tracking-eyebrow text-[color:var(--gold)]">06 · Process</div>
           </Reveal>
           <Reveal className="md:col-span-8" delay={0.05}>
             <h2 className="font-display text-[36px] md:text-[56px] leading-[1.05] tracking-[-0.02em] font-light">
@@ -360,7 +420,7 @@ function FAQ() {
     <section data-testid="faq-section" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-28 md:py-40">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <Reveal className="md:col-span-5">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">06 · FAQ</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">07 · FAQ</div>
           <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-[-0.02em] font-light text-[color:var(--navy)] mt-4">
             Answers before you ask.
           </h2>
@@ -402,7 +462,7 @@ function Testimonials() {
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <Reveal>
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">07 · Homeowners</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">08 · Homeowners</div>
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
@@ -467,6 +527,7 @@ export default function Home() {
     <div data-testid="home-page">
       <Hero />
       <Intro />
+      <ServicesTiles />
       <Gallery />
       <Featured />
       <Manifesto />

@@ -55,6 +55,16 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+/* Explicit family enforcement across the whole tree */
+h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 30, "WONK" 0;
+}
+p, span, a, li, label, input, textarea, select, button, .font-body {
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+
 body {
     margin: 0;
     overflow-x: hidden;

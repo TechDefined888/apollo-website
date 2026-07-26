@@ -8,11 +8,15 @@ export default function Footer() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14">
           <div className="md:col-span-5">
-            <div className="tracking-eyebrow text-[color:var(--gold)]">Apollo Builders</div>
-            <h3 className="font-display text-4xl md:text-5xl mt-4 leading-[1.1] tracking-tight font-light">
+            <img
+              src={brand.logo}
+              alt="Apollo Builders — Melbourne South-East builders"
+              className="h-16 w-auto brightness-0 invert opacity-95"
+            />
+            <h3 className="font-display text-4xl md:text-5xl mt-6 leading-[1.1] tracking-tight">
               Build boldly. <br /> Renovate quietly.
             </h3>
-            <p className="mt-6 max-w-md text-[color:var(--off-white)]/90 font-light">
+            <p className="mt-6 max-w-md text-[color:var(--off-white)]/90 font-normal">
               A residential building & renovation studio serving Melbourne&rsquo;s South &amp; South-Eastern suburbs — new
               home builds, extensions, kitchen and bathroom renovations, and outdoor living spaces.
             </p>

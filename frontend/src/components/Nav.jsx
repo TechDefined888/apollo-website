@@ -14,6 +14,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const onHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -26,23 +27,26 @@ export default function Nav() {
     setOpen(false);
   }, [pathname]);
 
+  const overHero = onHome && !scrolled;
+
   return (
     <>
       <header
         data-testid="site-nav"
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-          scrolled || pathname !== "/" ? "nav-solid" : ""
+          scrolled || !onHome ? "nav-solid" : ""
         }`}
       >
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="flex items-center justify-between h-[72px] md:h-[84px]">
-            <Link to="/" data-testid="nav-logo" className="flex items-baseline gap-3 group">
-              <span className="font-display text-[22px] md:text-[24px] leading-none text-[color:var(--navy)] tracking-tight">
-                Apollo
-              </span>
-              <span className="tracking-eyebrow text-[color:var(--gold-dark)] hidden sm:inline">
-                Builders · Est. Melbourne
-              </span>
+            <Link to="/" data-testid="nav-logo" className="flex items-center gap-3 group">
+              <img
+                src={brand.logo}
+                alt="Apollo Builders — Melbourne South-East builders"
+                className={`h-10 md:h-12 w-auto transition-all duration-500 ${
+                  overHero ? "brightness-0 invert" : ""
+                }`}
+              />
             </Link>
 
             <nav className="hidden md:flex items-center gap-10">
@@ -54,7 +58,11 @@ export default function Nav() {
                   data-testid={`nav-link-${l.label.toLowerCase()}`}
                   className={({ isActive }) =>
                     `link-under text-[13px] tracking-[0.14em] uppercase font-semibold ${
-                      isActive ? "text-[color:var(--navy)]" : "text-[color:var(--ink)] hover:text-[color:var(--gold-dark)]"
+                      overHero
+                        ? "text-white/95 hover:text-[color:var(--gold)]"
+                        : isActive
+                        ? "text-[color:var(--navy)]"
+                        : "text-[color:var(--ink)] hover:text-[color:var(--gold-dark)]"
                     }`
                   }
                 >
@@ -67,18 +75,25 @@ export default function Nav() {
               <a
                 href={`tel:${brand.phoneRaw}`}
                 data-testid="nav-phone"
-                className="hidden lg:flex items-center gap-2 text-[13px] tracking-[0.14em] uppercase font-medium text-[color:var(--navy)]"
+                className={`hidden lg:flex items-center gap-2 text-[13px] tracking-[0.14em] uppercase font-semibold transition-colors duration-500 ${
+                  overHero ? "text-white/95" : "text-[color:var(--navy)]"
+                }`}
               >
                 <Phone className="h-3.5 w-3.5" strokeWidth={1.5} />
                 {brand.phone}
               </a>
-              <Link to="/contact" data-testid="nav-cta" className="btn-gold hidden md:inline-flex">
-                Get a Quote
-              </Link>
+              {/* Hide primary CTA on the hero so only the hero-cta is visible above the fold */}
+              {!overHero && (
+                <Link to="/contact" data-testid="nav-cta" className="btn-gold hidden md:inline-flex">
+                  Get a Quote
+                </Link>
+              )}
               <button
                 aria-label="menu"
                 data-testid="nav-menu-toggle"
-                className="md:hidden inline-flex items-center justify-center w-10 h-10 text-[color:var(--navy)]"
+                className={`md:hidden inline-flex items-center justify-center w-10 h-10 ${
+                  overHero ? "text-white" : "text-[color:var(--navy)]"
+                }`}
                 onClick={() => setOpen((v) => !v)}
               >
                 {open ? <X /> : <Menu />}

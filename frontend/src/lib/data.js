@@ -7,6 +7,7 @@ export const brand = {
   email: "info@apollobuilders.com.au",
   region: "Melbourne's South & South-East",
   tagline: "Renovations & Custom Homes",
+  logo: "https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png",
 };
 
 export const trustPoints = [
@@ -272,4 +273,36 @@ export const projectTypes = [
   "Home Extension",
   "Outdoor / Alfresco",
   "Other",
+];
+
+// Homepage service tiles — real project photography instead of icons
+export const serviceTiles = [
+  {
+    slug: "new-home-builds",
+    label: "New Home Builds",
+    caption: "Custom homes · Knockdown & rebuild",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1-1024x683.jpg",
+    alt: "New home builder Melbourne South-East — Clyde new build exterior by Apollo Builders",
+  },
+  {
+    slug: "home-renovations",
+    label: "Home Renovations",
+    caption: "Full renovations · Extensions",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
+    alt: "Home renovation Melbourne — open-plan living in Altona Meadows by Apollo Builders",
+  },
+  {
+    slug: "bathroom-renovations",
+    label: "Bathroom Renovations",
+    caption: "Luxury fitouts · Custom vanities",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-7.jpg",
+    alt: "Bathroom renovation Melbourne South-East by Apollo Builders",
+  },
+  {
+    slug: "kitchen-renovations",
+    label: "Kitchen Renovations",
+    caption: "Custom cabinetry · Benchtops",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
+    alt: "Kitchen renovation Melbourne — Endeavour Hills modern kitchen by Apollo Builders",
+  },
 ];
