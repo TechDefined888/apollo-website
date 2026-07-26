@@ -139,7 +139,7 @@ export default function ServicesInteractive() {
               <div key={s.slug} className="border-b border-[color:var(--paper)]/12">
                 <button
                   onClick={() => setActive(open ? -1 : i)}
-                  data-testid={`service-tile-${s.slug}`}
+                  data-testid={`service-tile-${s.slug}-mobile`}
                   className="w-full text-left px-6 py-6 flex items-baseline justify-between gap-4"
                   aria-expanded={open}
                 >

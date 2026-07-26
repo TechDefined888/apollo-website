@@ -126,8 +126,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .link-under:hover, .link-under:focus-visible { background-size: 100% 1px; }
 
-/* Buttons */
-.btn-gold {
+/* Buttons — using :where() to keep specificity at 0 so Tailwind utilities (hidden, flex) can override */
+:where(.btn-gold) {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -146,7 +146,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .btn-gold:hover { background: transparent; color: var(--paper); border-color: var(--gold); }
 .btn-gold.on-light:hover { color: var(--gold); }
 
-.btn-navy {
+:where(.btn-navy) {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -164,7 +164,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .btn-navy:hover { background: transparent; color: var(--ink-black); }
 
-.btn-ghost {
+:where(.btn-ghost) {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -182,7 +182,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .btn-ghost:hover { background: var(--ink-black); color: var(--paper); }
 
-.btn-ghost-light {
+:where(.btn-ghost-light) {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;

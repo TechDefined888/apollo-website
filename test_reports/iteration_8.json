@@ -1,0 +1,23 @@
+{
+  "summary": "Iteration 8 retest AFTER :where() CSS specificity fix for .btn-gold/.btn-navy/.btn-ghost/.btn-ghost-light. BACKEND: 5/5 pytest pass (health, POST enquiry valid, 2x 422 invalid, list). FRONTEND: mobile nav-cta bug from iteration 7 is FIXED — at 390x844 getComputedStyle([data-testid=nav-cta]).display === 'none' and bounding rect width === 0. Header on mobile correctly shows only logo (flex, width 48.7) + hamburger (flex, width 40). Sticky top:0, bg rgb(10,15,26), zIndex 50. Tablet 768: nav-cta visible (display: flex, width 114), toggle hidden. Desktop 1440: all 4 nav-link-* visible, nav-phone visible (display: flex), nav-cta visible amber. Header renders identically across /, /about, /services, /contact (rgb(10,15,26), top 0, cta visible). Services tiles: NO duplicate data-testids on either desktop or mobile. Desktop panels use service-tile-{slug}, mobile accordions use service-tile-{slug}-mobile (verified for new-home-builds, home-renovations, bathroom-renovations, kitchen-renovations). Button gold regression: nav-cta, hero-cta, final-cta-btn all computed bg rgb(197,137,45) = #C5892D (Apollo signature amber). Contact form end-to-end submission works: filled all 6 fields, submit-enquiry click produced [data-testid=thanks] element with 'Thank you — we'll be in touch soon' + toast 'Enquiry sent. We'll be in touch shortly.'. All spec assertions from review request pass.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/test_api.py", "/app/test_reports/pytest/pytest_iter8.xml", "/app/test_reports/iter8_mobile_top.png"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Minor: On tablet 768, nav-cta computes display: 'flex' rather than 'inline-flex' — cosmetic only, button still renders correctly with correct width. Tailwind's md:inline-flex utility appears to be applied but computed style shows 'flex' (possibly because the parent's flexbox layout treats them equivalently). No visual/functional impact.",
+    "nav-cta text color is rgb(244,241,234) (paper/off-white) on gold background — contrast ratio ~2.7:1 which is BELOW WCAG AA 4.5:1 threshold for small text. Consider using --ink-black (rgb(10,15,26)) for text on gold buttons per .btn-gold's default `color: var(--ink-black)` — however the applied class is overriding with paper text via inherited color from parent. Verify color inheritance chain on hero-cta/nav-cta buttons for accessibility."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (5/5)", "frontend": "100% (all iteration 8 spec assertions pass)"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "One additional TEST_ enquiry created via UI form submission + backend pytest TEST_ enquiries",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Preview at https://premium-apollo.preview.emergentagent.com is healthy. The :where(.btn-gold) CSS specificity fix in /app/frontend/src/index.css works correctly — Tailwind .hidden utility now properly overrides. Mobile ENQUIRE button is no longer visible on <768px viewports. All service tile testids are unique on both desktop and mobile (mobile uses -mobile suffix). Contact form submission works end-to-end and shows thanks state.",
+  "rca of the issue": "Iteration 7 bug (mobile ENQUIRE visible) was caused by .btn-gold's `display: inline-flex` at (0,1,0) specificity matching Tailwind's .hidden and winning due to import order. Fix in iteration 8 wrapped .btn-gold (and .btn-navy/.btn-ghost/.btn-ghost-light) in :where() which reduces specificity to (0,0,0), letting Tailwind's .hidden utility win the cascade. Verified via getComputedStyle at 390px: nav-cta display === 'none'."
+}
