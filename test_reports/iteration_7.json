@@ -1,0 +1,39 @@
+{
+  "summary": "Iteration 7 — Third-party live-preview verification requested by user (‘snapshots don't match preview’). Loaded https://premium-apollo.preview.emergentagent.com with cache-buster in a fresh Playwright browser session at desktop/tablet/mobile. Backend pytest 5/5 pass. Frontend header renders EXACTLY as documented (solid navy rgb(10,15,26), sticky top:0, z-index 50, height 101px desktop / 87px mobile, persists across /, /about, /services, /contact). Hero image + logo both load with correct naturalWidth (1013 / 873). No console errors, no page errors, no failed module chunks. document.readyState = complete. ONE real bug found: on mobile 390px viewport the nav-cta (ENQUIRE button) is VISIBLE when it should be hidden — this contradicts the spec and is likely what the user is seeing.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Nav.jsx nav-cta / .btn-gold in index.css",
+        "issue": "On mobile (390px) the ENQUIRE button has className='btn-gold hidden md:inline-flex' but computed display is 'flex' (not 'none'). Root cause: .btn-gold in /app/frontend/src/index.css line 130 sets `display: inline-flex;` with the SAME specificity as Tailwind's `.hidden` (both are single-class 0,1,0). Since index.css is imported AFTER Tailwind utilities in the cascade, .btn-gold wins and the button stays visible on mobile. The mobile screenshot clearly shows ENQUIRE next to the hamburger, taking up ~40% of the mobile header width. This is a very likely candidate for the user's ‘doesn't match’ complaint.",
+        "selector": "[data-testid=nav-cta]",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Home services-tiles",
+        "issues": ["4 unique service tiles are rendered TWICE in the DOM (data-testids: service-tile-new-home-builds, -home-renovations, -bathroom-renovations, -kitchen-renovations each appear 2x → 8 total). If this is intentional (marquee/infinite scroll duplication) it's fine, but data-testids should be unique per element for reliable testing — consider suffixing duplicates with -clone."]
+      }
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/test_api.py", "/app/test_reports/pytest/pytest_iter7.xml", "/app/test_reports/iter7_desktop_top.png", "/app/test_reports/iter7_desktop_1000.png", "/app/test_reports/iter7_mobile_top.png"],
+  "action_items": [
+    "FIX MOBILE NAV-CTA: In /app/frontend/src/index.css .btn-gold, either (a) remove `display: inline-flex` and let Tailwind's `inline-flex` utility set it on md+ only, or (b) add `.btn-gold.hidden { display: none; }` override, or (c) bump the specificity of the Tailwind hidden class via `!important` on the JSX (`hidden md:inline-flex` → replace `hidden` with `!hidden md:!inline-flex` in Nav.jsx nav-cta). Option (a) is cleanest since every consumer already uses Tailwind display utilities alongside .btn-gold.",
+    "OPTIONAL: If services-tiles duplication is a marquee/infinite-loop, add unique testids to the cloned set (e.g. suffix -b) or wrap clones with aria-hidden='true' data-clone attribute."
+  ],
+  "critical_code_review_comments": [
+    ".btn-gold and .btn-navy in index.css both set `display: inline-flex` at 0,1,0 specificity — this fights every Tailwind display utility (hidden, flex, block, grid) applied on the same element. Move display out of the button class OR scope it via :where(.btn-gold):not(.hidden) to keep utility overrides winning.",
+    "Home page uses calc(100svh - 100px) but header is 87px on mobile — same finding as iteration 6, still not addressed. Cosmetic 13px gap on <768px devices.",
+    "trust-band does not have per-item data-testid (only container has data-testid=trust-band). Consider adding trust-item-* testids for future regression tests."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "93% (13/14 spec assertions passed — mobile nav-cta visibility failed)"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "TEST_ enquiries from pytest run (test_api.py). No new UI seed data this iteration.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Live preview at https://premium-apollo.preview.emergentagent.com is HEALTHY. Desktop header verified pixel-perfect (see /app/test_reports/iter7_desktop_top.png + iter7_desktop_1000.png). Sticky behaviour verified at scrollY 0/800/2400/5000 all report headerTop=0. Hero image naturalWidth=1013 (Berwick-New-Build-5), logo naturalWidth=873. Only one failed asset: apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg (net::ERR_ABORTED) — a project photo variant, non-blocking. Some cdn-cgi/rum requests aborted (Cloudflare RUM beacon, harmless). Console shows only React devtools info + one Lenis 'container non-static position' warning (informational, does not break sticky). The ONE bug is the mobile ENQUIRE button visibility due to .btn-gold display override — see mobile screenshot iter7_mobile_top.png. On tablet 768 and desktop 1440 the CTA is correctly visible. All 4 nav links present, phone link visible lg+, all pages /about /services /contact keep solid navy header rgb(10,15,26).",
+  "rca of the issue": "USER COMPLAINT ‘snapshots don't match preview’ RCA: The desktop preview matches all docs perfectly. The likely mismatch source is MOBILE — user's mobile view shows ENQUIRE next to hamburger (cluttered) whereas main agent's docs/screenshots claim mobile shows only logo+hamburger. Reproduction: open https://premium-apollo.preview.emergentagent.com in a browser at ≤767px width → observe ENQUIRE button between the phone/hamburger area. Mitigation: fix .btn-gold CSS specificity per action_items above, then retest at 390px viewport and confirm cta_display === 'none'."
+}
