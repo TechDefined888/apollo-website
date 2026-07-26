@@ -85,7 +85,7 @@ export default function BlueprintProcess() {
             <div className="tracking-eyebrow text-[color:var(--gold-dark)]">05 — Process</div>
             <h2
               id="process-heading"
-              className="font-display text-[36px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.025em] mt-4"
+              className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] mt-4"
             >
               From blueprint<br /> to handover.
             </h2>

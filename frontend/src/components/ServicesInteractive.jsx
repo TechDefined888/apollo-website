@@ -30,7 +30,7 @@ export default function ServicesInteractive() {
             <div className="tracking-eyebrow text-[color:var(--gold)]">02 — Services</div>
             <h2
               id="services-heading"
-              className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] mt-5"
+              className="font-display text-[30px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.02em] mt-5"
             >
               Renovations, extensions <br /> and new builds.
             </h2>

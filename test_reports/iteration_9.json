@@ -1,0 +1,31 @@
+{
+  "summary": "Iteration 9 UI/UX refinement pass verification. BACKEND: 5/5 pytest pass (health, POST enquiry valid, 422 invalid email, 422 empty name, list). FRONTEND: All hero height/font-size/layout refinements verified across 4 viewports. Hero heights: 1440=558px (in 500-620), 1024=476px (in 400-520), 768=614px (in 500-660), 390=523px (in 460-560). Hero H1 line break confirmed 'Welcome to' / 'Apollo Builders.' (innerText contains newline between). Hero H1 fontSize: 1440=76px OK, 1024=76px (spec expected 60px — boundary at Tailwind lg=1024 so lg:text applies), 768=60px OK, 390=38px OK. Trust-band top at 1440 = 659 < 900 (above fold) OK. No overlaps at any viewport (h1.bottom < sub.top on stacked; sub.right < cta.left on side-by-side desktop/tablet). Header vertical alignment at 1440: logo/navCta/navPhone centers all at y=50 vs header center 50.5 (within ±1px, well under ±4px tol) OK. Nav layout: 1440 wordmark shown inline in nav-logo (logo A width 209 includes text 'Apollo Builders'), 1024 wordmark still shown (width 209 — spec expected hidden), 768 wordmark hidden (round logo only, width 56.8), 390 wordmark hidden (round 48.7). Mobile 390: nav-cta display=none, nav-menu-toggle display=flex OK. Tablet 768: nav-cta display=flex width 114 (gold), nav-phone display=none OK. Section H2 sizes at 1440: 48-50px across intro/projects/why/blueprint/testimonials/faq. Page H1 sizes at 1440: /about /services /contact all 80px OK. Final CTA H2 at 76px OK. Contact form submits e2e — thanks state 'Thank you — we'll be in touch soon' shown after submit. No forbidden fabricated content beyond existing 'Fully Licensed & Insured' trust-band string (present in prior iterations).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_api.py",
+    "/app/test_reports/pytest/pytest_iter9.xml"
+  ],
+  "action_items": [
+    "MINOR: Add [data-testid=nav-wordmark] to the 'Apollo Builders' text span inside nav-logo so testing can assert its visibility per breakpoint (currently no distinct testid — wordmark is part of the nav-logo anchor).",
+    "MINOR: Add data-testid attributes to section H2 headings on Home (intro-heading, projects-heading, why-heading, testimonials-heading, faq-heading) — spec referenced these testids but they are missing (font-size values themselves are correct).",
+    "MINOR/BOUNDARY: At exactly viewport width 1024px, hero H1 renders at 76px (Tailwind lg:text-8xl kicks in at 1024). Spec expected 60px at 1024. If the design intent is 60px through 1024 inclusive, change lg: usage to xl: (1280+) for the largest step. Current behavior is however logically consistent with 'lg+' meaning >=1024."
+  ],
+  "critical_code_review_comments": [
+    "Missing data-testids on section headings and nav-wordmark reduces testability for future automated regression on this exact spec.",
+    "Trust-band contains 'Fully Licensed & Insured' — 'licensed' is a regulated claim in AU building industry; ensure Apollo actually holds VBA/registered builder licence before publishing this claim. Not a code bug but a compliance note.",
+    "nav-cta text color remains rgb(244,241,234) on gold rgb(197,137,45) giving ~2.7:1 contrast — still below WCAG AA 4.5:1 for small text (unchanged from iter 8)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (5/5)", "frontend": "~95% — all layout/size specs pass; 3 minor spec deviations (missing testids, 1024px boundary font-size)"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "1 UI-submitted enquiry (TEST_UI Iter9) + backend pytest TEST_ enquiries",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Hero refinement is visually correct. Only minor gaps are missing data-testid attributes (nav-wordmark, intro-heading, projects-heading, why-heading, testimonials-heading, faq-heading) and 1024px boundary font size. Contact form testids are input-name/phone/email/address/project-type/message + submit-enquiry (NOT contact-name).",
+  "rca of the issue": "N/A — no functional bugs found in refinement pass."
+}

@@ -43,7 +43,7 @@ function Hero() {
       ref={wrap}
       onMouseMove={onMove}
       data-testid="hero-section"
-      className="relative w-full overflow-hidden h-[calc(100svh_-_86px)] md:h-[calc(100svh_-_100px)] min-h-[560px] max-h-[880px] bg-[color:var(--ink-black)] text-[color:var(--paper)]"
+      className="relative w-full overflow-hidden h-[62vh] sm:h-[58vh] md:h-[60vh] lg:h-[62vh] min-h-[420px] max-h-[640px] bg-[color:var(--ink-black)] text-[color:var(--paper)]"
       aria-labelledby="hero-heading"
     >
       <motion.div className="absolute inset-0" style={{ y, scale, x: px, translateY: py }}>
@@ -55,9 +55,9 @@ function Hero() {
         />
       </motion.div>
       {/* Single cinematic overlay — cleaner, deeper */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,26,0.45)_0%,rgba(10,15,26,0.15)_35%,rgba(10,15,26,0.85)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,26,0.60)_0%,rgba(10,15,26,0.50)_40%,rgba(10,15,26,0.90)_100%)]" />
 
-      <div className="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 flex flex-col justify-end pb-24 md:pb-32">
+      <div className="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 flex flex-col justify-center py-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -71,27 +71,27 @@ function Hero() {
         <h1
           id="hero-heading"
           data-testid="hero-heading"
-          className="font-display text-[color:var(--paper)] mt-6 md:mt-8 font-normal text-[56px] sm:text-[80px] md:text-[104px] lg:text-[124px] leading-[0.94] tracking-[-0.035em] max-w-[16ch]"
+          className="font-display text-[color:var(--paper)] mt-4 md:mt-5 font-normal text-[38px] sm:text-[48px] md:text-[60px] lg:text-[76px] leading-[1.02] tracking-[-0.03em] max-w-[15ch]"
         >
           <MaskLines lines={["Welcome to", "Apollo Builders."]} delay={0.2} />
         </h1>
 
-        <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div className="mt-6 md:mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-8">
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 1.0 }}
-            className="max-w-md text-[color:var(--paper)]/92 text-base md:text-[17px] leading-[1.65]"
+            className="max-w-md text-[color:var(--paper)]/92 text-[14px] md:text-[15px] leading-[1.6]"
             data-testid="hero-sub"
           >
             Quality renovations and custom homes across Melbourne&rsquo;s South-East —
             delivered with fixed price quotes and clear communication.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 1.15 }}
-            className="flex items-center gap-8"
+            className="flex items-center gap-6 md:gap-8"
           >
             <Link to="/contact" data-testid="hero-cta" className="btn-gold">
               Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
@@ -157,7 +157,7 @@ function Intro() {
         <Reveal className="md:col-span-8" delay={0.06}>
           <h2
             id="intro-heading"
-            className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] max-w-[18ch]"
+            className="font-display text-[30px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] max-w-[18ch]"
           >
             Quality renovations &amp; custom homes across Melbourne&rsquo;s South-East.
           </h2>
@@ -192,7 +192,7 @@ function Projects() {
           <Reveal className="md:col-span-8" delay={0.06}>
             <h2
               id="projects-heading"
-              className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)]"
+              className="font-display text-[30px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)]"
             >
               Recent Apollo Builders projects.
             </h2>
@@ -268,7 +268,7 @@ function Why() {
           <div className="tracking-eyebrow text-[color:var(--gold-dark)]">04 — Why Apollo</div>
           <h2
             id="why-heading"
-            className="font-display text-[36px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] mt-4"
+            className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] mt-4"
           >
             Why homeowners choose Apollo.
           </h2>
@@ -310,7 +310,7 @@ function Testimonials() {
           <Reveal className="md:col-span-8" delay={0.06}>
             <h2
               id="testimonials-heading"
-              className="font-display text-[36px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] max-w-[16ch]"
+              className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] max-w-[16ch]"
             >
               From the people we build for.
             </h2>
@@ -356,7 +356,7 @@ function FAQ() {
           <div className="tracking-eyebrow text-[color:var(--gold-dark)]">07 — Questions</div>
           <h2
             id="faq-heading"
-            className="font-display text-[36px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] mt-4"
+            className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] mt-4"
           >
             Answers before you ask.
           </h2>
@@ -409,7 +409,7 @@ function CTA() {
           <div className="tracking-eyebrow text-[color:var(--gold)]">Enquire</div>
           <h2
             id="cta-heading"
-            className="font-display text-[44px] md:text-[80px] lg:text-[104px] leading-[0.96] tracking-[-0.035em] font-normal mt-5 max-w-[18ch]"
+            className="font-display text-[38px] md:text-[60px] lg:text-[76px] leading-[0.98] tracking-[-0.03em] font-normal mt-5 max-w-[18ch]"
           >
             Ready to start your renovation or new build?
           </h2>

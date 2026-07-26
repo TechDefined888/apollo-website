@@ -18,7 +18,7 @@ export default function Services() {
     <div data-testid="services-page">
       <section className="pt-16 md:pt-24 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Services</div>
-        <h1 className="font-display text-[52px] md:text-[92px] lg:text-[112px] leading-[0.96] tracking-[-0.03em] text-[color:var(--ink-black)] mt-6 max-w-[18ch]">
+        <h1 className="font-display text-[40px] md:text-[64px] lg:text-[80px] leading-[0.96] tracking-[-0.03em] text-[color:var(--ink-black)] mt-6 max-w-[18ch]">
           <MaskLines lines={["Our services."]} />
         </h1>
         <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[16px] md:text-[18px] leading-[1.7]">

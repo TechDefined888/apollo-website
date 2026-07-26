@@ -53,7 +53,7 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/60 via-[#0A0F1A]/40 to-[#0A0F1A]" />
         <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="tracking-eyebrow text-[color:var(--gold)]">Contact</div>
-          <h1 className="font-display text-[52px] md:text-[92px] lg:text-[112px] leading-[0.96] tracking-[-0.03em] mt-6 max-w-[18ch]">
+          <h1 className="font-display text-[40px] md:text-[64px] lg:text-[80px] leading-[0.96] tracking-[-0.03em] mt-6 max-w-[18ch]">
             <MaskLines lines={["Contact Apollo Builders."]} />
           </h1>
           <p className="mt-10 max-w-xl text-[color:var(--paper)]/85 text-[16px] md:text-[17px] leading-[1.7]">

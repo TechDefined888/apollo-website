@@ -46,12 +46,12 @@ export default function Nav() {
                   alt="Apollo Builders"
                   className="h-12 md:h-14 w-auto brightness-0 invert"
                 />
-                <span className="hidden sm:inline font-display text-[19px] md:text-[20px] tracking-tight text-[color:var(--paper)]">
+                <span className="hidden lg:inline font-display text-[19px] md:text-[20px] tracking-tight text-[color:var(--paper)]">
                   Apollo Builders
                 </span>
               </Link>
 
-              <nav className="hidden md:flex items-center gap-12" aria-label="Primary">
+              <nav className="hidden md:flex items-center gap-8 lg:gap-12" aria-label="Primary">
                 {links.map((l) => (
                   <NavLink
                     key={l.to}
