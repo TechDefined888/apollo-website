@@ -83,7 +83,7 @@ export default function Contact() {
               </button>
             </div>
           ) : (
-            <form onSubmit={submit} data-testid="enquiry-form" className="border-t border-[color:var(--hair)]">
+            <form onSubmit={submit} noValidate data-testid="enquiry-form" className="border-t border-[color:var(--hair)]">
               <div className="tracking-eyebrow text-[color:var(--navy)]/70 pt-8">Request a Quote</div>
               <h2 className="font-display text-3xl md:text-4xl text-[color:var(--navy)] font-light tracking-[-0.02em] mt-3 mb-8">
                 Tell us about your project.
