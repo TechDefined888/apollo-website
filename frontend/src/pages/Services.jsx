@@ -11,7 +11,7 @@ export default function Services() {
     const active = services.find((s) => s.slug === slug);
     document.title = active
       ? `${active.title} — Melbourne South-East · Apollo Builders`
-      : "Practice — Renovations, Extensions & New Builds · Apollo Builders";
+      : "Our services — Melbourne South-East · Apollo Builders";
   }, [slug]);
 
   return (
