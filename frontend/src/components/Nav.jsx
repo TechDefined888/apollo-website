@@ -32,7 +32,7 @@ export default function Nav() {
           elevated ? "shadow-[0_10px_30px_-10px_rgba(0,0,0,0.55)]" : ""
         }`}
       >
-        <div className="border-b border-[color:var(--paper)]/12">
+        <div className="border-b border-[color:var(--paper)]/10">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
             <div className="flex items-center justify-between h-[86px] md:h-[100px]">
               <Link
