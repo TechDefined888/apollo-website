@@ -42,7 +42,7 @@ export default function Contact() {
   return (
     <div data-testid="contact-page" className="bg-[color:var(--ink-black)] text-[color:var(--paper)]">
       {/* Editorial hero with real project photograph */}
-      <section className="relative pt-40 md:pt-56 pb-24 md:pb-32 overflow-hidden">
+      <section className="relative pt-36 md:pt-48 pb-24 md:pb-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg"
@@ -51,12 +51,12 @@ export default function Contact() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/60 via-[#0A0F1A]/40 to-[#0A0F1A]" />
-        <div className="relative mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14">
+        <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="tracking-eyebrow text-[color:var(--gold)]">Contact</div>
-          <h1 className="font-display text-[54px] md:text-[104px] lg:text-[132px] leading-[0.95] tracking-[-0.035em] mt-6 max-w-[16ch]">
-            <MaskLines lines={["Start the", <span key="k" className="italic text-[color:var(--gold)]">conversation.</span>]} />
+          <h1 className="font-display text-[52px] md:text-[92px] lg:text-[112px] leading-[0.96] tracking-[-0.03em] mt-6 max-w-[18ch]">
+            <MaskLines lines={["Contact Apollo Builders."]} />
           </h1>
-          <p className="mt-10 max-w-xl text-[color:var(--paper)]/85 text-[17px] leading-[1.65]">
+          <p className="mt-10 max-w-xl text-[color:var(--paper)]/85 text-[16px] md:text-[17px] leading-[1.7]">
             Apollo Builders provides new home builds, home renovations, kitchen
             renovations and bathroom renovations across Melbourne&rsquo;s South-East.
             Contact our team for a personalised quote and expert advice.
@@ -65,7 +65,7 @@ export default function Contact() {
       </section>
 
       {/* Form + details */}
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 pb-28 md:pb-40 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-28 md:pb-40 grid grid-cols-1 lg:grid-cols-12 gap-16">
         <Reveal className="lg:col-span-7">
           {sent ? (
             <div data-testid="thanks" className="border-t border-b border-[color:var(--paper)]/15 py-16">

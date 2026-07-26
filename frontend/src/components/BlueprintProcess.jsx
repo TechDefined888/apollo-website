@@ -70,11 +70,11 @@ export default function BlueprintProcess() {
     <section
       ref={wrap}
       data-testid="process-section"
-      className="relative bg-[color:var(--ink-black)] text-[color:var(--paper)] py-28 md:py-40 overflow-hidden"
+      className="relative bg-[color:var(--paper)] text-[color:var(--ink-black)] py-24 md:py-32 lg:py-40 overflow-hidden border-t border-[color:var(--hair)]"
       aria-labelledby="process-heading"
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,10 +82,10 @@ export default function BlueprintProcess() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-5"
           >
-            <div className="tracking-eyebrow text-[color:var(--gold)]">The Journey</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">05 — Process</div>
             <h2
               id="process-heading"
-              className="font-display text-[36px] md:text-[54px] lg:text-[64px] leading-[1.04] tracking-[-0.02em] mt-4"
+              className="font-display text-[36px] md:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.025em] mt-4"
             >
               From blueprint<br /> to handover.
             </h2>
@@ -95,7 +95,7 @@ export default function BlueprintProcess() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15% 0px" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
-            className="md:col-span-6 md:col-start-7 text-[color:var(--paper)]/80 md:text-lg md:pt-16 max-w-lg"
+            className="md:col-span-6 md:col-start-7 text-[color:var(--ink-soft)] md:text-[17px] md:pt-14 max-w-lg leading-[1.7]"
           >
             Every Apollo Builders project follows a five-stage rhythm — the same
             structure whether you&rsquo;re renovating a bathroom or building a home
@@ -113,7 +113,7 @@ export default function BlueprintProcess() {
             aria-hidden="true"
           >
             {/* Faint grid */}
-            <g stroke="rgba(235,228,214,0.08)" strokeWidth="1">
+            <g stroke="rgba(11,27,46,0.10)" strokeWidth="1">
               {Array.from({ length: 30 }).map((_, i) => (
                 <line key={`v${i}`} x1={i * 40} y1="0" x2={i * 40} y2="130" />
               ))}
@@ -121,7 +121,6 @@ export default function BlueprintProcess() {
                 <line key={`h${i}`} x1="0" y1={i * 30} x2="1200" y2={i * 30} />
               ))}
             </g>
-            {/* Blueprint path — foundation → walls → roof → finish → key */}
             <path
               ref={path}
               d="M 40 100 L 240 100 L 240 60 L 440 60 L 440 30 L 640 30 L 700 15 L 760 30 L 960 30 L 960 70 L 1160 70"
@@ -131,7 +130,6 @@ export default function BlueprintProcess() {
               strokeLinejoin="miter"
               fill="none"
             />
-            {/* Anchor pins */}
             {[40, 240, 440, 700, 960, 1160].map((x, i) => (
               <g key={i}>
                 <circle
@@ -144,7 +142,6 @@ export default function BlueprintProcess() {
             ))}
           </svg>
 
-          {/* Stages grid aligned to blueprint anchors */}
           <ol className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-6 mt-14">
             {processSteps.map((s, i) => (
               <li
@@ -156,10 +153,10 @@ export default function BlueprintProcess() {
                 <div className="text-[color:var(--gold)] font-display text-3xl md:text-4xl">
                   {s.n}
                 </div>
-                <h3 className="font-display text-xl md:text-[22px] mt-3 leading-[1.15]">
+                <h3 className="font-display text-[19px] md:text-[22px] mt-3 leading-[1.2] tracking-[-0.01em]">
                   {s.title}
                 </h3>
-                <p className="text-[color:var(--paper)]/70 text-[14px] leading-relaxed mt-3">
+                <p className="text-[color:var(--ink-soft)] text-[14px] leading-[1.65] mt-3">
                   {s.body}
                 </p>
               </li>

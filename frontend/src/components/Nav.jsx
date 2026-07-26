@@ -5,8 +5,8 @@ import { brand } from "@/lib/data";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "Studio" },
-  { to: "/services", label: "Practice" },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -36,7 +36,7 @@ export default function Nav() {
           scrolled || !onHome ? "nav-solid" : ""
         }`}
       >
-        <div className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14">
+        <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="flex items-center justify-between h-[76px] md:h-[88px]">
             <Link to="/" data-testid="nav-logo" aria-label="Apollo Builders — home" className="flex items-center gap-3 group">
               <img

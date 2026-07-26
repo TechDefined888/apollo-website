@@ -13,14 +13,14 @@ export default function About() {
   return (
     <div data-testid="about-page">
       {/* Editorial header + hero image */}
-      <section className="pt-40 md:pt-56 pb-16 md:pb-24 mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14">
-        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">The Studio</div>
-        <h1 className="font-display text-[54px] md:text-[110px] lg:text-[140px] leading-[0.95] tracking-[-0.035em] text-[color:var(--ink-black)] mt-6 max-w-[14ch]">
-          <MaskLines lines={["We build", "carefully."]} />
+      <section className="pt-36 md:pt-48 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
+        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">About</div>
+        <h1 className="font-display text-[52px] md:text-[92px] lg:text-[112px] leading-[0.96] tracking-[-0.03em] text-[color:var(--ink-black)] mt-6 max-w-[16ch]">
+          <MaskLines lines={["About Apollo Builders."]} />
         </h1>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
         <Reveal>
           <div className="frame aspect-[16/9] md:aspect-[21/9]">
             <img
@@ -32,7 +32,7 @@ export default function About() {
       </section>
 
       {/* What we do */}
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 pb-32 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-32 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
         <Reveal className="md:col-span-4">
           <div className="tracking-eyebrow text-[color:var(--gold-dark)]">What we do</div>
         </Reveal>
@@ -58,7 +58,7 @@ export default function About() {
 
       {/* Mission — dark section */}
       <section className="bg-[color:var(--ink-black)] text-[color:var(--paper)] py-28 md:py-40">
-        <div className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10">
           <Reveal className="md:col-span-4">
             <div className="tracking-eyebrow text-[color:var(--gold)]">Our Mission</div>
           </Reveal>
@@ -77,7 +77,7 @@ export default function About() {
       </section>
 
       {/* Approach */}
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 py-28 md:py-40">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-28 md:py-40">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <Reveal className="md:col-span-4">
             <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Approach</div>
@@ -105,7 +105,7 @@ export default function About() {
       </section>
 
       {/* Service area */}
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 pb-28 md:pb-40">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-28 md:pb-40">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end mb-10">
           <Reveal className="md:col-span-6">
             <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Service Area</div>

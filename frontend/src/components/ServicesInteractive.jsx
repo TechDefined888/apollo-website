@@ -27,13 +27,12 @@ export default function ServicesInteractive() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-8"
           >
-            <div className="tracking-eyebrow text-[color:var(--gold)]">The Practice</div>
+            <div className="tracking-eyebrow text-[color:var(--gold)]">02 — Services</div>
             <h2
               id="services-heading"
-              className="font-display text-[36px] md:text-[60px] lg:text-[74px] leading-[1.03] tracking-[-0.02em] mt-4"
+              className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] tracking-[-0.02em] mt-5"
             >
-              Four disciplines. <br />
-              <span className="text-[color:var(--gold)]">One standard.</span>
+              Renovations, extensions <br /> and new builds.
             </h2>
           </motion.div>
           <motion.p
@@ -41,10 +40,9 @@ export default function ServicesInteractive() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
-            className="md:col-span-4 text-[color:var(--paper)]/75 max-w-sm"
+            className="md:col-span-4 text-[color:var(--paper)]/75 max-w-sm md:pb-3"
           >
-            Hover a discipline to explore. Each service is delivered by the same
-            senior team, on a fixed price contract, across Melbourne&rsquo;s South-East.
+            Hover a service to explore the work.
           </motion.p>
         </div>
       </div>
@@ -84,10 +82,10 @@ export default function ServicesInteractive() {
                         {s.number}
                       </div>
                       <h3
-                        className={`font-display leading-[1.02] tracking-[-0.02em] text-[color:var(--paper)] mt-4 whitespace-nowrap origin-bottom-left transition-all duration-700 ${
+                        className={`font-display leading-[1.02] tracking-[-0.02em] text-[color:var(--paper)] whitespace-nowrap transition-all duration-700 ${
                           isActive
-                            ? "text-[42px] lg:text-[54px]"
-                            : "text-[24px] lg:text-[28px] -rotate-90 translate-x-4 translate-y-[280px] absolute bottom-8 left-8"
+                            ? "mt-4 text-[42px] lg:text-[54px]"
+                            : "absolute bottom-8 left-8 origin-bottom-left -rotate-90 translate-y-[-8px] translate-x-[8px] text-[22px] lg:text-[26px]"
                         }`}
                       >
                         {s.title}

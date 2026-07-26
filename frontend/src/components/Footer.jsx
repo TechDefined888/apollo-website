@@ -8,7 +8,7 @@ export default function Footer() {
       data-testid="site-footer"
       className="bg-[color:var(--ink-black)] text-[color:var(--paper)] relative"
     >
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14">
           <div className="md:col-span-5">
             <img

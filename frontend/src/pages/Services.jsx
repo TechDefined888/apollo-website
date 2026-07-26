@@ -16,18 +16,18 @@ export default function Services() {
 
   return (
     <div data-testid="services-page">
-      <section className="pt-40 md:pt-56 pb-16 md:pb-24 mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14">
-        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">The Practice</div>
-        <h1 className="font-display text-[54px] md:text-[110px] lg:text-[140px] leading-[0.95] tracking-[-0.035em] text-[color:var(--ink-black)] mt-6 max-w-[16ch]">
-          <MaskLines lines={["What we build,", "how we build it."]} />
+      <section className="pt-36 md:pt-48 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
+        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Services</div>
+        <h1 className="font-display text-[52px] md:text-[92px] lg:text-[112px] leading-[0.96] tracking-[-0.03em] text-[color:var(--ink-black)] mt-6 max-w-[18ch]">
+          <MaskLines lines={["Our services."]} />
         </h1>
-        <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[17px] md:text-[19px] leading-[1.65]">
+        <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[16px] md:text-[18px] leading-[1.7]">
           Apollo Builders specialises in new home builds, major renovations and
           custom transformations that bring lasting value to Melbourne homeowners.
         </p>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 pb-24">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24">
         <div className="border-t border-[color:var(--hair)]">
           {services.map((s, i) => {
             const active = slug === s.slug;
@@ -85,7 +85,7 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
         <Reveal className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
           <h2 className="font-display text-[32px] md:text-5xl tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.05]">
             Not sure which service fits? We&rsquo;ll walk your site and advise honestly.
