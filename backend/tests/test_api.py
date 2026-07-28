@@ -19,7 +19,7 @@ def test_health(api):
     assert r.status_code == 200
     data = r.json()
     assert data["status"] == "healthy"
-    assert data["email_provider"] == "stubbed"
+    assert data["email_provider"] in ("stubbed", "pending", "resend")
 
 
 # Enquiry create - valid

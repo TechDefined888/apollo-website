@@ -9,6 +9,8 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
 import Contact from "@/pages/Contact";
+import Suburb from "@/pages/Suburb";
+import Resource, { ResourceIndex } from "@/pages/Resource";
 import { Toaster } from "sonner";
 
 function ScrollTop() {
@@ -59,6 +61,9 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/services/:slug" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/suburbs/:slug" element={<Suburb />} />
+                <Route path="/resources" element={<ResourceIndex />} />
+                <Route path="/resources/:slug" element={<Resource />} />
                 <Route path="*" element={<Home />} />
               </Routes>
             </main>

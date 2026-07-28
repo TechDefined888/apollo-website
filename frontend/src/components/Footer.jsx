@@ -67,7 +67,19 @@ export default function Footer() {
               </li>
             </ul>
 
-            <div className="tracking-eyebrow text-[color:var(--gold)] mt-12">Service Areas</div>
+            <div className="tracking-eyebrow text-[color:var(--gold)] mt-12">Areas We Service</div>
+            <ul className="mt-6 grid grid-cols-2 gap-y-2 gap-x-4 text-[14px]">
+              {["brighton","bentleigh","bentleigh-east","berwick","clyde","hampton","mentone","cheltenham","glen-waverley"].map((s) => (
+                <li key={s}>
+                  <Link to={`/suburbs/${s}`} className="link-under">
+                    {s.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ")}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="tracking-eyebrow text-[color:var(--gold)] mt-8">
+              <Link to="/resources" className="link-under">Resources</Link>
+            </div>
             <p className="mt-6 text-[14px] leading-relaxed text-[color:var(--paper)]/80">
               {suburbs.join(" · ")}
             </p>
