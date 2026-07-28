@@ -1,0 +1,30 @@
+{
+  "summary": "SEO technical foundation verified across Home, About, Services (index + deep), Contact. Backend regression passed. Sitemap.xml has 9 URLs, robots.txt references sitemap. Fabricated suburb/project routes all catchall to Home (no fabricated content). No forbidden phrases (Since 2015 / VBA Registered / senior team / awards / years experience) found in DOM. FIXED one blocking issue: duplicate meta tags (description/canonical/og:title/og:description count was 2 on every page) caused by static tags in public/index.html conflicting with Helmet-injected tags. Removed static SEO meta from index.html; now count === 1 on every page with correct per-page canonical URLs. After fix, all review criteria pass except one minor title-mismatch on /services.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/services index", "issues": ["Helmet <title> is 'Apollo Builders Services — New Home Builds, Renovations, Kitchens, Bathrooms' but useEffect(document.title=...) in Services.jsx overrides it to 'Our services — Melbourne South-East · Apollo Builders'. Review brief expects title to contain 'Apollo Builders Services'. Recommend removing the useEffect document.title mutation on all pages (Home/About/Services/Contact) — Helmet already sets it and the useEffect races/overrides it."]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/test_enquiries.py", "/app/backend/tests/test_api.py"],
+  "action_items": [
+    "Remove `useEffect(() => { document.title = ... })` blocks in Home.jsx, About.jsx, Services.jsx, Contact.jsx — they override Helmet's <title>. Especially on /services where Helmet's title contains the expected 'Apollo Builders Services' but the useEffect overwrites it.",
+    "(Optional) Verify FAQ 6 questions match apollobuilders.com.au wording exactly — confirmed matching in JSON-LD."
+  ],
+  "critical_code_review_comments": [
+    "public/index.html previously carried static meta description + canonical + og:title + og:description + og:image that Helmet cannot dedupe against — this doubled every SEO tag on every route. Fixed by removing those from index.html (Helmet is now the single source of truth). Main agent should keep index.html free of any per-page SEO tags going forward.",
+    "Every page component sets document.title inside useEffect AND via <Helmet><title/>. This is redundant and causes a race — the useEffect wins on some pages (e.g., /services). Recommend removing all useEffect document.title calls."
+  ],
+  "updated_files": ["/app/frontend/public/index.html"],
+  "success_rate": {"backend": "100%", "frontend": "95%"},
+  "seed_data_creation": "One TEST_ enquiry (email test-review@example.com) inserted via /api/enquiries during regression check.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Frontend index.html previously had static SEO tags that duplicated Helmet output — removed. If retesting, verify per-page counts stay at 1 for description/canonical/og:title/og:description. Note the useEffect(document.title=...) races with Helmet and produces the wrong title on /services (contains 'Our services' instead of 'Apollo Builders Services'). CRA dev server serves public/index.html live; supervisorctl restart frontend to pick up index.html changes.",
+  "rca of the issue": "react-helmet-async only manages tags it renders — it does not remove pre-existing tags with the same name/property that were present in the initial HTML. Since public/index.html hard-coded <meta name=description>, <link rel=canonical>, <meta property=og:title>, <meta property=og:description>, <meta property=og:image>, every route ended up with 2 of each after Helmet mounted. Fix: strip those static tags from index.html; Helmet becomes single source of truth. Verified counts drop from 2→1 on Home/About/Services/Services-deep/Contact."
+}

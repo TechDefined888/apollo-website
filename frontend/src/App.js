@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
+import { HelmetProvider } from "react-helmet-async";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
@@ -45,25 +46,27 @@ function SmoothScroll({ children }) {
 function App() {
   return (
     <div className="App grain">
-      <BrowserRouter>
-        <SmoothScroll>
-          <ScrollTop />
-          <a href="#main" className="skip-nav">Skip to main content</a>
-          <Nav />
-          <main id="main">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:slug" element={<Services />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </main>
-          <Footer />
-          <Toaster position="bottom-right" theme="light" />
-        </SmoothScroll>
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <SmoothScroll>
+            <ScrollTop />
+            <a href="#main" className="skip-nav">Skip to main content</a>
+            <Nav />
+            <main id="main">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/:slug" element={<Services />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </main>
+            <Footer />
+            <Toaster position="bottom-right" theme="light" />
+          </SmoothScroll>
+        </BrowserRouter>
+      </HelmetProvider>
     </div>
   );
 }

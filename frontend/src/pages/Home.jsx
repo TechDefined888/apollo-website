@@ -9,6 +9,7 @@ import {
 import ServicesInteractive from "@/components/ServicesInteractive";
 import BlueprintProcess from "@/components/BlueprintProcess";
 import { projects, whyUs, faqs, testimonials, trustPoints } from "@/lib/data";
+import SEO, { localBusiness, faqSchema } from "@/components/SEO";
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -436,8 +437,19 @@ export default function Home() {
     document.title = "Apollo Builders — Renovations & Custom Homes, Melbourne South-East";
   }, []);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [localBusiness(), faqSchema(faqs)],
+  };
+
   return (
     <div data-testid="home-page">
+      <SEO
+        title="Apollo Builders — Renovations & Custom Homes, Melbourne South-East"
+        description="Apollo Builders delivers new home builds, home renovations, kitchen and bathroom renovations across Melbourne's South-East. Fully insured with fixed price quotes."
+        path="/"
+        jsonLd={jsonLd}
+      />
       <Hero />
       <TrustBand />
       <Intro />

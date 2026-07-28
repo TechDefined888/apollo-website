@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { whyUs, suburbs, projects } from "@/lib/data";
+import SEO, { localBusiness, breadcrumbSchema } from "@/components/SEO";
 
 export default function About() {
   useEffect(() => {
@@ -12,6 +13,12 @@ export default function About() {
 
   return (
     <div data-testid="about-page">
+      <SEO
+        title="About Apollo Builders — Melbourne South-East Building Studio"
+        description="Apollo Builders is a residential building and renovation studio serving Melbourne's South-East. Fully insured, fixed-price quotes, and clear communication on every project."
+        path="/about"
+        jsonLd={{ "@context": "https://schema.org", "@graph": [localBusiness(), breadcrumbSchema([{name:"Home",path:"/"},{name:"About",path:"/about"}])] }}
+      />
       {/* Editorial header + hero image */}
       <section className="pt-16 md:pt-24 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="tracking-eyebrow text-[color:var(--gold-dark)]">About</div>

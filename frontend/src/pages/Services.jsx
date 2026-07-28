@@ -3,19 +3,31 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowUpRight, Minus } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { services } from "@/lib/data";
+import SEO, { serviceSchema, breadcrumbSchema } from "@/components/SEO";
 
 export default function Services() {
   const { slug } = useParams();
+  const active = services.find((s) => s.slug === slug);
 
   useEffect(() => {
-    const active = services.find((s) => s.slug === slug);
     document.title = active
       ? `${active.title} — Melbourne South-East · Apollo Builders`
       : "Our services — Melbourne South-East · Apollo Builders";
-  }, [slug]);
+  }, [slug, active]);
+
+  const title = active
+    ? `${active.title} · Melbourne South-East — Apollo Builders`
+    : "Apollo Builders Services — New Home Builds, Renovations, Kitchens, Bathrooms";
+  const description = active
+    ? `${active.title} in Melbourne's South-East. ${active.tagline} ${active.body}`
+    : "Apollo Builders delivers new home builds, home renovations, kitchen and bathroom renovations across Melbourne's South-East. Fixed price quotes.";
+  const jsonLd = active
+    ? { "@context":"https://schema.org", "@graph":[serviceSchema(active), breadcrumbSchema([{name:"Home",path:"/"},{name:"Services",path:"/services"},{name:active.title,path:`/services/${active.slug}`}])] }
+    : { "@context":"https://schema.org", "@graph":[breadcrumbSchema([{name:"Home",path:"/"},{name:"Services",path:"/services"}]), ...services.map(serviceSchema)] };
 
   return (
     <div data-testid="services-page">
+      <SEO title={title} description={description} path={active ? `/services/${active.slug}` : "/services"} jsonLd={jsonLd} />
       <section className="pt-16 md:pt-24 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Services</div>
         <h1 className="font-display text-[40px] md:text-[64px] lg:text-[80px] leading-[0.96] tracking-[-0.03em] text-[color:var(--ink-black)] mt-6 max-w-[18ch]">
