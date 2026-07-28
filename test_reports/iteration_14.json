@@ -1,0 +1,60 @@
+{
+  "summary": "Exhaustive QA sweep across all 23 routes + backend regression. Backend: 13/13 pytest passed. Frontend: no console errors, no 4xx/5xx network failures, no broken images, no duplicate data-testids on any route, all H1 counts = 1, all meta description/canonical/og:title counts = 1, all JSON-LD parses cleanly. Sticky header stays at top:0 with rgb(10,15,26) at scrollY=0/500/2000. Contact E2E succeeds: POST /api/enquiries → 201 and [data-testid=thanks] renders 'Thank you — we'll be in touch soon.' FAQ accordion toggles aria-expanded false→true correctly. Sitemap has 23 URLs, robots.txt references sitemap. Nav has aria-label='Primary', skip link present on every route. Found 3 real bugs described below (duplicate <title> element, dead /services/outdoor-living slug listed in sitemap, and horizontal overflow on Contact/Services at some viewports).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "index.html + react-helmet-async (SEO.jsx)",
+        "issue": "Every page has TWO <title> elements in <head>. document.querySelectorAll('title').length === 2 on all 23 routes. The static <title> in /app/frontend/public/index.html (line 19) is NOT being replaced by react-helmet-async — Helmet appends a second <title>. document.title correctly reflects the Helmet value, but the extra tag is a real SEO/spec violation. Review request explicitly flagged: 'ensure no leftover static SEO tags in served HTML that would duplicate Helmet output.'",
+        "selector": "head > title (2 elements)",
+        "priority": "HIGH"
+      },
+      {
+        "component": "public/sitemap.xml + lib/data.js",
+        "issue": "/services/outdoor-living is listed in sitemap.xml but the slug 'outdoor-living' does not exist in services[] in /app/frontend/src/lib/data.js. Visiting the URL renders the generic /services parent page (title falls back to 'Apollo Builders Services — New Home Builds, Renovations, Kitchens, Bathrooms', H1 = 'Our services.'). Broken deep link that Google will crawl.",
+        "selector": "/services/outdoor-living",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "/contact @ 320px width",
+        "issues": ["Horizontal scroll: scrollWidth=370 vs clientWidth=320 (50px overflow). Likely a form/grid element with fixed min-width or non-responsive padding."]
+      },
+      {
+        "screen": "/contact @ 1024px width",
+        "issues": ["Horizontal scroll: scrollWidth=1088 vs clientWidth=1024 (64px overflow). Two-column layout (form + Speak-with-the-team) not collapsing correctly at iPad-landscape breakpoint."]
+      },
+      {
+        "screen": "/services @ 768px width",
+        "issues": ["Minor horizontal scroll: scrollWidth=775 vs clientWidth=768 (7px overflow). Likely a service tile with padding overshooting the container."]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_api.py",
+    "/app/backend/tests/test_enquiries.py",
+    "/app/test_reports/pytest/pytest_iteration14.xml"
+  ],
+  "action_items": [
+    "Remove the static <title>Apollo Builders — Renovations & Custom Homes, Melbourne South-East</title> from /app/frontend/public/index.html (line 19) OR ensure Helmet writes into the same node. This eliminates duplicate <title> tags across all 23 routes.",
+    "Fix /services/outdoor-living: EITHER add an 'outdoor-living' entry to services[] in /app/frontend/src/lib/data.js (with title/tagline/bullets/hero/description matching the Home Renovations tagline that already mentions 'outdoor living spaces'), OR remove <url><loc>https://apollobuilders.com.au/services/outdoor-living</loc></url> from /app/frontend/public/sitemap.xml (and drop back to 22 URLs).",
+    "Investigate horizontal overflow on /contact at widths 320 and 1024 — likely input fields, a grid gap, or the right-side 'Speak with the team' column not stacking soon enough. On /services at 768 there is a 7px overshoot, likely tile padding.",
+    "Optional: index.html only carries a single static <title>; consider also removing any static <meta name='description'> or og tags there if they exist (I did not observe duplicates for those but worth an audit while fixing the title issue)."
+  ],
+  "critical_code_review_comments": [
+    "public/index.html has a hard-coded <title> that duplicates Helmet output. In a React-Helmet-async SPA the initial HTML should not contain a <title> or the Helmet component must be configured to overwrite it — right now two <title> nodes coexist on every route (verified via querySelectorAll('title').length === 2).",
+    "sitemap.xml is hand-maintained and drifted from data.js: the outdoor-living slug is advertised but not implemented. Consider deriving sitemap.xml at build-time from services[]/suburbData/resources data to prevent drift.",
+    "The static <title> in index.html means the initial render pre-Helmet-mount will flash the Home title on every route (FOUC of title). Removing it will let Helmet own it end-to-end.",
+    "Robots.txt Sitemap: line points to the production apollobuilders.com.au domain, not the preview URL. This is correct for production but means preview crawlers will not find the sitemap — acceptable trade-off."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (13/13)", "frontend": "~92% — 3 legitimate frontend bugs found across 23 routes and 5 viewports"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "Two test enquiries inserted via /api/enquiries during E2E verification (name='TEST_QA_ReviewBot' and 'TEST_i14b'). Backend pytest also inserted TEST_ prefixed enquiries.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "For duplicate <title> detection use: document.querySelectorAll('title').length — must equal 1 after the fix. document.title itself is fine (Helmet wins). For sitemap/route drift use: fetch /sitemap.xml, extract /services/* URLs, cross-check against services[] slugs in data.js. Contact-form submission works end-to-end with a >3s wait before submit; [data-testid=thanks] appears on success. Sticky-header background is rgb(10,15,26) and stays at top:0.",
+  "rca of the issue": "1) Duplicate <title>: index.html ships with a hard-coded <title> tag. react-helmet-async v2 does not remove the initial <title> — it inserts its own tag, so both nodes remain in <head>. Remove line 19 of public/index.html (or leave an empty title tag if you want a fallback). 2) /services/outdoor-living dead link: sitemap.xml was updated to advertise outdoor-living but services[] in data.js was never extended with that slug; the Services.jsx page falls back to the parent listing when useParams().slug does not match. Fix by either adding the service to data.js or trimming sitemap.xml. 3) Horizontal overflow: Contact page 2-column layout and 320px form inputs have fixed widths/padding that exceed viewport; needs responsive grid stacking or container queries."
+}
