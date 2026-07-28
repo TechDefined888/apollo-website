@@ -1,0 +1,27 @@
+{
+  "summary": "Iteration 15 retest of the 3 bugs from iteration 14 — ALL FIXED. (1) Duplicate <title>: on all 8 sampled routes (/, /about, /services, /services/kitchen-renovations, /contact, /suburbs/brighton, /resources, /resources/kitchen-renovation-cost-melbourne) document.querySelectorAll('title').length === 1 and document.title reflects the Helmet-set per-page value. (2) Sitemap: /sitemap.xml now contains exactly 22 <url> entries and 'outdoor-living' is completely absent. (3) Horizontal overflow: at 320/390/768/1024/1440 viewports on /, /about, /services, /contact, /suburbs/brighton — documentElement.scrollWidth === clientWidth and body.scrollWidth === clientWidth on all 25 combinations (zero pixels of overflow anywhere). Regressions all pass: backend 13/13 pytest green (health, POST /api/enquiries, honeypot rejection, too-fast rejection, email subject/from/branding). Contact E2E: form submitted with >3s wait, [data-testid=thanks] rendered 'Thank you — we'll be in touch soon.' Sticky header rgb(10,15,26) at top:0 on every route. SEO regression: canonical=1, meta[name=description]=1, meta[property=og:title]=1, h1=1 on every route. Zero console errors across all 8 routes.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_api.py",
+    "/app/backend/tests/test_enquiries.py",
+    "/app/test_reports/pytest/pytest_iteration15.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "index.css duplicates overflow-x rules: html/body get overflow-x:hidden (line 59) then html gets overflow-x:clip (line 62) and body gets overflow-x:hidden again (line 75). Consolidate to a single rule set to reduce noise.",
+    "sitemap.xml remains hand-maintained; drift risk persists. Consider deriving sitemap from data.js at build time (previously noted in i14)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (13/13)", "frontend": "100% — all 3 iteration-14 bugs verified fixed, no regressions"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "One test enquiry via /api/enquiries (name='TEST_i15_retest', email='test_i15@example.com'). Pytest inserted its usual TEST_ prefixed enquiries.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 3 iteration-14 bugs are confirmed fixed. Contact form testids are: input-name, input-email, input-phone, input-message, input-project-type (select), submit-enquiry, and success block is [data-testid=thanks]. Project type is REQUIRED — use page.select_option('[data-testid=\"input-project-type\"]', index=1). Wait >3.5s after page load before submit to pass the timestamp honeypot gate. Use wait_until='domcontentloaded' (networkidle times out because of persistent analytics/websocket connections).",
+  "rca of the issue": "N/A — retest confirmed all 3 fixes (removed static <title> from public/index.html, dropped /services/outdoor-living from sitemap.xml, added overflow-x:hidden/clip + max-width:100vw on html/body/.App and reduced Contact grid gap on mobile) are working as intended across the specified routes and viewports."
+}

@@ -76,7 +76,7 @@ export default function Contact() {
       </section>
 
       {/* Form + details */}
-      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-28 md:pb-40 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-28 md:pb-40 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
         <Reveal className="lg:col-span-7">
           {sent ? (
             <div data-testid="thanks" className="border-t border-b border-[color:var(--paper)]/15 py-16">

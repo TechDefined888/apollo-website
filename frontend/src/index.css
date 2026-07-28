@@ -56,7 +56,11 @@ html, body {
     letter-spacing: -0.005em;
     line-height: 1.55;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
+html { overflow-x: clip; }
+.App { max-width: 100vw; overflow-x: clip; }
 
 /* Explicit family enforcement */
 h1, h2, h3, h4, h5, h6, .font-display {
