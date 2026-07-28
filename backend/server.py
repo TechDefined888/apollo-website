@@ -14,15 +14,17 @@ from datetime import datetime, timezone
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
+# MongoDB
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Optional Resend setup — stubbed unless RESEND_API_KEY provided
+# ── Email configuration (server-side only) ─────────────────────────
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '').strip()
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
-NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL', 'info@apollobuilders.com.au')
+SENDER_NAME = os.environ.get('SENDER_NAME', 'Apollo Builders Website')
+ENQUIRY_RECIPIENT_EMAIL = os.environ.get('ENQUIRY_RECIPIENT_EMAIL', 'info@apollobuilders.com.au')
+MIN_SUBMIT_SECONDS = int(os.environ.get('MIN_SUBMIT_SECONDS', '3'))
 
 resend_client = None
 if RESEND_API_KEY:
@@ -45,6 +47,9 @@ class EnquiryCreate(BaseModel):
     email: EmailStr
     project_type: str = Field(min_length=1, max_length=80)
     message: str = Field(min_length=1, max_length=4000)
+    # ── Spam protection (server-enforced) ──
+    website: Optional[str] = Field(default="", max_length=200)  # honeypot — must be empty
+    form_loaded_at: Optional[float] = Field(default=None)       # ms epoch when form mounted
 
 
 class Enquiry(BaseModel):
@@ -62,27 +67,31 @@ class Enquiry(BaseModel):
 
 # ── Helpers ───────────────────────────────────────────────────────────
 def _build_email_html(e: Enquiry) -> str:
+    submitted = e.created_at.strftime('%A, %d %B %Y · %I:%M %p UTC')
     return f"""
-    <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Helvetica,Arial,sans-serif;color:#1a1a1a;background:#f9f9f8;padding:24px">
+    <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Helvetica,Arial,sans-serif;color:#1a1a1a;background:#f4f1ea;padding:24px">
       <tr><td>
-        <table width="600" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e4e2">
-          <tr><td style="padding:32px 32px 8px 32px;border-bottom:1px solid #e5e4e2">
-            <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#0A192F">Apollo Builders</div>
-            <h1 style="margin:8px 0 0 0;font-family:Georgia,serif;font-weight:300;font-size:24px;color:#0A192F">New Quote Enquiry</h1>
+        <table width="620" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e6e2da">
+          <tr><td style="padding:32px 32px 12px 32px;border-bottom:1px solid #e6e2da">
+            <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#C5892D;font-weight:600">Apollo Builders</div>
+            <h1 style="margin:8px 0 0 0;font-family:Georgia,serif;font-weight:400;font-size:26px;color:#0A0F1A">New Website Enquiry</h1>
           </td></tr>
-          <tr><td style="padding:24px 32px">
-            <p style="margin:0 0 16px 0;font-size:14px;line-height:1.6">A new enquiry was submitted via apollobuilders.com.au.</p>
-            <table width="100%" cellpadding="6" cellspacing="0" style="font-size:14px">
-              <tr><td style="width:120px;color:#666">Name</td><td>{e.name}</td></tr>
-              <tr><td style="color:#666">Phone</td><td>{e.phone}</td></tr>
-              <tr><td style="color:#666">Email</td><td>{e.email}</td></tr>
-              <tr><td style="color:#666">Address</td><td>{e.address or '—'}</td></tr>
-              <tr><td style="color:#666">Project</td><td>{e.project_type}</td></tr>
-              <tr><td style="color:#666;vertical-align:top">Message</td><td style="white-space:pre-wrap">{e.message}</td></tr>
+          <tr><td style="padding:28px 32px">
+            <p style="margin:0 0 20px 0;font-size:14px;line-height:1.6;color:#4a5262">A new enquiry has been submitted through the Apollo Builders website.</p>
+            <table width="100%" cellpadding="8" cellspacing="0" style="font-size:14px;border-collapse:collapse">
+              <tr><td style="width:130px;color:#6b7280;vertical-align:top;padding-right:16px">Name</td><td style="color:#0A0F1A">{e.name}</td></tr>
+              <tr><td style="color:#6b7280;vertical-align:top;padding-right:16px">Phone</td><td><a href="tel:{e.phone}" style="color:#0A0F1A;text-decoration:none">{e.phone}</a></td></tr>
+              <tr><td style="color:#6b7280;vertical-align:top;padding-right:16px">Email</td><td><a href="mailto:{e.email}" style="color:#C5892D;text-decoration:none">{e.email}</a></td></tr>
+              <tr><td style="color:#6b7280;vertical-align:top;padding-right:16px">Address</td><td style="color:#0A0F1A">{e.address or '—'}</td></tr>
+              <tr><td style="color:#6b7280;vertical-align:top;padding-right:16px">Project</td><td style="color:#0A0F1A">{e.project_type}</td></tr>
+              <tr><td style="color:#6b7280;vertical-align:top;padding-right:16px">Message</td><td style="color:#0A0F1A;white-space:pre-wrap;line-height:1.55">{e.message}</td></tr>
             </table>
+            <p style="margin:24px 0 0 0;padding:16px;background:#f4f1ea;font-size:13px;color:#4a5262;line-height:1.55">
+              Reply directly to this email to respond to {e.name} — their reply-to is already set to their address.
+            </p>
           </td></tr>
-          <tr><td style="padding:16px 32px;background:#0A192F;color:#f9f9f8;font-size:11px;letter-spacing:.15em;text-transform:uppercase">
-            Received {e.created_at.strftime('%d %b %Y · %H:%M UTC')}
+          <tr><td style="padding:14px 32px;background:#0A0F1A;color:#f4f1ea;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600">
+            Submitted {submitted}
           </td></tr>
         </table>
       </td></tr>
@@ -92,21 +101,41 @@ def _build_email_html(e: Enquiry) -> str:
 
 async def _send_notification_email(enquiry: Enquiry) -> bool:
     if not resend_client:
-        logging.info("Resend not configured — skipping email; enquiry stored only.")
+        logging.info("Email provider not configured — enquiry stored, email skipped.")
         return False
     try:
+        from_field = f"{SENDER_NAME} <{SENDER_EMAIL}>"
         params = {
-            "from": SENDER_EMAIL,
-            "to": [NOTIFY_EMAIL],
+            "from": from_field,
+            "to": [ENQUIRY_RECIPIENT_EMAIL],
             "reply_to": enquiry.email,
-            "subject": f"New enquiry · {enquiry.project_type} · {enquiry.name}",
+            "subject": f"New Website Enquiry — {enquiry.project_type} — {enquiry.name}",
             "html": _build_email_html(enquiry),
         }
         await asyncio.to_thread(resend_client.Emails.send, params)
         return True
     except Exception as ex:
-        logging.error(f"Resend send failed: {ex}")
+        logging.error(f"Email dispatch failed: {ex}")
         return False
+
+
+def _is_spam(payload: EnquiryCreate) -> bool:
+    """Silent spam detection: honeypot + minimum-fill-time gate."""
+    # Honeypot — real users can't see this field
+    if payload.website and payload.website.strip():
+        logging.info("Enquiry rejected: honeypot triggered.")
+        return True
+    # Timestamp gate — bots often submit in <1s
+    if payload.form_loaded_at:
+        try:
+            now_ms = datetime.now(timezone.utc).timestamp() * 1000
+            elapsed_sec = (now_ms - float(payload.form_loaded_at)) / 1000.0
+            if elapsed_sec < MIN_SUBMIT_SECONDS:
+                logging.info(f"Enquiry rejected: submitted too fast ({elapsed_sec:.2f}s).")
+                return True
+        except Exception:
+            pass
+    return False
 
 
 # ── Routes ────────────────────────────────────────────────────────────
@@ -117,12 +146,24 @@ async def root():
 
 @api_router.get("/health")
 async def health():
-    return {"status": "healthy", "email_provider": "resend" if resend_client else "stubbed"}
+    return {"status": "healthy", "email_provider": "configured" if resend_client else "pending"}
 
 
 @api_router.post("/enquiries", response_model=Enquiry, status_code=201)
 async def create_enquiry(payload: EnquiryCreate):
-    enquiry = Enquiry(**payload.model_dump())
+    # Silent spam rejection — return a normal success shape so bots learn nothing
+    if _is_spam(payload):
+        placeholder = Enquiry(
+            name=payload.name, phone=payload.phone, address=payload.address or "",
+            email=payload.email, project_type=payload.project_type, message=payload.message,
+            email_sent=False,
+        )
+        return placeholder
+
+    enquiry = Enquiry(
+        name=payload.name, phone=payload.phone, address=payload.address or "",
+        email=payload.email, project_type=payload.project_type, message=payload.message,
+    )
     email_sent = await _send_notification_email(enquiry)
     enquiry.email_sent = email_sent
     doc = enquiry.model_dump()
@@ -155,7 +196,6 @@ app.add_middleware(
 )
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 
 @app.on_event("shutdown")

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
@@ -6,15 +6,17 @@ import { Reveal, MaskLines } from "@/components/Reveal";
 import { brand, projectTypes, suburbs } from "@/lib/data";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
-const initial = { name: "", phone: "", address: "", email: "", project_type: "", message: "" };
+const initial = { name: "", phone: "", address: "", email: "", project_type: "", message: "", website: "" };
 
 export default function Contact() {
   const [form, setForm] = useState(initial);
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const formLoadedAt = useRef(Date.now());
 
   useEffect(() => {
     document.title = "Contact Apollo Builders — Melbourne South-East";
+    formLoadedAt.current = Date.now();
   }, []);
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,7 +29,10 @@ export default function Contact() {
     }
     setSubmitting(true);
     try {
-      await axios.post(`${API}/enquiries`, form);
+      await axios.post(`${API}/enquiries`, {
+        ...form,
+        form_loaded_at: formLoadedAt.current,
+      });
       setSent(true);
       setForm(initial);
       toast.success("Enquiry sent. We'll be in touch shortly.");
@@ -83,6 +88,20 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={submit} noValidate data-testid="enquiry-form" className="border-t border-[color:var(--paper)]/15">
+              {/* Honeypot — hidden from real users, must remain empty */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px", height: 0, width: 0, overflow: "hidden" }}>
+                <label>
+                  Website
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={onChange}
+                  />
+                </label>
+              </div>
               <div className="tracking-eyebrow text-[color:var(--gold)] pt-8">Request a Quote</div>
               <h2 className="font-display text-3xl md:text-[42px] tracking-[-0.02em] mt-4 mb-10">
                 Tell us about your project.
