@@ -9,12 +9,6 @@ export default function Services() {
   const { slug } = useParams();
   const active = services.find((s) => s.slug === slug);
 
-  useEffect(() => {
-    document.title = active
-      ? `${active.title} — Melbourne South-East · Apollo Builders`
-      : "Our services — Melbourne South-East · Apollo Builders";
-  }, [slug, active]);
-
   const title = active
     ? `${active.title} · Melbourne South-East — Apollo Builders`
     : "Apollo Builders Services — New Home Builds, Renovations, Kitchens, Bathrooms";

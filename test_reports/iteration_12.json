@@ -1,0 +1,15 @@
+{
+  "summary": "Retest after removing useEffect(document.title=...) races from Home/About/Services/Contact. All 5 page titles now correctly show Helmet-set values (/services now shows 'Apollo Builders Services — New Home Builds, Renovations, Kitchens, Bathrooms'). Meta counts (description, canonical, og:title, og:description) = 1 per page. JSON-LD present and valid on every route. Backend regression 12/13 passed (1 transient network timeout on /api/health — endpoint verified 200 via curl immediately after). Contact form E2E submitted successfully after 5s wait: POST /api/enquiries → 201, success state rendered.",
+  "backend_issues": {"critical": [], "minor": [{"endpoint": "/api/health", "issue": "One-off ConnectTimeout during pytest run; endpoint returns 200 on retry (transient preview infra flakiness, not application bug)"}]},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/backend/tests/test_api.py", "/app/backend/tests/test_enquiries.py", "/app/test_reports/pytest/pytest_iteration12.xml"],
+  "action_items": [],
+  "critical_code_review_comments": ["Title-race fix verified: Helmet is now sole owner of <title> on all four pages. No further action required."],
+  "updated_files": [],
+  "success_rate": {"backend": "92% (12/13; the 1 failure was a transient network timeout, endpoint verified healthy)", "frontend": "100%"},
+  "seed_data_creation": "One TEST_ enquiry inserted (email test-review-i12@example.com, name TEST_ReviewBot) via /api/enquiries during E2E verification.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Title-race issue from iteration 11 is resolved. /services title now = 'Apollo Builders Services — ...'. If future testing needs regression, use domcontentloaded (not networkidle) — preview URL sometimes never reaches idle. Contact form requires: name, email, projectType (select — must pick non-empty option), message; wait 4+s after mount to pass timestamp gate; honeypot field must remain empty.",
+  "rca of the issue": "N/A — original title-race RCA in iteration_11.json. Fix confirmed working: removed useEffect(() => { document.title = ... }) from Home.jsx, About.jsx, Services.jsx, Contact.jsx so react-helmet-async is the sole writer of <title>."
+}

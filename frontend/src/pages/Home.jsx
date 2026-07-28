@@ -433,10 +433,6 @@ function CTA() {
    HOME PAGE
    ═════════════════════════════════════════════════════════════════ */
 export default function Home() {
-  useEffect(() => {
-    document.title = "Apollo Builders — Renovations & Custom Homes, Melbourne South-East";
-  }, []);
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [localBusiness(), faqSchema(faqs)],

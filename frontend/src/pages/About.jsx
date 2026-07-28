@@ -7,10 +7,6 @@ import { whyUs, suburbs, projects } from "@/lib/data";
 import SEO, { localBusiness, breadcrumbSchema } from "@/components/SEO";
 
 export default function About() {
-  useEffect(() => {
-    document.title = "About Apollo Builders — Melbourne South-East Building Studio";
-  }, []);
-
   return (
     <div data-testid="about-page">
       <SEO

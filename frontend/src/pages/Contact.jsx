@@ -16,7 +16,6 @@ export default function Contact() {
   const formLoadedAt = useRef(Date.now());
 
   useEffect(() => {
-    document.title = "Contact Apollo Builders — Melbourne South-East";
     formLoadedAt.current = Date.now();
   }, []);
 
