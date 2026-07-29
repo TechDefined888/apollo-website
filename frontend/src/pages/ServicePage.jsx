@@ -1,6 +1,7 @@
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { ArrowUpRight, CheckCircle2, MapPin, Shield } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
+import PhotoFrame from "@/components/PhotoFrame";
 import { servicePages } from "@/lib/servicePages";
 import { projects } from "@/lib/data";
 import SEO, {
@@ -92,9 +93,13 @@ export default function ServicePage() {
             </p>
           </Reveal>
           <Reveal className="lg:col-span-7" delay={0.05}>
-            <div className="frame aspect-[4/3]">
-              <img src={data.beforeAfter.image} alt={data.beforeAfter.imageAlt} />
-            </div>
+            {data.beforeAfter.image ? (
+              <PhotoFrame
+                src={data.beforeAfter.image}
+                alt={data.beforeAfter.imageAlt}
+                className="aspect-[4/3]"
+              />
+            ) : null}
           </Reveal>
         </section>
       )}
@@ -116,17 +121,21 @@ export default function ServicePage() {
         </Reveal>
       </section>
 
-      {/* Collage */}
-      {data.collage?.length ? (
+      {/* Collage — only render when at least one image is provided */}
+      {data.collage?.some((img) => img.src) ? (
         <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {data.collage.map((img, i) => (
-              <Reveal key={i} delay={(i % 3) * 0.05}>
-                <div className={`frame ${i === 1 ? "aspect-[4/5]" : "aspect-[4/3]"}`}>
-                  <img src={img.src} alt={img.alt} loading="lazy" />
-                </div>
-              </Reveal>
-            ))}
+            {data.collage.map((img, i) =>
+              img.src ? (
+                <Reveal key={i} delay={(i % 3) * 0.05}>
+                  <PhotoFrame
+                    src={img.src}
+                    alt={img.alt}
+                    className={i === 1 ? "aspect-[4/5]" : "aspect-[4/3]"}
+                  />
+                </Reveal>
+              ) : null
+            )}
           </div>
         </section>
       ) : null}
@@ -174,9 +183,11 @@ export default function ServicePage() {
             </Reveal>
             {data.designSection.image && (
               <Reveal className="lg:col-span-6">
-                <div className="frame aspect-[4/3]">
-                  <img src={data.designSection.image} alt={data.designSection.imageAlt} />
-                </div>
+                <PhotoFrame
+                  src={data.designSection.image}
+                  alt={data.designSection.imageAlt}
+                  className="aspect-[4/3]"
+                />
               </Reveal>
             )}
           </div>
@@ -253,9 +264,9 @@ export default function ServicePage() {
                     ))}
                   </Reveal>
                   <Reveal className={`lg:col-span-6 ${flip ? "lg:order-1" : ""}`} delay={0.05}>
-                    <div className="frame aspect-[4/3]">
-                      <img src={f.image} alt={f.imageAlt} loading="lazy" />
-                    </div>
+                    {f.image ? (
+                      <PhotoFrame src={f.image} alt={f.imageAlt} className="aspect-[4/3]" />
+                    ) : null}
                   </Reveal>
                 </div>
               );
@@ -290,13 +301,15 @@ export default function ServicePage() {
                 </p>
               )}
             </Reveal>
-            {data.fullyManagedImage && (
-              <Reveal className="lg:col-span-6" delay={0.05}>
-                <div className="frame aspect-[4/5]">
-                  <img src={data.fullyManagedImage} alt={`${data.h1} — fully managed build`} loading="lazy" />
-                </div>
-              </Reveal>
-            )}
+              {data.fullyManagedImage ? (
+                <Reveal className="lg:col-span-6" delay={0.05}>
+                  <PhotoFrame
+                    src={data.fullyManagedImage}
+                    alt={`${data.h1} — fully managed build`}
+                    className="aspect-[4/5]"
+                  />
+                </Reveal>
+              ) : null}
           </div>
         </section>
       )}
@@ -415,9 +428,13 @@ export default function ServicePage() {
                   data-testid={`service-related-${p.slug}`}
                   className="group block"
                 >
-                  <div className="frame aspect-[4/3]">
-                    <img src={p.image} alt={p.imageAlt} loading="lazy" />
-                  </div>
+                  <PhotoFrame
+                    src={p.image}
+                    alt={p.imageAlt}
+                    className="aspect-[4/3]"
+                    eyebrow={p.type}
+                    label={p.name}
+                  />
                   <div className="mt-5">
                     <div className="tracking-eyebrow text-[color:var(--gold-dark)] text-[11px]">
                       {p.type}

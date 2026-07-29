@@ -1,6 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
+import PhotoFrame from "@/components/PhotoFrame";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import { resourceArticles, suburbData } from "@/lib/seoContent";
 
@@ -34,7 +35,7 @@ export function ResourceIndex() {
             <li key={a.slug} className="border-t border-[color:var(--hair)] pt-8">
               <Link to={`/resources/${a.slug}`} className="group block">
                 <div className="frame aspect-[16/10]">
-                  <img src={a.image} alt={a.alt} loading="lazy" />
+                  <PhotoFrame src={a.image} alt={a.alt} />
                 </div>
                 <h2 className="font-display text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.01em] text-[color:var(--ink-black)] mt-6">
                   {a.title}
@@ -89,9 +90,13 @@ export default function Resource() {
       </section>
 
       <section className="mx-auto max-w-[1080px] px-6 md:px-10 pb-16">
-        <div className="frame aspect-[16/9]">
-          <img src={a.image} alt={a.alt} />
-        </div>
+        <PhotoFrame
+          src={a.image}
+          alt={a.alt}
+          className="aspect-[16/9]"
+          eyebrow="Apollo Builders — Resources"
+          label={a.title}
+        />
       </section>
 
       <article className="mx-auto max-w-[720px] px-6 md:px-0 pb-24 md:pb-32 text-[color:var(--ink)] text-[17px] leading-[1.75]">

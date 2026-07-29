@@ -145,22 +145,24 @@ export default function Consult() {
         </div>
       </section>
 
-      {/* Gallery — before & after */}
-      <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
-        <div className="tracking-eyebrow text-[color:var(--gold-dark)] mb-4">Recent transformations</div>
-        <h2 className="font-display text-[32px] md:text-[48px] leading-[1.05] tracking-[-0.02em] text-[color:var(--ink-black)] mb-12 max-w-3xl">
-          A selection of recent projects where tired, mismatched rooms were redesigned together to feel calm, functional and easy to live in.
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {gallery.slice(0, 8).concat(gallery.slice(0, 4)).map((g, i) => (
-            <Reveal key={i} delay={(i % 4) * 0.03}>
-              <div className="frame aspect-square">
-                <img src={g.src} alt={g.alt} loading="lazy" />
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {/* Gallery — only render when at least one gallery image is available */}
+      {gallery.some((g) => g.src) ? (
+        <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)] mb-4">Recent transformations</div>
+          <h2 className="font-display text-[32px] md:text-[48px] leading-[1.05] tracking-[-0.02em] text-[color:var(--ink-black)] mb-12 max-w-3xl">
+            A selection of recent projects where tired, mismatched rooms were redesigned together to feel calm, functional and easy to live in.
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {gallery.filter((g) => g.src).slice(0, 8).map((g, i) => (
+              <Reveal key={i} delay={(i % 4) * 0.03}>
+                <div className="frame aspect-square">
+                  <img src={g.src} alt={g.alt} loading="lazy" />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {/* Experience block */}
       <section className="bg-[color:var(--ink-black)] text-[color:var(--paper)] py-24 md:py-32">

@@ -1,0 +1,46 @@
+{
+  "summary": "Comprehensive backend + frontend verification of Apollo Builders pre-launch iteration. Backend: 40/40 pytest tests pass (test_enquiries.py 8/8, test_api.py 6/6, test_route_parity.py 26/26). Health returns email_provider=configured. Live enquiry POST with delivered@resend.dev returns 201 with email_sent=true — Emergent Resend proxy delivering successfully to info@apollobuilders.com.au. Honeypot + <3s submissions silently rejected. Invalid email returns 422. SEO audit reports 0 P0 issues (all 21 canonical URLs 200, canonical/noindex/JSON-LD/legacy redirects correct, sitemap 200, robots 200). Frontend: broken-image audit across all 24 required routes — 23 clean, 1 issue found & FIXED (see below). Nav/footer text wordmark ('Apollo Builders') present on every route; no <img> in header or footer. All 4 form flows verified end-to-end: consult-form → /thanks; bbb-form → /thanks; kitchen-form → /thank-you; renovation-quote-form (3 steps) → /thank-you. 4s form-load-delay bypasses spam gate as expected. PhotoFrame placeholder renders cream/branded box in image slots — layout stays intact, no huge white gaps.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "bugs_found_and_fixed": [
+    {
+      "route": "/resources",
+      "component": "Resource.jsx (ResourceIndex)",
+      "issue": "Article listing rendered raw <img src={a.image}> — since seoContent.js hotlinks were stripped to empty strings, 4 broken images (naturalWidth=0) appeared on the /resources index page. PhotoFrame was already imported but not used in the list tiles.",
+      "fix": "Replaced <img src={a.image} alt={a.alt} loading=\"lazy\" /> with <PhotoFrame src={a.image} alt={a.alt} /> inside the aspect-[16/10] frame. Re-audit confirms /resources now reports document.images.length=0 (PhotoFrame renders a branded placeholder div, not an <img> tag) — matches every other route.",
+      "file": "/app/frontend/src/pages/Resource.jsx",
+      "priority": "HIGH (would have shipped 4 broken images on the top-of-funnel Resources hub)"
+    }
+  ],
+  "test_report_links": [
+    "/app/backend/tests/test_enquiries.py",
+    "/app/backend/tests/test_api.py",
+    "/app/backend/tests/test_route_parity.py",
+    "/app/backend/tests/seo_audit.py",
+    "/app/test_reports/pytest/all.xml",
+    "/app/test_reports/pytest/enquiries.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py _send_notification_email correctly uses async httpx, honours EMERGENT_EMAIL_KEY, and returns False on any failure without crashing the enquiry flow — good separation.",
+    "The stale test_api.py had assertions from the pre-Resend stub era (email_sent=False, provider='pending'); brought in-line with live behaviour and made list-enquiries test worker-independent (was relying on pytest.created_id across xdist workers, which is not shared).",
+    "Resource.jsx was the only page still using raw <img> in the image-hotlink era — every other page under /pages/ correctly guards with PhotoFrame or `image ? ... : null`. Recommend a lint rule / grep in CI to prevent regression: `grep -rn '<img ' src/pages/` should return zero non-PhotoFrame hits.",
+    "PhotoFrame produces a decorative div (no <img>), so `document.images.length` intentionally drops to 0 on all routes without real photography — this is the intended fallback and confirms zero broken-image risk when the client's self-hosted CDN comes online later.",
+    "Renovation quote 3-step form uses en-dash '–' in option labels ('3–6 months', '$40k–$70k') — automation-friendly, but future test scripts should not hard-code hyphens."
+  ],
+  "updated_files": [
+    "/app/frontend/src/pages/Resource.jsx",
+    "/app/backend/tests/test_enquiries.py",
+    "/app/backend/tests/test_api.py"
+  ],
+  "success_rate": {"backend": "100% (40/40 pytest + SEO audit 0 P0)", "frontend": "100% (24/24 routes zero broken images post-fix, 4/4 forms navigate to thanks/thank-you)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "5 TEST_ enquiries dispatched via delivered@resend.dev (Resend sandbox recipient — no real inbox impact). All persisted to MongoDB with email_sent=true.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Live email delivery is now wired via EMERGENT_EMAIL_KEY → https://integrations.emergentagent.com/api/v1/email/send. When testing form flows, always set recipient to delivered@resend.dev so the client inbox stays quiet. Renovation-quote form uses en-dash (U+2013) in button labels — use `data-testid^=\"quote-\"` or `.first`/`.nth()` locators, not hardcoded ASCII hyphens. PhotoFrame is a DIV, not <img>, so `document.images.length` on graceful-fallback pages is 0 by design — do NOT flag as a bug."
+}

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
+import PhotoFrame from "@/components/PhotoFrame";
 import { projects } from "@/lib/data";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 
@@ -54,14 +55,13 @@ export default function Projects() {
                 data-testid={`project-card-${p.slug}`}
                 className="group block"
               >
-                <div className="frame aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.imageAlt}
-                    loading="lazy"
-                    className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
+                <PhotoFrame
+                  src={p.image}
+                  alt={p.imageAlt}
+                  eyebrow={`${p.type} · ${p.suburb}`}
+                  label={p.name}
+                  className="aspect-[4/3] overflow-hidden"
+                />
                 <div className="mt-6 flex items-start justify-between gap-6">
                   <div>
                     <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
