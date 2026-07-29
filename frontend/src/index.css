@@ -107,8 +107,21 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* Mask reveal */
-.mask-line { display: block; overflow: hidden; }
-.mask-line > span { display: inline-block; will-change: transform; }
+/* Line-by-line reveal mask.
+   `padding-bottom` gives descenders (p, g, y, j) room to render below the
+   baseline. Without it, the tight display leading (0.96–1.02) combined with
+   `overflow: hidden` clips the bottom of these letters. The inner span still
+   animates from y:110% → 0%, so the entrance effect is unchanged. */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+}
+.mask-line > span {
+  display: inline-block;
+  will-change: transform;
+  padding-bottom: 0.02em;
+}
 
 /* Marquee (legacy) */
 .marquee-track {
