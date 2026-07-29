@@ -6,13 +6,16 @@
         <meta name="theme-color" content="#0A192F" />
         <!-- Per-page SEO (description, canonical, OG, Twitter, JSON-LD) is injected client-side via react-helmet-async (see /src/components/SEO.jsx) to avoid duplicate tags. -->
 
-        <!-- Fonts: Fraunces (headings) + Inter Tight (body) -->
+        <!-- Fonts: Fraunces (headings) + Inter Tight (body) — preloaded -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap" />
         <link
           href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        <!-- Preload hero image for LCP -->
+        <link rel="preload" as="image" href="https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg" fetchpriority="high" />
 
         <!-- Structured data injected per-page via react-helmet-async (see /src/components/SEO.jsx) -->
 

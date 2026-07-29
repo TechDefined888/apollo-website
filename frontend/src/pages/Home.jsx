@@ -74,7 +74,7 @@ function Hero() {
           data-testid="hero-heading"
           className="font-display text-[color:var(--paper)] mt-4 md:mt-5 font-normal text-[38px] sm:text-[48px] md:text-[60px] lg:text-[76px] leading-[1.02] tracking-[-0.03em] max-w-[15ch]"
         >
-          <MaskLines lines={["Welcome to", "Apollo Builders."]} delay={0.2} />
+          <MaskLines lines={["Custom Home Builders", "in Melbourne South-East."]} delay={0.2} />
         </h1>
 
         <div className="mt-6 md:mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-8">

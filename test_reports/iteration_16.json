@@ -1,0 +1,30 @@
+{
+  "summary": "Pre-launch optimisation pass verified end-to-end. All target changes confirmed live and every regression check green. (1) Home H1: [data-testid=hero-heading].textContent = 'Custom Home Buildersin Melbourne South-East.' — contains both required segments 'Custom Home Builders' AND 'in Melbourne South-East.', font-family = 'Fraunces, ui-serif, Georgia, serif', h1 count === 1 on /. (2) LocalBusiness JSON-LD verified on /, /about, /contact — @type is an array of exactly the 4 required entries ['GeneralContractor','LocalBusiness','HomeAndConstructionBusiness','Organization'], @id='https://apollobuilders.com.au/#business', logo present, legalName='Apollo Builders', knowsAbout array length === 8 with all expected services (New Home Builds, Custom Home Builders, Home Renovations, Kitchen Renovations, Bathroom Renovations, Home Extensions, Knockdown Rebuild, Outdoor Living). (3) index.html served by dev server now contains <link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Fraunces...'> AND <link rel='preload' as='image' href='.../Berwick-New-Build-5-e1762576152191.jpg' fetchpriority='high'>. (4) SEO regression on every one of the 22 routes: querySelectorAll('title').length===1, meta[name=description]===1, link[rel=canonical]===1, meta[property=og:title]===1, h1===1. (5) Sitemap.xml still contains exactly 22 <url> entries, robots.txt still references sitemap. (6) Backend 13/13 pytest green (health, POST /api/enquiries valid, invalid email 422, honeypot silent reject, too-fast silent reject, email subject/from/no-third-party-branding). (7) Contact E2E: form filled + 4s wait + submit → [data-testid=thanks] rendered 'Thank you — we'll be in touch soon.' (8) No horizontal overflow at 320/390/768/1024/1440 on /, /about, /services, /contact, /suburbs/brighton (25/25 combos). (9) Sticky header rgb(10,15,26) position:sticky top:0 on all 22 routes. (10) Zero console errors across all 22 routes.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_api.py",
+    "/app/backend/tests/test_enquiries.py",
+    "/app/test_reports/pytest/pytest_iteration16.xml"
+  ],
+  "action_items": [
+    "OPTIONAL — 3 routes render the generic default SEO title (fallback) rather than a page-specific one: /suburbs/mordialloc, /resources/bathroom-renovation-cost-melbourne, /resources/home-extension-cost-melbourne. All other suburbs and resources set unique titles. Verify these pages are wiring SEO correctly (missing <SEO title=... /> on those page components). NOT caused by this iteration's changes — pre-existing — but worth fixing before launch."
+  ],
+  "critical_code_review_comments": [
+    "IMPORTANT deployment note: /app/frontend uses CRA webpack-dev-server which caches HtmlWebpackPlugin output in-memory. Edits to public/index.html DO NOT hot-reload — a `sudo supervisorctl restart frontend` was required for the new <link rel=preload> tags to appear in the served HTML. This was performed during this test run. For future edits to public/index.html the main agent must remember to restart frontend, and production build (`yarn build`) will bake the preloads in correctly.",
+    "index.css still has duplicate overflow-x rules (previously noted in i15) — html/body get overflow-x:hidden then html:overflow-x:clip then body:overflow-x:hidden again. Consolidate.",
+    "sitemap.xml remains hand-maintained; drift risk persists. Consider generating from data.js at build time."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (13/13)", "frontend": "100% (22/22 routes, 25/25 overflow combos, contact E2E OK, all schema/preload/SEO assertions pass)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "One test enquiry via /api/enquiries (name='TEST_i16_regression', email='test_i16@example.com'). Pytest inserted its usual TEST_ prefixed enquiries. Resend email is stubbed per problem statement.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "After restarting frontend the preload links are correctly served. LocalBusiness JSON-LD is rendered via react-helmet-async in <SEO jsonLd={...}/> — parse scripts[type=application/ld+json] and traverse @graph to find node with LocalBusiness in @type array. Contact form testids unchanged: input-name, input-email, input-phone, input-message, input-project-type (select, use index=1), submit-enquiry, success=[data-testid=thanks]. Wait >3.5s before submit for honeypot gate. Use wait_until='domcontentloaded' — networkidle times out. 3 pages have fallback (default) titles instead of unique ones — likely missing <SEO> in components (see action_items).",
+  "rca of the issue": "N/A — no bugs found for the current iteration's changes. Only observation: dev-server caches public/index.html so a frontend restart is needed after editing that file — the preload links only became live after `supervisorctl restart frontend` during this test run."
+}

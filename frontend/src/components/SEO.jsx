@@ -43,9 +43,12 @@ export default function SEO({
 // ─── Structured-data helpers ──────────────────────────────────────
 export const localBusiness = () => ({
   "@context": "https://schema.org",
-  "@type": ["GeneralContractor", "LocalBusiness"],
+  "@type": ["GeneralContractor", "LocalBusiness", "HomeAndConstructionBusiness", "Organization"],
+  "@id": "https://apollobuilders.com.au/#business",
   name: "Apollo Builders",
+  legalName: "Apollo Builders",
   url: "https://apollobuilders.com.au/",
+  logo: "https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png",
   image: "https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png",
   telephone: "+61422339622",
   email: "info@apollobuilders.com.au",
@@ -61,6 +64,11 @@ export const localBusiness = () => ({
     "Bentleigh","Bentleigh East","Mordialloc","Clayton","Glen Waverley",
     "Endeavour Hills","Berwick","Clyde","Drouin","Bayside","Melbourne CBD",
     "Melbourne South-East",
+  ],
+  knowsAbout: [
+    "New Home Builds","Custom Home Builders","Home Renovations",
+    "Kitchen Renovations","Bathroom Renovations","Home Extensions",
+    "Knockdown Rebuild","Outdoor Living",
   ],
 });
 
