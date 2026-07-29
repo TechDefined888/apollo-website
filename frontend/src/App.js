@@ -20,6 +20,7 @@ import Consult from "@/pages/Consult";
 import BurntByBuilders from "@/pages/BurntByBuilders";
 import ThankYou from "@/pages/ThankYou";
 import Legal from "@/pages/Legal";
+import NotFound from "@/pages/NotFound";
 import { Toaster } from "sonner";
 
 function ScrollTop() {
@@ -108,8 +109,10 @@ function App() {
                 <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
                 <Route path="/services/:slug" element={<ServiceSlugRedirect />} />
 
-                {/* 404 fallback */}
-                <Route path="*" element={<Home />} />
+                {/* 404 fallback — renders NotFound with noindex,nofollow to
+                    prevent search engines indexing spam / random URLs against
+                    apollobuilders.com.au */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />

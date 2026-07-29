@@ -115,6 +115,8 @@ Redesign the Apollo Builders website with a premium, luxury architecture / desig
 ## Recent testing runs
 
 - `/app/test_reports/iteration_17.json` — 100% backend / 95% frontend (JSON-LD gap remedied post-report; retest optional).
+- **2026-07-29 — 404 SPA fix.** Added `/app/frontend/src/pages/NotFound.jsx` (luxury-locked design, MaskLines heading, quick-links grid) and changed the App.js catch-all `*` route from `<Home />` to `<NotFound />`. `NotFound` injects `<meta name="robots" content="noindex, nofollow">`, `<meta name="googlebot" content="noindex, nofollow">`, and `<meta name="prerender-status-code" content="404">` via Helmet, and intentionally omits canonical so no equity flows to spam URLs. Verified end-to-end on the preview URL: known routes (`/`, `/about-us`, `/services`, `/contact-us`, `/kitchen-renovations`) still render correctly with their original titles; unknown routes (`/dark-souls-iii-cracked-…`, `/wp-admin/setup-config.php`, `/some-random-spam-url-xyz-12345`) now render the branded 404 with `robots = "noindex, nofollow"`. `sitemap.xml` + `robots.txt` re-audited — zero spam refs.
+  - **Known limitation (SPA):** the HTTP response status stays 200 because the static frontend host serves `index.html` for every path — this is unavoidable without SSR or ingress-level rules. The `noindex, nofollow` + `prerender-status-code: 404` combination is Google's officially-supported SPA equivalent of a hard 404: Googlebot classifies the URL as soft-404 and drops it from the index. Same protection therefore applies against random spam URLs targeted at the domain.
 
 ## Notes for future agents
 
