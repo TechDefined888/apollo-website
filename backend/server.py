@@ -33,8 +33,24 @@ ENQUIRY_RECIPIENT_EMAIL = os.environ.get('ENQUIRY_RECIPIENT_EMAIL', 'info@apollo
 MIN_SUBMIT_SECONDS = int(os.environ.get('MIN_SUBMIT_SECONDS', '3'))
 ENQUIRY_RATE_LIMIT = os.environ.get('ENQUIRY_RATE_LIMIT', '5/hour')
 
-# ── Rate limiting (per client IP) ──────────────────────────────────
-limiter = Limiter(key_func=get_remote_address, default_limits=["120/minute"])
+# ── Rate limiting (per real client IP behind K8s/Cloudflare proxy) ──
+# `get_remote_address` returns the immediate TCP peer (the proxy pod IP).
+# For a real per-client limit we honour X-Forwarded-For (the first hop,
+# which the ingress sets to the real client) and fall back safely.
+def _client_ip(request: Request) -> str:
+    xff = request.headers.get("x-forwarded-for", "")
+    if xff:
+        # X-Forwarded-For: client, proxy1, proxy2 → take the left-most
+        first = xff.split(",")[0].strip()
+        if first:
+            return first
+    real_ip = request.headers.get("x-real-ip", "").strip()
+    if real_ip:
+        return real_ip
+    return get_remote_address(request)
+
+
+limiter = Limiter(key_func=_client_ip, default_limits=["120/minute"])
 
 app = FastAPI(title="Apollo Builders API", docs_url=None, redoc_url=None, openapi_url=None)
 app.state.limiter = limiter
@@ -53,6 +69,17 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         resp.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=()"
         resp.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
         return resp
+
+
+# ── Request body size cap (defence-in-depth) ───────────────────────
+MAX_BODY_BYTES = 32 * 1024  # 32 KB — Pydantic field caps keep normal payloads well under this
+
+class BodySizeLimitMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        cl = request.headers.get("content-length")
+        if cl and cl.isdigit() and int(cl) > MAX_BODY_BYTES:
+            return JSONResponse(status_code=413, content={"detail": "Request body too large."})
+        return await call_next(request)
 
 
 # ── Global safe error handler — never leak internals ───────────────
@@ -244,6 +271,7 @@ async def create_enquiry(request: Request, payload: EnquiryCreate):
 app.include_router(api_router)
 
 app.add_middleware(SecurityHeadersMiddleware)
+app.add_middleware(BodySizeLimitMiddleware)
 
 _cors_origins = [o.strip() for o in os.environ.get('CORS_ORIGINS', '').split(',') if o.strip()]
 app.add_middleware(

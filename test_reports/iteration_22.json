@@ -1,0 +1,33 @@
+{
+  "summary": "Iteration 22 — verified both backend security fixes on top of iter 21. All 7 pytest tests PASS (7/7, 100%). (1) Rate-limiter now honours X-Forwarded-For: 7 rapid POSTs with X-Forwarded-For: 10.10.10.101 → first 5 return 201, attempts 6–7 return 429. Fresh IP 10.10.10.202 immediately gets a clean quota (3/3 → 201). (2) BodySizeLimitMiddleware works: 50k-char message (Content-Length > 32 KB) with X-Forwarded-For: 10.10.10.203 → HTTP 413 with exactly {\"detail\": \"Request body too large.\"}. Regressions all green: normal 500-char POST → 201 with exactly {id, email_sent}; GET /api/enquiries → 405; GET /api/health → 200 with all 5 security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, Strict-Transport-Security); /sitemap.xml still contains /privacy-policy/, /cookie-policy/, /terms-of-use/. Frontend re-run skipped per main-agent instruction (iter 21 was 100% green and no backend fix touched frontend surface).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_security_iter22.py",
+    "/app/test_reports/pytest/pytest_iteration22.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py _client_ip(): correct precedence (XFF → X-Real-IP → remote_address) and left-most token parsing. Consider adding `forwarded-allow-ips` scoping if uvicorn ever gets --proxy-headers, but for slowapi-only key-func this is fine.",
+    "server.py BodySizeLimitMiddleware: only checks Content-Length header. A malicious client omitting Content-Length and using chunked transfer encoding could bypass this. Low risk because the ingress typically injects Content-Length; still worth a note for defence-in-depth (could stream and count bytes, or set `client_max_body_size` at the ingress).",
+    "Middleware order: BodySizeLimitMiddleware is added AFTER SecurityHeadersMiddleware in code, which (due to Starlette's LIFO middleware stack) means the size check runs FIRST (outermost) — this is the correct ordering, oversized requests are rejected before hitting any downstream handler. Verified working.",
+    "413 response bypasses SecurityHeadersMiddleware because it's returned from the outermost middleware. Not a functional bug; noted for completeness."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_security_iter22.py (new)",
+    "/app/test_reports/pytest/pytest_iteration22.xml (junit output)"
+  ],
+  "success_rate": {"backend": "100% (7/7)", "frontend": "not re-tested (skipped per main-agent instruction; iter 21 was 100%)"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "~9 test enquiries POSTed with email=delivered@resend.dev across X-Forwarded-For IPs 10.10.10.101/.202/.204 (Resend sink, not delivered).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Both iter-22 fixes verified green. Rate-limit buckets for 10.10.10.101 and 10.10.10.204 will be at their per-hour cap for ~1h after this run; use fresh XFF IPs if retesting soon. iter-21 open items (edge/Cloudflare CORS wildcard on OPTIONS, and SPA /docs=200) are infra-layer and intentionally out of backend scope."
+}
