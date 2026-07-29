@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
+import ServicePage from "@/pages/ServicePage";
 import Contact from "@/pages/Contact";
 import Suburb from "@/pages/Suburb";
 import Resource, { ResourceIndex } from "@/pages/Resource";
@@ -73,10 +74,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about-us" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/new-home-builds" element={<Services />} />
-                <Route path="/home-renovations" element={<Services />} />
-                <Route path="/bathroom-renovations" element={<Services />} />
-                <Route path="/kitchen-renovations" element={<Services />} />
+                <Route path="/new-home-builds" element={<ServicePage />} />
+                <Route path="/home-renovations" element={<ServicePage />} />
+                <Route path="/bathroom-renovations" element={<ServicePage />} />
+                <Route path="/kitchen-renovations" element={<ServicePage />} />
                 <Route path="/contact-us" element={<Contact />} />
 
                 {/* Project pages — live-site slugs preserved */}

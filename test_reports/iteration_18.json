@@ -1,0 +1,27 @@
+{
+  "summary": "Verified SEO migration for the 4 Apollo Builders service pages (/new-home-builds, /home-renovations, /kitchen-renovations, /bathroom-renovations). All 4 render as dedicated pages via ServicePage.jsx with correct data-testid=service-page-<slug>, exact SEO titles, H1 with trailing period, breadcrumb 'Services / {H1}', canonical link ending in /{slug}/, and one JSON-LD @graph script containing Service + BreadcrumbList + LocalBusiness. Hero CTA and final 'Get A Free Quote' CTA both link to /contact-us; 'View Our Projects' links to /our-projects. Bathroom page additionally shows Compliance + Service Area sections (Before & After section also present — the source data has 'Before & After' which React escapes to 'Before &amp; After' in HTML source, but visible text is correct — verified in screenshot). All 6 related project pages (drouin, berwick, clyde, bentleigh-east, endevour-hills, altona-meadows) return 200 with H1. All 13 regression routes (/, /about-us, /contact-us, /our-projects, /kitchen-renovation-landing, /renovation-quote, /consult, /burnt-by-builders, /thank-you, /thanks, /suburbs/brighton, /resources, /services) return 200 with H1 present. Legacy redirects /about→/about-us, /contact→/contact-us, /services/new-home-builds→/new-home-builds all update the address bar. Sitemap.xml serves 200 and contains all 4 trailing-slash service URLs. Robots.txt serves 200 with Allow: /. Nothing regressed vs iteration_17. Testing was frontend-only per request; backend not re-tested.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "seo_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ServicePage.jsx correctly derives slug from useLocation and dispatches to servicePages[slug]; unknown slug redirects to /services — good defensive default.",
+    "JSON-LD @graph combines Service + BreadcrumbList + LocalBusiness in a single script tag per SEO best practice.",
+    "Canonical URL is normalised to trailing slash to match Yoast/live site (verified via SEO.jsx path normalisation).",
+    "servicePages.js content is verbatim from the live site including intentional misspelling 'endevour-hills' preserved for URL parity.",
+    "Bathroom-specific sections (beforeAfter, complianceSection, serviceArea) are gated behind optional data keys — clean conditional rendering.",
+    "relatedProjects arrays cover all 6 required project slugs across the 4 service pages."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "not tested this iteration", "frontend": "100% — 42/42 assertions passed (1 apparent failure was a test-side HTML-entity false positive; text renders correctly)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 4 service pages now have the required Service + BreadcrumbList + LocalBusiness JSON-LD via serviceSchema()/breadcrumbSchema()/localBusiness() helpers in SEO.jsx. When asserting text containing '&' in HTML source, remember React escapes it to '&amp;' — either use page.locator(':has-text(\"Before & After\")') or query text_content of a locator, not page.content(). CDN images to apollobuilders.com.au are blocked from the pod (expected) so use wait_until='domcontentloaded' not 'networkidle'."
+}
