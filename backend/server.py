@@ -11,6 +11,8 @@ from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
+import httpx
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
@@ -19,21 +21,13 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# ── Email configuration (server-side only) ─────────────────────────
-RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '').strip()
-SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
-SENDER_NAME = os.environ.get('SENDER_NAME', 'Apollo Builders Website')
+# ── Email configuration (Emergent-managed Resend proxy) ────────────
+# Base URL is a CONSTANT — never read from env so it survives deployment.
+EMAIL_BASE_URL = "https://integrations.emergentagent.com"
+EMAIL_KEY = os.environ.get("EMERGENT_EMAIL_KEY", "").strip()
+EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "Apollo Builders Website")
 ENQUIRY_RECIPIENT_EMAIL = os.environ.get('ENQUIRY_RECIPIENT_EMAIL', 'info@apollobuilders.com.au')
 MIN_SUBMIT_SECONDS = int(os.environ.get('MIN_SUBMIT_SECONDS', '3'))
-
-resend_client = None
-if RESEND_API_KEY:
-    try:
-        import resend as _resend
-        _resend.api_key = RESEND_API_KEY
-        resend_client = _resend
-    except Exception as e:
-        logging.warning(f"Resend init failed: {e}")
 
 app = FastAPI(title="Apollo Builders API")
 api_router = APIRouter(prefix="/api")
@@ -100,22 +94,32 @@ def _build_email_html(e: Enquiry) -> str:
 
 
 async def _send_notification_email(enquiry: Enquiry) -> bool:
-    if not resend_client:
-        logging.info("Email provider not configured — enquiry stored, email skipped.")
+    """POST the enquiry via the Emergent-managed Resend proxy.
+    Non-blocking (async httpx). Returns True on 2xx, False on any failure."""
+    if not EMAIL_KEY:
+        logging.info("Email provider not configured (EMERGENT_EMAIL_KEY missing) — enquiry stored, email skipped.")
         return False
+    payload = {
+        "to": [ENQUIRY_RECIPIENT_EMAIL],
+        "subject": f"New Website Enquiry — {enquiry.project_type} — {enquiry.name}",
+        "html": _build_email_html(enquiry),
+        "from_name": EMAIL_FROM_NAME,           # REQUIRED — visible sender display name
+        "contact_email": str(enquiry.email),    # becomes Reply-To so replies go to the enquirer
+    }
     try:
-        from_field = f"{SENDER_NAME} <{SENDER_EMAIL}>"
-        params = {
-            "from": from_field,
-            "to": [ENQUIRY_RECIPIENT_EMAIL],
-            "reply_to": enquiry.email,
-            "subject": f"New Website Enquiry — {enquiry.project_type} — {enquiry.name}",
-            "html": _build_email_html(enquiry),
-        }
-        await asyncio.to_thread(resend_client.Emails.send, params)
+        async with httpx.AsyncClient(timeout=30) as http:
+            resp = await http.post(
+                f"{EMAIL_BASE_URL}/api/v1/email/send",
+                headers={"X-Email-Key": EMAIL_KEY},
+                json=payload,
+            )
+        resp.raise_for_status()
         return True
+    except httpx.HTTPStatusError as ex:
+        logging.error(f"Email dispatch failed: {ex.response.status_code} {ex.response.text[:400]}")
+        return False
     except Exception as ex:
-        logging.error(f"Email dispatch failed: {ex}")
+        logging.error(f"Email dispatch error: {ex}")
         return False
 
 
@@ -146,7 +150,7 @@ async def root():
 
 @api_router.get("/health")
 async def health():
-    return {"status": "healthy", "email_provider": "configured" if resend_client else "pending"}
+    return {"status": "healthy", "email_provider": "configured" if EMAIL_KEY else "pending"}
 
 
 @api_router.post("/enquiries", response_model=Enquiry, status_code=201)
