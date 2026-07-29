@@ -5,7 +5,7 @@ import axios from "axios";
 import { ArrowUpRight, AlertTriangle, X, Check } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { brand } from "@/lib/data";
-import SEO from "@/components/SEO";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -107,6 +107,44 @@ export default function BurntByBuilders() {
         title="Burnt By Builders? Stop Managing Your Builder — Apollo Builders Melbourne"
         description="Fixed-price renovations with one point of contact, zero budget surprises and clear milestones. Stop chasing trades — Apollo Builders handles everything."
         path="/burnt-by-builders/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Burnt By Builders?", path: "/burnt-by-builders/" },
+            ]),
+            {
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How is Apollo Builders' pricing different?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We quote the complete project before you commit — council approvals, design, all trades and project management included. No estimates that grow.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Who manages the trades on my renovation?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "A dedicated project manager handles every trade, supplier and approval so you have a single point of contact for your entire build.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is design work included in the quote?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. Our in-house designers create detailed plans and 3D renders as part of your fixed price — with revisions until you're happy.",
+                  },
+                },
+              ],
+            },
+          ],
+        }}
       />
 
       {/* Hero */}

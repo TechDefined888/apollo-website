@@ -5,7 +5,7 @@ import axios from "axios";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { brand, gallery } from "@/lib/data";
-import SEO from "@/components/SEO";
+import SEO, { breadcrumbSchema, localBusiness } from "@/components/SEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -61,6 +61,16 @@ export default function Consult() {
         title="Book a Consultation — Apollo Builders | Renovations Done Properly"
         description="Apollo Builders handles your entire renovation process — design, trades, council and construction — so you get a premium result without managing it yourself."
         path="/consult/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Consultation", path: "/consult/" },
+            ]),
+            localBusiness(),
+          ],
+        }}
       />
 
       {/* Hero */}

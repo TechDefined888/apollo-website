@@ -5,7 +5,7 @@ import axios from "axios";
 import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { brand } from "@/lib/data";
-import SEO from "@/components/SEO";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -91,6 +91,23 @@ export default function RenovationQuote() {
         title="Renovation Quote — Apollo Builders | Fixed-Price Melbourne Renovations"
         description="Get a personalised renovation quote from Apollo Builders. Fixed pricing, licensed builders, and premium finishes across Melbourne's South-East."
         path="/renovation-quote/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Renovation Quote", path: "/renovation-quote/" },
+            ]),
+            {
+              "@type": "WebPage",
+              name: "Renovation Quote — Apollo Builders",
+              url: "https://apollobuilders.com.au/renovation-quote/",
+              description:
+                "Multi-step renovation quote calculator. Provides fixed-price quotes for kitchen, bathroom, extension and full-home renovations across Melbourne's South-East.",
+              publisher: { "@type": "Organization", name: "Apollo Builders" },
+            },
+          ],
+        }}
       />
       <section className="pt-16 md:pt-24 pb-8 md:pb-14 mx-auto max-w-[1200px] px-6 md:px-10 lg:px-14">
         <div className="tracking-eyebrow text-[color:var(--gold)]">Quote Calculator</div>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { ArrowUpRight, ChefHat, Award, CheckCircle2 } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { brand, gallery } from "@/lib/data";
-import SEO from "@/components/SEO";
+import SEO, { breadcrumbSchema, serviceSchema } from "@/components/SEO";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -99,6 +99,21 @@ export default function KitchenLanding() {
         title="Bespoke Kitchens Melbourne — Apollo Builders | Luxury Kitchen Design"
         description="Apollo Builders crafts bespoke kitchens for Melbourne homes — high-performance functionality with timeless design, licensed builders, fixed pricing."
         path="/kitchen-renovation-landing/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Bespoke Kitchens Melbourne", path: "/kitchen-renovation-landing/" },
+            ]),
+            serviceSchema({
+              slug: "kitchen-renovation-landing",
+              title: "Bespoke Kitchens Melbourne",
+              tagline: "Custom cabinetry, luxury stone benchtops and full structural remodels.",
+              body: "Apollo Builders crafts bespoke kitchens tailored to how you actually live — with premium hardware, natural and engineered stone, and structural remodels handled end-to-end.",
+            }),
+          ],
+        }}
       />
 
       {/* Hero */}
