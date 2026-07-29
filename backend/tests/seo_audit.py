@@ -39,6 +39,10 @@ LIVE_URLS = [
     "/burnt-by-builders/",
     "/thank-you/",
     "/thanks/",
+    # Legal pages (added iteration 21)
+    "/privacy-policy/",
+    "/cookie-policy/",
+    "/terms-of-use/",
 ]
 
 # Legacy paths that should client-side redirect
@@ -66,8 +70,28 @@ async def main():
         "schema_check": [],
         "redirect_check": [],
         "internal_links": [],
+        "cdn_leaks": [],
         "errors": [],
     }
+
+    # ── 0. Static scan for stale CDN references (regression guard) ───
+    # Any reference to apollobuilders.com.au/wp-content anywhere in the
+    # frontend source / public tree means an image or preload will 404
+    # once WordPress is decommissioned. Scan every file type — not just
+    # .js/.jsx — because HTML preloads live in public/index.html too.
+    src_root = Path("/app/frontend")
+    for candidate in src_root.rglob("*"):
+        if candidate.is_file() and candidate.suffix in {".js", ".jsx", ".ts", ".tsx", ".html", ".css", ".json", ".md", ".xml"}:
+            if "node_modules" in candidate.parts or "build" in candidate.parts or "dist" in candidate.parts:
+                continue
+            try:
+                text = candidate.read_text(errors="ignore")
+            except Exception:
+                continue
+            if "apollobuilders.com.au/wp-content" in text:
+                # count occurrences per file
+                hits = text.count("apollobuilders.com.au/wp-content")
+                results["cdn_leaks"].append({"file": str(candidate.relative_to(src_root)), "hits": hits})
 
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -192,6 +216,15 @@ async def main():
             issues += 1
 
     print(f"\n== AUDIT SUMMARY: {issues} P0 issue(s) ==", file=sys.stderr)
+
+    # CDN leak regression — any stale apollobuilders.com.au/wp-content ref
+    # in the source tree will 404 post-DNS-cutover. Fail loud.
+    if results["cdn_leaks"]:
+        for leak in results["cdn_leaks"]:
+            print(f"[FAIL] stale CDN ref in {leak['file']} — {leak['hits']} hit(s)", file=sys.stderr)
+            issues += leak["hits"]
+        print(f"== TOTAL WITH CDN LEAKS: {issues} P0 issue(s) ==", file=sys.stderr)
+
     sys.exit(0 if issues == 0 else 1)
 
 

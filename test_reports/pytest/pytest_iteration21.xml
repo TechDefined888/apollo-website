@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="9" time="2.822" timestamp="2026-07-29T03:21:32.919039+00:00" hostname="agent-env-6ff9cbe5-dff6-4467-864f-f7224d8e56ba"><testcase classname="tests.test_security_iter21.TestSecurity" name="test_get_enquiries_removed" time="0.247" /><testcase classname="tests.test_security_iter21.TestEnquiries" name="test_post_minimal_response_shape" time="0.744" /><testcase classname="tests.test_security_iter21.TestSecurity" name="test_security_headers_on_health" time="0.105" /><testcase classname="tests.test_security_iter21.TestSecurity" name="test_docs_disabled" time="0.109"><failure message="AssertionError: /docs =&gt; 200&#10;assert 200 == 404&#10; +  where 200 = &lt;Response [200]&gt;.status_code">backend/tests/test_security_iter21.py:62: in test_docs_disabled
+    assert r.status_code == 404, f"{path} =&gt; {r.status_code}"
+E   AssertionError: /docs =&gt; 200
+E   assert 200 == 404
+E    +  where 200 = &lt;Response [200]&gt;.status_code</failure></testcase><testcase classname="tests.test_security_iter21.TestSecurity" name="test_cors_allowed_origin" time="0.074"><failure message="AssertionError: got *&#10;assert '*' == 'https://apol...ilders.com.au'&#10;  &#10;  - https://apollobuilders.com.au&#10;  + *">backend/tests/test_security_iter21.py:74: in test_cors_allowed_origin
+    assert acao == "https://apollobuilders.com.au", f"got {acao}"
+E   AssertionError: got *
+E   assert '*' == 'https://apol...ilders.com.au'
+E     
+E     - https://apollobuilders.com.au
+E     + *</failure></testcase><testcase classname="tests.test_security_iter21.TestSecurity" name="test_cors_disallowed_origin" time="0.074" /><testcase classname="tests.test_security_iter21.TestSitemap" name="test_sitemap_contains_legal_urls" time="0.118" /><testcase classname="tests.test_security_iter21.TestEnquiries" name="test_post_sanitises_html_input" time="0.270" /><testcase classname="tests.test_security_iter21.TestRateLimit" name="test_rate_limit_triggers" time="1.429"><failure message="AssertionError: no 429 in last 3 of [201, 201, 201, 201, 201, 201, 201, 201]&#10;assert 429 in [201, 201, 201]">backend/tests/test_security_iter21.py:125: in test_rate_limit_triggers
+    assert 429 in codes[-3:], f"no 429 in last 3 of {codes}"
+E   AssertionError: no 429 in last 3 of [201, 201, 201, 201, 201, 201, 201, 201]
+E   assert 429 in [201, 201, 201]</failure></testcase></testsuite></testsuites>

@@ -93,6 +93,23 @@ export default function Footer() {
 
         <div className="mt-24 pt-8 border-t border-[color:var(--paper)]/12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[11px] tracking-[0.22em] uppercase text-[color:var(--paper)]/60">
           <div>© {new Date().getFullYear()} Apollo Builders</div>
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <li>
+              <Link to="/privacy-policy" data-testid="footer-privacy" className="link-under">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/cookie-policy" data-testid="footer-cookies" className="link-under">
+                Cookie Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms-of-use" data-testid="footer-terms" className="link-under">
+                Terms of Use
+              </Link>
+            </li>
+          </ul>
           <div>Fully Insured · Fixed Price Quotes · Melbourne, VIC</div>
         </div>
       </div>

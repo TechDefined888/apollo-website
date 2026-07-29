@@ -19,6 +19,7 @@ import RenovationQuote from "@/pages/RenovationQuote";
 import Consult from "@/pages/Consult";
 import BurntByBuilders from "@/pages/BurntByBuilders";
 import ThankYou from "@/pages/ThankYou";
+import Legal from "@/pages/Legal";
 import { Toaster } from "sonner";
 
 function ScrollTop() {
@@ -96,6 +97,11 @@ function App() {
                 <Route path="/suburbs/:slug" element={<Suburb />} />
                 <Route path="/resources" element={<ResourceIndex />} />
                 <Route path="/resources/:slug" element={<Resource />} />
+
+                {/* Legal pages */}
+                <Route path="/privacy-policy" element={<Legal />} />
+                <Route path="/cookie-policy" element={<Legal />} />
+                <Route path="/terms-of-use" element={<Legal />} />
 
                 {/* Legacy client-side redirects — preserve any bookmarks/backlinks */}
                 <Route path="/about" element={<Navigate to="/about-us" replace />} />
