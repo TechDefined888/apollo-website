@@ -66,8 +66,11 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         resp.headers["X-Content-Type-Options"] = "nosniff"
         resp.headers["X-Frame-Options"] = "DENY"
         resp.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        resp.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=()"
+        resp.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
         resp.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
+        resp.headers["Cross-Origin-Resource-Policy"] = "same-site"
+        resp.headers["Cross-Origin-Opener-Policy"] = "same-origin"
+        resp.headers["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'none'; base-uri 'none'"
         return resp
 
 

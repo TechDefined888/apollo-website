@@ -4,6 +4,31 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0A192F" />
+
+        <!-- Content Security Policy — allows only the third-parties this site actually uses.
+             frame-ancestors is included for defence-in-depth (spec says it is ignored in <meta>;
+             the real enforcement is via the backend `X-Frame-Options: DENY` header and can be
+             hardened further by asking Emergent Support to set frame-ancestors at the edge). -->
+        <meta http-equiv="Content-Security-Policy" content="
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' https://assets.emergent.sh https://ap.emergent.sh https://*.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com;
+          script-src-elem 'self' 'unsafe-inline' https://assets.emergent.sh https://ap.emergent.sh https://*.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com;
+          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+          style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
+          font-src 'self' https://fonts.gstatic.com data:;
+          img-src 'self' https: data: blob:;
+          connect-src 'self' https://apollobuilders.com.au https://premium-apollo.emergent.host https://premium-apollo.preview.emergentagent.com https://ap.emergent.sh https://*.i.posthog.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com;
+          frame-ancestors 'none';
+          frame-src 'none';
+          object-src 'none';
+          base-uri 'self';
+          form-action 'self';
+          manifest-src 'self';
+          worker-src 'self' blob:;
+          upgrade-insecure-requests
+        " />
+        <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <!-- Per-page SEO (description, canonical, OG, Twitter, JSON-LD) is injected client-side via react-helmet-async (see /src/components/SEO.jsx) to avoid duplicate tags. -->
 
         <!-- Fonts: Fraunces (headings) + Inter Tight (body) — preloaded -->
@@ -13,6 +38,7 @@
         <link
           href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter+Tight:wght@300;400;500;600&display=swap"
           rel="stylesheet"
+          crossorigin="anonymous"
         />
         <!-- Preload hero image for LCP -->
         <link rel="preload" as="image" href="/images/apollo/Berwick-New-Build-5-e1762576152191.jpg" fetchpriority="high" />
