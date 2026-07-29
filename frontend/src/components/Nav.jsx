@@ -42,7 +42,12 @@ export default function Nav() {
                 aria-label="Apollo Builders — home"
                 className="flex items-center gap-4 group focus-visible:outline-2 focus-visible:outline-[color:var(--gold)] focus-visible:outline-offset-4"
               >
-                <span className="font-display text-[22px] md:text-[24px] tracking-tight text-[color:var(--paper)]">
+                <img
+                  src={brand.logo}
+                  alt="Apollo Builders"
+                  className="h-12 md:h-14 w-auto brightness-0 invert"
+                />
+                <span className="hidden lg:inline font-display text-[19px] md:text-[20px] tracking-tight text-[color:var(--paper)]">
                   Apollo Builders
                 </span>
               </Link>

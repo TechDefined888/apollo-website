@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { MaskLines, Reveal } from "@/components/Reveal";
-import PhotoFrame from "@/components/PhotoFrame";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
@@ -49,15 +48,11 @@ function Hero() {
       aria-labelledby="hero-heading"
     >
       <motion.div className="absolute inset-0" style={{ y, scale, x: px, translateY: py }}>
-        {/* Hero background — decorative gradient in place of hotlinked photo.
-            When client uploads self-hosted hero image, restore <img src=... /> here. */}
-        <div
-          aria-hidden="true"
-          className="w-full h-full"
-          style={{
-            background:
-              "radial-gradient(1200px 600px at 20% 20%, rgba(197,137,45,0.18), transparent 60%), radial-gradient(900px 500px at 80% 100%, rgba(197,137,45,0.10), transparent 60%), linear-gradient(180deg, #0A0F1A 0%, #0F1626 60%, #0A0F1A 100%)",
-          }}
+        <img
+          src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg"
+          alt="Berwick two-storey new home build by Apollo Builders — Melbourne South-East"
+          className="w-full h-full object-cover"
+          fetchPriority="high"
         />
       </motion.div>
       {/* Single cinematic overlay — cleaner, deeper */}
@@ -221,13 +216,9 @@ function Projects() {
                     reverse ? "md:col-start-5 md:order-2" : ""
                   }`}
                 >
-                  <PhotoFrame
-                    src={p.image}
-                    alt={p.imageAlt}
-                    className="aspect-[16/10]"
-                    eyebrow={`${p.type} · ${p.suburb}`}
-                    label={p.name}
-                  />
+                  <div className="frame aspect-[16/10]">
+                    <img src={p.image} alt={p.imageAlt} loading="lazy" />
+                  </div>
                 </Reveal>
                 <Reveal
                   y={20}
@@ -405,14 +396,14 @@ function CTA() {
       className="relative bg-[color:var(--ink-black)] text-[color:var(--paper)] overflow-hidden py-28 md:py-40 lg:py-48"
       aria-labelledby="cta-heading"
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-90"
-        style={{
-          background:
-            "radial-gradient(900px 500px at 10% 10%, rgba(197,137,45,0.12), transparent 60%), radial-gradient(900px 500px at 90% 90%, rgba(197,137,45,0.08), transparent 60%), linear-gradient(180deg, #0A0F1A 0%, #0F1626 60%, #0A0F1A 100%)",
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.18]">
+        <img
+          src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A] via-transparent to-[#0A0F1A]" />
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
         <Reveal className="md:col-span-8">

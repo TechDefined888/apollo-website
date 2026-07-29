@@ -154,7 +154,7 @@ export const resourceArticles = {
     slug: "kitchen-renovation-cost-melbourne",
     title: "Kitchen Renovation Cost in Melbourne — What to Budget in 2026",
     excerpt: "A breakdown of realistic kitchen renovation costs in Melbourne, what drives price differences, and how to plan a fixed-price project.",
-    image: "",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
     alt: "Modern kitchen renovation Melbourne — Apollo Builders",
     body: [
       { h: "How much does a kitchen renovation cost in Melbourne?", p: "As a general Melbourne market guide, a straightforward kitchen renovation using mid-range cabinetry, stone benchtops and standard appliances typically costs from around $30,000 to $50,000. A larger structural kitchen renovation with wall removal, new plumbing and electrical, custom cabinetry and premium appliances typically ranges from $55,000 to $90,000 or more depending on materials and complexity." },
@@ -168,7 +168,7 @@ export const resourceArticles = {
     slug: "bathroom-renovation-timeline",
     title: "How Long Does a Bathroom Renovation Take? A Melbourne Guide",
     excerpt: "Realistic bathroom renovation timelines for Melbourne homes, from planning to hand-back.",
-    image: "",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-7.jpg",
     alt: "Bathroom renovation Melbourne South-East — Apollo Builders",
     body: [
       { h: "Typical bathroom renovation timeline", p: "A standard bathroom renovation in Melbourne takes three to five weeks on-site. Larger ensuites or main bathrooms with structural changes can take five to seven weeks. Design and cabinetry lead-time adds another two to four weeks before work begins." },
@@ -181,7 +181,7 @@ export const resourceArticles = {
     slug: "knockdown-rebuild-melbourne",
     title: "Knockdown Rebuild in Melbourne — Is It Right For You?",
     excerpt: "When a knockdown-rebuild beats a renovation in Melbourne — process, cost drivers and planning considerations.",
-    image: "",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9.jpg",
     alt: "Knockdown rebuild Melbourne — Apollo Builders new home build",
     body: [
       { h: "When knockdown-rebuild makes sense", p: "A knockdown-rebuild is often the better path when the existing home has structural issues, poor layout that would be expensive to correct, low ceiling heights, asbestos or unstable stumps, or when the land value dwarfs the existing dwelling. If more than roughly 50% of the home would need replacing, a rebuild is often more economical than a full renovation." },
@@ -194,7 +194,7 @@ export const resourceArticles = {
     slug: "choosing-a-builder-melbourne",
     title: "Choosing a Builder in Melbourne — 8 Questions to Ask",
     excerpt: "How to shortlist a residential builder in Melbourne — the practical checks every homeowner should make.",
-    image: "",
+    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg",
     alt: "Choosing a residential builder Melbourne — Apollo Builders",
     body: [
       { h: "1. Are they registered and insured?", p: "Domestic building work over $10,000 in Victoria must be carried out by a builder registered with the Victorian Building Authority (VBA). For work over $16,000, the builder must also provide Domestic Building Insurance (DBI) covering the client if the builder dies, disappears or becomes insolvent." },

@@ -1,7 +1,6 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
-import PhotoFrame from "@/components/PhotoFrame";
 import { projects } from "@/lib/data";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 
@@ -69,13 +68,9 @@ export default function ProjectDetail() {
       {/* Hero image */}
       <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-16 md:pb-24">
         <Reveal>
-          <PhotoFrame
-            src={project.hero}
-            alt={project.imageAlt}
-            className="aspect-[21/9]"
-            eyebrow={project.type}
-            label={project.name}
-          />
+          <div className="frame aspect-[21/9]">
+            <img src={project.hero} alt={project.imageAlt} />
+          </div>
         </Reveal>
       </section>
 
@@ -101,18 +96,16 @@ export default function ProjectDetail() {
         </Reveal>
       </section>
 
-      {/* Gallery — only when at least one gallery image is present */}
-      {project.gallery?.some(Boolean) ? (
+      {/* Gallery */}
+      {project.gallery?.length ? (
         <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
           <div className="tracking-eyebrow text-[color:var(--gold-dark)] mb-8">Gallery</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-            {project.gallery.filter(Boolean).map((src, i) => (
+            {project.gallery.map((src, i) => (
               <Reveal key={src + i} delay={(i % 2) * 0.05}>
-                <PhotoFrame
-                  src={src}
-                  alt={`${project.name} — photograph ${i + 1}`}
-                  className={i % 3 === 0 ? "aspect-[4/3]" : "aspect-[16/11]"}
-                />
+                <div className={`frame ${i % 3 === 0 ? "aspect-[4/3]" : "aspect-[16/11]"}`}>
+                  <img src={src} alt={`${project.name} — photograph ${i + 1}`} loading="lazy" />
+                </div>
               </Reveal>
             ))}
           </div>
@@ -141,13 +134,9 @@ export default function ProjectDetail() {
                 data-testid={`related-project-${p.slug}`}
                 className="group block"
               >
-                <PhotoFrame
-                  src={p.image}
-                  alt={p.imageAlt}
-                  className="aspect-[4/3]"
-                  eyebrow={p.type}
-                  label={p.name}
-                />
+                <div className="frame aspect-[4/3]">
+                  <img src={p.image} alt={p.imageAlt} loading="lazy" />
+                </div>
                 <div className="mt-5">
                   <div className="tracking-eyebrow text-[color:var(--gold-dark)] text-[11px]">
                     {p.type}

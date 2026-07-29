@@ -54,14 +54,13 @@ export default function Contact() {
       />
       {/* Editorial hero with real project photograph */}
       <section className="relative pt-16 md:pt-28 pb-24 md:pb-32 overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(1000px 500px at 20% 20%, rgba(197,137,45,0.15), transparent 60%), linear-gradient(180deg, #0A0F1A 0%, #0F1626 60%, #0A0F1A 100%)",
-          }}
-        />
+        <div className="absolute inset-0">
+          <img
+            src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg"
+            alt=""
+            className="w-full h-full object-cover opacity-25"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/60 via-[#0A0F1A]/40 to-[#0A0F1A]" />
         <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="tracking-eyebrow text-[color:var(--gold)]">Contact</div>

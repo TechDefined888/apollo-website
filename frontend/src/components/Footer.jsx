@@ -11,9 +11,11 @@ export default function Footer() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14">
           <div className="md:col-span-5">
-            <div className="font-display text-[28px] md:text-[32px] tracking-tight text-[color:var(--paper)]">
-              Apollo Builders
-            </div>
+            <img
+              src={brand.logo}
+              alt="Apollo Builders"
+              className="h-16 w-auto brightness-0 invert opacity-95"
+            />
             <h3 className="font-display text-[36px] md:text-[46px] mt-8 leading-[1.05] tracking-[-0.02em]">
               Renovations &amp;<br /> custom homes,<br />
               <span className="text-[color:var(--gold)]">Melbourne South-East.</span>

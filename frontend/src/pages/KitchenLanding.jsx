@@ -118,14 +118,13 @@ export default function KitchenLanding() {
 
       {/* Hero */}
       <section className="bg-[color:var(--ink-black)] text-[color:var(--paper)] pt-20 md:pt-28 pb-24 md:pb-32 relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(1000px 500px at 30% 30%, rgba(197,137,45,0.16), transparent 60%), linear-gradient(180deg, #0A0F1A 0%, #0F1626 60%, #0A0F1A 100%)",
-          }}
-        />
+        <div className="absolute inset-0 opacity-25">
+          <img
+            src="https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/60 via-[#0A0F1A]/50 to-[#0A0F1A]" />
         <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="inline-flex items-center gap-2 tracking-eyebrow text-[color:var(--gold)]">
@@ -210,24 +209,22 @@ export default function KitchenLanding() {
         </div>
       </section>
 
-      {/* Gallery — only render when at least one gallery image is available */}
-      {gallery.some((g) => g.src) ? (
-        <section id="gallery" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Our Work</div>
-          <h2 className="font-display text-[32px] md:text-[52px] leading-[1.05] tracking-[-0.02em] text-[color:var(--ink-black)] mt-4 max-w-3xl">
-            Recent masterpieces.
-          </h2>
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {gallery.filter((g) => g.src).slice(0, 6).map((g, i) => (
-              <Reveal key={i} delay={(i % 3) * 0.04}>
-                <div className="frame aspect-[4/3]">
-                  <img src={g.src} alt={g.alt} loading="lazy" />
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      ) : null}
+      {/* Gallery */}
+      <section id="gallery" className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
+        <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Our Work</div>
+        <h2 className="font-display text-[32px] md:text-[52px] leading-[1.05] tracking-[-0.02em] text-[color:var(--ink-black)] mt-4 max-w-3xl">
+          Recent masterpieces.
+        </h2>
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {gallery.slice(0, 6).map((g, i) => (
+            <Reveal key={i} delay={(i % 3) * 0.04}>
+              <div className="frame aspect-[4/3]">
+                <img src={g.src} alt={g.alt} loading="lazy" />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* Enquiry */}
       <section id="quote" className="bg-[color:var(--ink-black)] text-[color:var(--paper)] py-24 md:py-32">

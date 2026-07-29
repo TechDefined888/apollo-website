@@ -68,24 +68,13 @@ export default function ServicesInteractive() {
                   className="relative overflow-hidden group text-left transition-[flex] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--gold)] ring-inset"
                   style={{ flex: isActive ? "6 1 0%" : "1 1 0%" }}
                 >
-                  {s.image ? (
-                    <img
-                      src={s.image}
-                      alt={s.imageAlt}
-                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-                        isActive ? "opacity-70" : "opacity-30"
-                      }`}
-                    />
-                  ) : (
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "radial-gradient(700px 400px at 30% 30%, rgba(197,137,45,0.20), transparent 60%), linear-gradient(180deg, #0A0F1A 0%, #0F1626 60%, #0A0F1A 100%)",
-                      }}
-                    />
-                  )}
+                  <img
+                    src={s.image}
+                    alt={s.imageAlt}
+                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                      isActive ? "opacity-70" : "opacity-30"
+                    }`}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1A] via-[#0A0F1A]/70 to-[#0A0F1A]/40" />
                   <div className="relative z-10 h-full p-8 flex flex-col justify-between">
                     <div>
@@ -177,11 +166,9 @@ export default function ServicesInteractive() {
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden px-6 pb-8"
                     >
-                      {s.image ? (
-                        <div className="frame aspect-[16/10] mb-5">
-                          <img src={s.image} alt={s.imageAlt} />
-                        </div>
-                      ) : null}
+                      <div className="frame aspect-[16/10] mb-5">
+                        <img src={s.image} alt={s.imageAlt} />
+                      </div>
                       <p className="text-[color:var(--paper)]/85 text-[15px]">
                         {s.tagline}
                       </p>

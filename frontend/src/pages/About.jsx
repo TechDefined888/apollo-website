@@ -24,15 +24,12 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 pb-24 md:pb-32">
-        {/* Editorial photograph slot — restored once client provides self-hosted hero image. */}
         <Reveal>
-          <div className="frame aspect-[16/9] md:aspect-[21/9] flex items-center justify-center bg-[color:var(--cream)] border border-[color:var(--hair)]">
-            <div className="text-center px-8">
-              <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Apollo Builders</div>
-              <p className="font-display text-2xl md:text-3xl text-[color:var(--ink-black)] mt-3 tracking-[-0.02em]">
-                Melbourne South-East Renovations &amp; New Builds
-              </p>
-            </div>
+          <div className="frame aspect-[16/9] md:aspect-[21/9]">
+            <img
+              src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg"
+              alt="Apollo Builders — knockdown and rebuild specialist project in Drouin"
+            />
           </div>
         </Reveal>
       </section>

@@ -9,7 +9,7 @@ export default function SEO({
   title,
   description,
   path = "/",
-  image = "",
+  image = "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg",
   jsonLd = null,
   noindex = false,
 }) {
@@ -30,12 +30,12 @@ export default function SEO({
       <meta property="og:site_name" content="Apollo Builders" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:image" content={image} />
       <meta property="og:url" content={canonical} />
-      <meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      <meta name="twitter:image" content={image} />
       {jsonLd && (
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
@@ -75,6 +75,8 @@ export const localBusiness = () => ({
   name: "Apollo Builders",
   legalName: "Apollo Builders",
   url: "https://apollobuilders.com.au/",
+  logo: "https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png",
+  image: "https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png",
   telephone: "+61422339622",
   email: "info@apollobuilders.com.au",
   priceRange: "$$$",
