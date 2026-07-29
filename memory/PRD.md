@@ -57,10 +57,10 @@ Redesign the Apollo Builders website with a premium, luxury architecture / desig
 | `/` | Home | Locked luxury hero + services + projects preview |
 | `/about-us` | About | Live-site path preserved; `/about` redirects here |
 | `/services` | Services (index) | 5 service cards |
-| `/new-home-builds` | Services (flat) | Was `/services/new-home-builds` |
-| `/home-renovations` | Services (flat) | Was `/services/home-renovations` |
-| `/bathroom-renovations` | Services (flat) | " |
-| `/kitchen-renovations` | Services (flat) | " |
+| `/new-home-builds` | ServicePage | Verbatim live-site content, dedicated page (was `/services/new-home-builds`) |
+| `/home-renovations` | ServicePage | Verbatim live-site content, dedicated page |
+| `/bathroom-renovations` | ServicePage | Verbatim live-site content + Before/After + Compliance + Service Area |
+| `/kitchen-renovations` | ServicePage | Verbatim live-site content, dedicated page |
 | `/contact-us` | Contact | `/contact` redirects here |
 | `/our-projects` | Projects (index) | Grid of 6 real projects |
 | `/our-projects/{slug}` | ProjectDetail | 6 slugs — **incl. `endevour-hills-renovation`** (live-site typo preserved for URL parity) |
@@ -86,16 +86,9 @@ Redesign the Apollo Builders website with a premium, luxury architecture / desig
 ## What has been implemented
 
 - **2026-06 → 2026-07** — Premium UI/UX rebuild (Navy/Cream/Gold), Fraunces + Inter Tight, 22 total routes, technical SEO foundation (react-helmet-async, structured schema, sitemap + robots), honeypot + timestamp anti-spam on `/api/enquiries`, resource centre (4 articles), 9 suburb landing pages, Lighthouse-target refactor.
-- **2026-07-29 — SEO Migration & Completion (this iteration)**
-  - Crawled live apollobuilders.com.au — 21 canonical URLs inventoried.
-  - Restructured routes so canonical URLs match the live site exactly (flat top-level service URLs, `/about-us`, `/contact-us`, `/our-projects/{slug}`, incl. preserved `endevour-hills-renovation` typo).
-  - Built 13 previously missing pages using the LOCKED design: Projects index + 6 ProjectDetail pages, KitchenLanding, RenovationQuote (3-step), Consult, BurntByBuilders, ThankYou (quote+consult variants).
-  - Legacy paths (`/about`, `/contact`, `/services/:slug`) client-side redirect via `<Navigate replace>`.
-  - `SEO.jsx` normalises trailing-slash on canonical to match Yoast; injects GA4/GTM only when env vars are populated.
-  - JSON-LD (Service/WebPage/FAQPage + Breadcrumb) added to all 4 new conversion landing pages.
-  - Sitemap.xml rewritten to include all live URLs + additive suburb/resource pages.
-  - Extended `data.js` projects[] with per-project `gallery` + `scope` arrays.
-  - Testing agent iteration 17 → 100% backend (37/37 pytest), 95% frontend; all issues from that report have been fixed.
+- **2026-07-29 — SEO Migration & Completion (iterations 17 & 18)**
+  - **Iteration 17:** Crawled live apollobuilders.com.au — 21 canonical URLs inventoried. Restructured routes so canonical URLs match the live site exactly (flat top-level service URLs, `/about-us`, `/contact-us`, `/our-projects/{slug}`, incl. preserved `endevour-hills-renovation` typo). Built 13 previously missing pages using the LOCKED design: Projects index + 6 ProjectDetail pages, KitchenLanding, RenovationQuote (3-step), Consult, BurntByBuilders, ThankYou (quote+consult variants). Legacy paths (`/about`, `/contact`, `/services/:slug`) client-side redirect via `<Navigate replace>`. `SEO.jsx` normalises trailing-slash on canonical to match Yoast; injects GA4/GTM only when env vars are populated. JSON-LD (Service/WebPage/FAQPage + Breadcrumb) added to all 4 new conversion landing pages. Sitemap.xml rewritten to include all live URLs + additive suburb/resource pages. Extended `data.js` projects[] with per-project `gallery` + `scope` arrays.
+  - **Iteration 18:** Replaced the shared Services-index treatment of `/new-home-builds`, `/home-renovations`, `/kitchen-renovations`, `/bathroom-renovations` with 4 dedicated pages driven by a shared `ServicePage.jsx` component and a new content data file (`servicePages.js`) with VERBATIM copy extracted from apollobuilders.com.au (Overview, Design, Inclusions, Focus blocks, Fully-managed, Cost, Why Choose, Related Projects, Bathroom-specific Before/After + Compliance + Service Area, Final CTA). Each page carries a Service + Breadcrumb + LocalBusiness JSON-LD @graph. Testing agent iteration 18: **100% frontend / 42-42 assertions / 0 issues.**
 
 ## Backlog / roadmap
 
