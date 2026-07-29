@@ -42,9 +42,27 @@ for path in "/" "/about-us" "/services" "/new-home-builds" "/home-renovations" \
   check_status "${PROD}${path}" "200" "$path"
 done
 
-# ─── CHECK 1 — Unknown URLs return HTTP 404 ────────────────────────
+# ─── CHECK 1 — Unknown URLs return HTTP 404 (or soft-404 via noindex) ─
+# We can't inspect the client-rendered <meta name=robots> tag with a
+# raw curl on a CRA SPA — but we CAN prove the new build is live by
+# looking for a marker in the static /404.html file that only exists
+# in our new build. If the build hasn't shipped yet, /404.html on prod
+# falls through to /index.html (SPA fallback), which is our tell.
 echo ""
-echo "${BOLD}── CHECK 1: unknown URLs return HTTP 404 ──${RESET}"
+echo "${BOLD}── CHECK 1: unknown URLs return HTTP 404 (or safe soft-404) ──${RESET}"
+static_404=$(curl -s "${PROD}/404.html?nocache=$(date +%s)")
+new_build_live=false
+if echo "$static_404" | grep -q "This page isn.t part of our build"; then
+  new_build_live=true
+  echo "  ${GREEN}✓${RESET} New build detected on production (/404.html contains fix marker)"
+else
+  echo "  ${RED}✗ NEW BUILD NOT DETECTED${RESET} — /404.html still returns SPA fallback."
+  echo "    ${RED}This means the Deploy button has not yet been clicked${RESET}"
+  echo "    ${RED}(or deployment is still in progress). Wait for the deploy${RESET}"
+  echo "    ${RED}success toast in Emergent chat, then re-run this script.${RESET}"
+  fail=$((fail+1))
+fi
+
 for path in "/random-spam-verification-xyz-12345" \
             "/dark-souls-iii-cracked-tiny-girl-repack-pc-version-reddit" \
             "/wp-admin/setup-config.php" "/xmlrpc.php" \
@@ -53,10 +71,12 @@ for path in "/random-spam-verification-xyz-12345" \
   if [[ "$code" == "404" ]]; then
     echo "  ${GREEN}✓ HARD 404${RESET} ${path} → HTTP ${code}"
     pass=$((pass+1))
-  elif [[ "$code" == "200" ]]; then
-    # Soft-404 fallback via React noindex — still SEO-safe
-    echo "  ${YELLOW}~ SOFT 404${RESET} ${path} → HTTP 200 (React noindex active — Googlebot drops from index)"
+  elif [[ "$code" == "200" && "$new_build_live" == "true" ]]; then
+    echo "  ${GREEN}~ SOFT 404${RESET} ${path} → HTTP 200 (new build, React NotFound + noindex active)"
     pass=$((pass+1))
+  elif [[ "$code" == "200" ]]; then
+    echo "  ${RED}✗ RENDERS HOME${RESET} ${path} → HTTP 200 (old build — no noindex, ORIGINAL BUG STILL LIVE)"
+    fail=$((fail+1))
   else
     echo "  ${RED}✗${RESET} ${path} → HTTP ${code}"
     fail=$((fail+1))
