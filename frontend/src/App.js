@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import Lenis from "lenis";
 import { HelmetProvider } from "react-helmet-async";
 import Nav from "@/components/Nav";
@@ -11,6 +11,13 @@ import Services from "@/pages/Services";
 import Contact from "@/pages/Contact";
 import Suburb from "@/pages/Suburb";
 import Resource, { ResourceIndex } from "@/pages/Resource";
+import Projects from "@/pages/Projects";
+import ProjectDetail from "@/pages/ProjectDetail";
+import KitchenLanding from "@/pages/KitchenLanding";
+import RenovationQuote from "@/pages/RenovationQuote";
+import Consult from "@/pages/Consult";
+import BurntByBuilders from "@/pages/BurntByBuilders";
+import ThankYou from "@/pages/ThankYou";
 import { Toaster } from "sonner";
 
 function ScrollTop() {
@@ -45,6 +52,12 @@ function SmoothScroll({ children }) {
   return children;
 }
 
+// Legacy nested services URL → flat top-level URL (URL parity with live site)
+function ServiceSlugRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={`/${slug}`} replace />;
+}
+
 function App() {
   return (
     <div className="App grain">
@@ -56,14 +69,39 @@ function App() {
             <Nav />
             <main id="main">
               <Routes>
+                {/* Canonical URLs — mirror live apollobuilders.com.au structure */}
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/about-us" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/services/:slug" element={<Services />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/new-home-builds" element={<Services />} />
+                <Route path="/home-renovations" element={<Services />} />
+                <Route path="/bathroom-renovations" element={<Services />} />
+                <Route path="/kitchen-renovations" element={<Services />} />
+                <Route path="/contact-us" element={<Contact />} />
+
+                {/* Project pages — live-site slugs preserved */}
+                <Route path="/our-projects" element={<Projects />} />
+                <Route path="/our-projects/:slug" element={<ProjectDetail />} />
+
+                {/* Conversion landing pages */}
+                <Route path="/kitchen-renovation-landing" element={<KitchenLanding />} />
+                <Route path="/renovation-quote" element={<RenovationQuote />} />
+                <Route path="/consult" element={<Consult />} />
+                <Route path="/burnt-by-builders" element={<BurntByBuilders />} />
+                <Route path="/thank-you" element={<ThankYou variant="quote" />} />
+                <Route path="/thanks" element={<ThankYou variant="consult" />} />
+
+                {/* New SEO landing pages (additive, not on legacy site) */}
                 <Route path="/suburbs/:slug" element={<Suburb />} />
                 <Route path="/resources" element={<ResourceIndex />} />
                 <Route path="/resources/:slug" element={<Resource />} />
+
+                {/* Legacy client-side redirects — preserve any bookmarks/backlinks */}
+                <Route path="/about" element={<Navigate to="/about-us" replace />} />
+                <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
+                <Route path="/services/:slug" element={<ServiceSlugRedirect />} />
+
+                {/* 404 fallback */}
                 <Route path="*" element={<Home />} />
               </Routes>
             </main>

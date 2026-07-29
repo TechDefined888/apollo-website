@@ -1,0 +1,44 @@
+{
+  "summary": "SEO migration iteration verified. Backend enquiry API + route parity + sitemap + robots + GA4 all pass (35/35 pytest). Frontend nav, legacy redirects, projects index/detail, and all 4 form submissions (Consult→/thanks, BBB→/thanks, Kitchen→/thank-you, RenovationQuote 3-step→/thank-you) work correctly. 4 conversion landing pages are missing JSON-LD structured data (spec requires 'at least one JSON-LD script' on non-noindex pages).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "seo_issues": [
+      {"page": "/kitchen-renovation-landing", "issue": "No <script type=application/ld+json> tag rendered — spec requires ≥1 JSON-LD per indexable page", "priority": "MEDIUM"},
+      {"page": "/renovation-quote", "issue": "No JSON-LD script tag rendered", "priority": "MEDIUM"},
+      {"page": "/consult", "issue": "No JSON-LD script tag rendered", "priority": "MEDIUM"},
+      {"page": "/burnt-by-builders", "issue": "No JSON-LD script tag rendered", "priority": "MEDIUM"},
+      {"page": "/thanks", "issue": "Spec says consultation-booked flow should show 4 numbered steps; page currently renders same 3-step layout as /thank-you (no STEP N labels detected via DOM scan). Visually verifiable — copy/step-count differentiation between /thank-you (quote) and /thanks (consult) may be incomplete.", "priority": "LOW"}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_enquiries.py",
+    "/app/backend/tests/test_route_parity.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Add JSON-LD (Service/WebPage/FAQPage as appropriate) to KitchenLanding, RenovationQuote, Consult, BurntByBuilders pages via the SEO helper.",
+    "Confirm /thanks (consult variant) renders 4 numbered steps distinct from /thank-you (quote variant) per spec — currently appears to reuse same block."
+  ],
+  "critical_code_review_comments": [
+    "SEO.jsx correctly injects canonical with trailing-slash normalisation and GA4/GTM only when env vars set — validated: no gtag script when REACT_APP_GA4_ID is empty.",
+    "Legacy redirects use <Navigate replace> — final URL updates correctly (no /about, /contact, /services/:slug remain in address bar).",
+    "Backend honeypot + too-fast filter returns 201 to client while silently NOT persisting — matches spec.",
+    "Route-based rendering: 5 flat service routes all share Services.jsx which correctly derives the sub-service from useLocation — good pattern.",
+    "Projects data (endevour-hills-renovation) preserves live-site misspelling — intentional per SEO parity requirement."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_route_parity.py (new)"
+  ],
+  "success_rate": {"backend": "100% (35/35 pytest)", "frontend": "95% — routes/nav/redirects/forms/projects all work; 4 pages missing JSON-LD"},
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "TEST_ prefixed enquiries submitted through Consult/BBB/Kitchen/RenovationQuote flows during UI tests; also submitted via pytest. Backend accepts and returns 201.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 24 canonical routes return 200 with H1+nav+footer+canonical+title+description. Sitemap contains all required URLs. Robots + GA4-absence verified. The only real gap is 4 conversion-landing pages missing JSON-LD. Renovation quote 3-step flow requires clicking tile-buttons (not radios) — use get_by_role('button', name=X, exact=True). Forms have too-fast spam filter: wait ≥3s after loading form before submit."
+}

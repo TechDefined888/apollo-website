@@ -19,6 +19,7 @@ export const trustPoints = [
 ];
 
 // Real Apollo Builders projects — photos + wording from apollobuilders.com.au/our-projects/*
+// Note: Live site canonical URLs use "endevour-hills-renovation" (typo preserved for URL parity)
 export const projects = [
   {
     slug: "drouin-new-build",
@@ -30,6 +31,16 @@ export const projects = [
     hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg",
     description:
       "A modern family home built from the ground up, featuring open-plan living, high ceilings, and premium finishes.",
+    scope: ["Custom-designed family home", "Open-plan living areas", "High ceilings & premium finishes", "Complete project management from planning to handover"],
+    gallery: [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-4-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-7.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg",
+    ],
   },
   {
     slug: "bentleigh-east-renovation",
@@ -41,10 +52,17 @@ export const projects = [
     hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
     description:
       "A complete transformation including kitchen, bathroom and living areas — bright, functional and contemporary.",
+    scope: ["Full home renovation", "New kitchen with custom cabinetry", "New bathroom fit-out", "Updated living areas — open, bright and contemporary"],
+    gallery: [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-2-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/06/Bentleigh-East-5.png",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/06/bentleigh-east-new-4-1.jpg",
+    ],
   },
   {
-    slug: "endeavour-hills-renovation",
-    name: "Endeavour Hills Renovation",
+    slug: "endevour-hills-renovation",
+    name: "Endevour Hills Renovation",
     suburb: "Endeavour Hills",
     type: "Full Renovation + Alfresco",
     image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-1-1024x686.jpg",
@@ -52,6 +70,13 @@ export const projects = [
     hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
     description:
       "Full home renovation featuring new kitchen, bathroom and decked alfresco area for seamless indoor-outdoor living.",
+    scope: ["New kitchen with modern layout", "Bathroom renovation", "Decked alfresco area", "Seamless indoor-outdoor flow"],
+    gallery: [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-1-1024x686.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-3.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/06/endevour-hills-after-5.jpg",
+    ],
   },
   {
     slug: "berwick-new-build",
@@ -63,6 +88,12 @@ export const projects = [
     hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg",
     description:
       "Stylish two-storey home combining functionality and design excellence, built for modern family living.",
+    scope: ["Two-storey custom design", "Modern family living layout", "Premium exterior & interior finishes", "Full project management"],
+    gallery: [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-e1762574957206.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-build-1-2.jpg",
+    ],
   },
   {
     slug: "altona-meadows-renovation",
@@ -75,6 +106,11 @@ export const projects = [
     hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
     description:
       "Modern makeover with open-plan design, luxury finishes and improved flow throughout.",
+    scope: ["Open-plan reconfiguration", "Luxury finishes throughout", "Improved flow between living zones", "Contemporary kitchen and bathroom"],
+    gallery: [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-1-1-e1762576302550.jpg",
+    ],
   },
   {
     slug: "clyde-new-build",
@@ -86,6 +122,14 @@ export const projects = [
     hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1-1024x683.jpg",
     description:
       "New construction designed for comfort, efficiency and modern family life in Clyde.",
+    scope: ["Custom-designed new home", "Energy-efficient construction", "Contemporary family living", "Turn-key project delivery"],
+    gallery: [
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1-1024x683.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-2-1-e1762576012818.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-3-1.jpg",
+      "https://apollobuilders.com.au/wp-content/uploads/2026/06/Clyde-new-build-3-1.jpg",
+    ],
   },
 ];
 

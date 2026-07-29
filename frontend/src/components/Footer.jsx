@@ -38,13 +38,18 @@ export default function Footer() {
             <ul className="mt-6 space-y-3 text-[15px]">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/services/${s.slug}`} className="link-under inline-flex items-center gap-2">
+                  <Link to={`/${s.slug}`} className="link-under inline-flex items-center gap-2">
                     {s.title}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/our-projects" className="link-under inline-flex items-center gap-2">
+                  Our Projects
+                </Link>
+              </li>
               <li className="pt-4">
-                <Link to="/contact" className="link-under inline-flex items-center gap-2 text-[color:var(--gold)] font-semibold text-[12px] tracking-[0.22em] uppercase">
+                <Link to="/contact-us" className="link-under inline-flex items-center gap-2 text-[color:var(--gold)] font-semibold text-[12px] tracking-[0.22em] uppercase">
                   Enquire <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
                 </Link>
               </li>

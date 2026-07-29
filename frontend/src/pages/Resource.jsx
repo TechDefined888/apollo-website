@@ -108,7 +108,7 @@ export default function Resource() {
             Planning a project? Apollo Builders provides no-obligation fixed price quotes across
             Melbourne&rsquo;s South-East.
           </p>
-          <Link to="/contact" className="btn-navy">
+          <Link to="/contact-us" className="btn-navy">
             Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </div>

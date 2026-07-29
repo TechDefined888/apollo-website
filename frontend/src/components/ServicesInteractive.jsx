@@ -116,7 +116,7 @@ export default function ServicesInteractive() {
                             ))}
                           </ul>
                           <Link
-                            to={`/services/${s.slug}`}
+                            to={`/${s.slug}`}
                             className="mt-7 inline-flex items-center gap-2 text-[color:var(--gold)] text-[12px] tracking-[0.22em] uppercase font-semibold link-under"
                           >
                             Discover <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
@@ -180,7 +180,7 @@ export default function ServicesInteractive() {
                         ))}
                       </ul>
                       <Link
-                        to={`/services/${s.slug}`}
+                        to={`/${s.slug}`}
                         className="mt-5 inline-flex items-center gap-2 text-[color:var(--gold)] text-[12px] tracking-[0.22em] uppercase font-semibold"
                       >
                         Discover <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />

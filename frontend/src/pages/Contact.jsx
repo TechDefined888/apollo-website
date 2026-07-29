@@ -47,10 +47,10 @@ export default function Contact() {
   return (
     <div data-testid="contact-page" className="bg-[color:var(--ink-black)] text-[color:var(--paper)]">
       <SEO
-        title="Contact Apollo Builders — Melbourne South-East"
-        description="Contact Apollo Builders for renovations, extensions and custom home builds across Melbourne's South-East. Phone 0422 339 622 or email info@apollobuilders.com.au."
-        path="/contact"
-        jsonLd={{ "@context":"https://schema.org", "@graph":[localBusiness(), breadcrumbSchema([{name:"Home",path:"/"},{name:"Contact",path:"/contact"}])] }}
+        title="Contact Apollo Builders | Melbourne South-East Builders"
+        description="Contact Apollo Builders for renovation, extension, bathroom, kitchen, outdoor and new build enquiries across Melbourne's South-East. Phone 0422 339 622."
+        path="/contact-us/"
+        jsonLd={{ "@context":"https://schema.org", "@graph":[localBusiness(), breadcrumbSchema([{name:"Home",path:"/"},{name:"Contact",path:"/contact-us/"}])] }}
       />
       {/* Editorial hero with real project photograph */}
       <section className="relative pt-16 md:pt-28 pb-24 md:pb-32 overflow-hidden">

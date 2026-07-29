@@ -10,10 +10,10 @@ export default function About() {
   return (
     <div data-testid="about-page">
       <SEO
-        title="About Apollo Builders — Melbourne South-East Building Studio"
-        description="Apollo Builders is a residential building and renovation studio serving Melbourne's South-East. Fully insured, fixed-price quotes, and clear communication on every project."
-        path="/about"
-        jsonLd={{ "@context": "https://schema.org", "@graph": [localBusiness(), breadcrumbSchema([{name:"Home",path:"/"},{name:"About",path:"/about"}])] }}
+        title="About Apollo Builders | Melbourne South-East Renovation Builders"
+        description="Learn about Apollo Builders, a Melbourne South-East building team delivering renovations, extensions, kitchens, bathrooms and custom home projects with care."
+        path="/about-us/"
+        jsonLd={{ "@context": "https://schema.org", "@graph": [localBusiness(), breadcrumbSchema([{name:"Home",path:"/"},{name:"About",path:"/about-us/"}])] }}
       />
       {/* Editorial header + hero image */}
       <section className="pt-16 md:pt-24 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
@@ -138,7 +138,7 @@ export default function About() {
           <h3 className="font-display text-[28px] md:text-[42px] tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.1]">
             Available every step of the way with your construction project.
           </h3>
-          <Link to="/contact" data-testid="about-cta" className="btn-navy">
+          <Link to="/contact-us" data-testid="about-cta" className="btn-navy">
             Get a Free Estimate <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

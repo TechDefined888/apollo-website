@@ -105,7 +105,7 @@ export default function Suburb() {
           <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((sv) => (
               <li key={sv.slug}>
-                <Link to={`/services/${sv.slug}`} className="group block border border-[color:var(--hair)] p-6 bg-white hover:border-[color:var(--gold)] transition-colors">
+                <Link to={`/${sv.slug}`} className="group block border border-[color:var(--hair)] p-6 bg-white hover:border-[color:var(--gold)] transition-colors">
                   <div className="tracking-eyebrow text-[color:var(--gold-dark)]">{sv.number}</div>
                   <h3 className="font-display text-xl md:text-[22px] tracking-[-0.01em] text-[color:var(--ink-black)] mt-3">{sv.title}</h3>
                   <p className="text-[color:var(--ink-soft)] text-[14px] mt-3">{sv.tagline}</p>
@@ -125,7 +125,7 @@ export default function Suburb() {
           <h2 className="font-display text-[30px] md:text-[46px] tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.1]">
             Planning a renovation or new build in {s.name}?
           </h2>
-          <Link to="/contact" className="btn-navy">
+          <Link to="/contact-us" className="btn-navy">
             Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

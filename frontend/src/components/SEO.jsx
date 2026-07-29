@@ -14,7 +14,12 @@ export default function SEO({
   noindex = false,
 }) {
   const base = "https://apollobuilders.com.au";
-  const canonical = `${base}${path}`;
+  // Normalise path: ensure leading slash + trailing slash to match live site (Yoast) canonicalisation
+  let normalised = path.startsWith("/") ? path : `/${path}`;
+  if (normalised !== "/" && !normalised.endsWith("/")) normalised = `${normalised}/`;
+  const canonical = `${base}${normalised}`;
+  const gaId = process.env.REACT_APP_GA4_ID;
+  const gtmId = process.env.REACT_APP_GTM_ID;
   return (
     <Helmet>
       <title>{title}</title>
@@ -35,6 +40,28 @@ export default function SEO({
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>
+      )}
+      {/* Google Analytics 4 — activated only when REACT_APP_GA4_ID is set post-launch */}
+      {gaId && (
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+      )}
+      {gaId && (
+        <script>{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', '${gaId}', { anonymize_ip: true });
+        `}</script>
+      )}
+      {/* Google Tag Manager — activated only when REACT_APP_GTM_ID is set */}
+      {gtmId && (
+        <script>{`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${gtmId}');
+        `}</script>
       )}
     </Helmet>
   );

@@ -1,27 +1,34 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { ArrowUpRight, Minus } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { services } from "@/lib/data";
 import SEO, { serviceSchema, breadcrumbSchema } from "@/components/SEO";
 
 export default function Services() {
-  const { slug } = useParams();
+  const { slug: paramSlug } = useParams();
+  const { pathname } = useLocation();
+  // Support both nested (legacy) and flat top-level canonical URLs (live-site parity)
+  const flat = pathname.replace(/^\/+|\/+$/g, "");
+  const slug =
+    paramSlug ||
+    (services.find((s) => s.slug === flat) ? flat : null);
   const active = services.find((s) => s.slug === slug);
 
   const title = active
-    ? `${active.title} · Melbourne South-East — Apollo Builders`
-    : "Apollo Builders Services — New Home Builds, Renovations, Kitchens, Bathrooms";
+    ? `${active.title} Melbourne | Apollo Builders`
+    : "Apollo Builders Services | Renovations, Extensions & New Builds";
   const description = active
     ? `${active.title} in Melbourne's South-East. ${active.tagline} ${active.body}`
-    : "Apollo Builders delivers new home builds, home renovations, kitchen and bathroom renovations across Melbourne's South-East. Fixed price quotes.";
+    : "Explore Apollo Builders services across Melbourne's South-East, including bathroom renovations, kitchen renovations, extensions, outdoor projects and new builds.";
+  const canonicalPath = active ? `/${active.slug}/` : "/services/";
   const jsonLd = active
-    ? { "@context":"https://schema.org", "@graph":[serviceSchema(active), breadcrumbSchema([{name:"Home",path:"/"},{name:"Services",path:"/services"},{name:active.title,path:`/services/${active.slug}`}])] }
-    : { "@context":"https://schema.org", "@graph":[breadcrumbSchema([{name:"Home",path:"/"},{name:"Services",path:"/services"}]), ...services.map(serviceSchema)] };
+    ? { "@context":"https://schema.org", "@graph":[serviceSchema(active), breadcrumbSchema([{name:"Home",path:"/"},{name:active.title,path:`/${active.slug}/`}])] }
+    : { "@context":"https://schema.org", "@graph":[breadcrumbSchema([{name:"Home",path:"/"},{name:"Services",path:"/services/"}]), ...services.map(serviceSchema)] };
 
   return (
     <div data-testid="services-page">
-      <SEO title={title} description={description} path={active ? `/services/${active.slug}` : "/services"} jsonLd={jsonLd} />
+      <SEO title={title} description={description} path={canonicalPath} jsonLd={jsonLd} />
       <section className="pt-16 md:pt-24 pb-16 md:pb-24 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="tracking-eyebrow text-[color:var(--gold-dark)]">Services</div>
         <h1 className="font-display text-[40px] md:text-[64px] lg:text-[80px] leading-[0.96] tracking-[-0.03em] text-[color:var(--ink-black)] mt-6 max-w-[18ch]">
@@ -77,7 +84,7 @@ export default function Services() {
 
                   <div className="mt-10">
                     <Link
-                      to="/contact"
+                      to="/contact-us"
                       data-testid={`service-cta-${s.slug}`}
                       className="btn-navy"
                     >
@@ -96,7 +103,7 @@ export default function Services() {
           <h2 className="font-display text-[32px] md:text-5xl tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.05]">
             Not sure which service fits? We&rsquo;ll walk your site and advise honestly.
           </h2>
-          <Link to="/contact" className="btn-gold on-light">
+          <Link to="/contact-us" className="btn-gold on-light">
             Book a Consultation <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>
