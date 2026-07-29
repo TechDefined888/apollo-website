@@ -115,8 +115,13 @@ Redesign the Apollo Builders website with a premium, luxury architecture / desig
 ## Recent testing runs
 
 - `/app/test_reports/iteration_17.json` — 100% backend / 95% frontend (JSON-LD gap remedied post-report; retest optional).
-- **2026-07-29 — 404 SPA fix.** Added `/app/frontend/src/pages/NotFound.jsx` (luxury-locked design, MaskLines heading, quick-links grid) and changed the App.js catch-all `*` route from `<Home />` to `<NotFound />`. `NotFound` injects `<meta name="robots" content="noindex, nofollow">`, `<meta name="googlebot" content="noindex, nofollow">`, and `<meta name="prerender-status-code" content="404">` via Helmet, and intentionally omits canonical so no equity flows to spam URLs. Verified end-to-end on the preview URL: known routes (`/`, `/about-us`, `/services`, `/contact-us`, `/kitchen-renovations`) still render correctly with their original titles; unknown routes (`/dark-souls-iii-cracked-…`, `/wp-admin/setup-config.php`, `/some-random-spam-url-xyz-12345`) now render the branded 404 with `robots = "noindex, nofollow"`. `sitemap.xml` + `robots.txt` re-audited — zero spam refs.
-  - **Known limitation (SPA):** the HTTP response status stays 200 because the static frontend host serves `index.html` for every path — this is unavoidable without SSR or ingress-level rules. The `noindex, nofollow` + `prerender-status-code: 404` combination is Google's officially-supported SPA equivalent of a hard 404: Googlebot classifies the URL as soft-404 and drops it from the index. Same protection therefore applies against random spam URLs targeted at the domain.
+- **2026-07-29 — 404 SPA fix + edge defense in depth.**
+  - **Client-side (works everywhere, live now):** `/app/frontend/src/pages/NotFound.jsx` renders on the `*` catch-all with `robots="noindex, nofollow"`, `googlebot="noindex, nofollow"`, `prerender-status-code="404"`. Canonical intentionally omitted. Verified on preview: unknown paths render 404 body; known paths (`/`, `/about-us`, `/services`, `/contact-us`, `/kitchen-renovations`) unchanged.
+  - **Edge layer (defense in depth, activates on any deploy edge that respects the convention):**
+    - `/app/frontend/public/_redirects` — Netlify / Cloudflare Pages / Render style. Allow-lists every canonical route to rewrite → `/index.html 200`, wildcard falls through to `/404.html 404`.
+    - `/app/frontend/public/404.html` — pre-rendered static branded 404 page (Fraunces + Inter Tight, navy/paper/gold, matches locked design). Includes `noindex, nofollow`, `prerender-status-code`. If the edge auto-serves `404.html` (Apache/nginx-style hosts) the SPA fallback in the same edge config keeps valid routes serving `index.html` normally.
+    - **Preview env behaviour (expected):** CRA dev server ignores both files, so preview still returns HTTP 200 with the React NotFound page — this is only a preview limitation. Production edge behaviour must be validated post-deploy via `curl -I https://apollobuilders.com.au/some-random-spam-url`.
+  - **Assets audit:** `sitemap.xml` + `robots.txt` re-checked — 0 spam references.
 
 ## Notes for future agents
 
