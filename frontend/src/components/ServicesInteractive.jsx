@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Plus } from "lucide-react";
@@ -8,9 +8,31 @@ import { services } from "@/lib/data";
  * Interactive services — four large horizontal panels that expand on hover
  * (desktop) or tap (mobile), revealing a large project photo, scope list,
  * and a link to the deep-dive service page.
+ *
+ * @param {Array<string|{slug:string,label:string}>} order  optional custom
+ *   ordering. Entries may be plain slugs OR `{slug, label}` objects when a
+ *   caller (e.g. the homepage) needs a display label that differs from the
+ *   page's canonical title. The linked URL, page H1 and SEO title are
+ *   untouched — only the widget label is swapped.
  */
-export default function ServicesInteractive() {
+export default function ServicesInteractive({ order }) {
   const [active, setActive] = useState(0);
+  const items = useMemo(() => {
+    if (!order?.length) return services;
+    const bySlug = new Map(services.map((s) => [s.slug, s]));
+    return order
+      .map((entry, idx) => {
+        const slug = typeof entry === "string" ? entry : entry.slug;
+        const svc = bySlug.get(slug);
+        if (!svc) return null;
+        const label = typeof entry === "object" && entry.label ? entry.label : svc.title;
+        // Renumber to match the caller-supplied order so the "01/02/03/04"
+        // eyebrow stays in sequence with the reordered cards.
+        const number = String(idx + 1).padStart(2, "0");
+        return { ...svc, title: label, number };
+      })
+      .filter(Boolean);
+  }, [order]);
 
   return (
     <section
@@ -55,7 +77,7 @@ export default function ServicesInteractive() {
       >
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="hidden md:flex w-full h-[520px] gap-2">
-            {services.map((s, i) => {
+            {items.map((s, i) => {
               const isActive = active === i;
               return (
                 <button
@@ -133,7 +155,7 @@ export default function ServicesInteractive() {
 
         {/* Mobile — stacked expandable */}
         <div className="md:hidden">
-          {services.map((s, i) => {
+          {items.map((s, i) => {
             const open = active === i;
             return (
               <div key={s.slug} className="border-b border-[color:var(--paper)]/12">

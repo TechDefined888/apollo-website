@@ -449,7 +449,14 @@ export default function Home() {
       <Hero />
       <TrustBand />
       <Intro />
-      <ServicesInteractive />
+      <ServicesInteractive
+        order={[
+          { slug: "home-renovations", label: "House Renovations" },
+          { slug: "new-home-builds", label: "New Builds" },
+          { slug: "bathroom-renovations", label: "Bathroom Renovations" },
+          { slug: "kitchen-renovations", label: "Kitchen Renovations" },
+        ]}
+      />
       <Projects />
       <Why />
       <BlueprintProcess />
