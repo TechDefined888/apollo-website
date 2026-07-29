@@ -49,7 +49,7 @@ function Hero() {
     >
       <motion.div className="absolute inset-0" style={{ y, scale, x: px, translateY: py }}>
         <img
-          src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg"
+          src="/images/apollo/Berwick-New-Build-5-e1762576152191.jpg"
           alt="Berwick two-storey new home build by Apollo Builders — Melbourne South-East"
           className="w-full h-full object-cover"
           fetchPriority="high"
@@ -398,7 +398,7 @@ function CTA() {
     >
       <div className="absolute inset-0 opacity-[0.18]">
         <img
-          src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg"
+          src="/images/apollo/Drouin-New-Build-10.jpg"
           alt=""
           className="w-full h-full object-cover"
           loading="lazy"

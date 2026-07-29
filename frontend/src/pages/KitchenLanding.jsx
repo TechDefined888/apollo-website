@@ -120,7 +120,7 @@ export default function KitchenLanding() {
       <section className="bg-[color:var(--ink-black)] text-[color:var(--paper)] pt-20 md:pt-28 pb-24 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-25">
           <img
-            src="https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg"
+            src="/images/apollo/endevour-hills-after-4.jpg"
             alt=""
             className="w-full h-full object-cover"
           />

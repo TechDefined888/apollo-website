@@ -1,0 +1,33 @@
+{
+  "summary": "Iteration 20 — Apollo image self-hosting migration verified. All 21 public routes scanned via Playwright: 0 broken images, 0 remote CDN references to apollobuilders.com.au/wp-content. All local /images/apollo/ assets serve 200 with correct MIME. Legacy redirects (/about, /contact, /services/*) work via React Router. POST /api/enquiries -> 201 with email_sent:true using delivered@resend.dev. /api/health reports email_provider:configured. Sitemap and robots.txt still return 200. Fixed one leftover CDN reference in public/index.html preload tag that testing agent found and patched.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_20.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "index.html had a stale <link rel='preload' as='image'> pointing to apollobuilders.com.au CDN — testing agent fixed this (now points to /images/apollo/Berwick-New-Build-5-e1762576152191.jpg). This preload would have caused a 404 (Cloudflare block) on every first paint after DNS cutover. Root cause: main agent's find/replace pass scanned .js/.jsx files but missed public/index.html. Recommend adding public/**/*.html to the audit script in seo_audit.py or apollo_image_inventory.md so this class of miss is caught in future migrations.",
+    "Non-image references to https://apollobuilders.com.au remain in SEO.jsx (canonical URLs, JSON-LD @id, mailto), sitemap.xml, and code comments. These are CORRECT and should NOT be changed — they are metadata for the production domain, not runtime asset fetches."
+  ],
+  "updated_files": [
+    "/app/frontend/public/index.html (replaced CDN preload with /images/apollo/ preload)"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "N/A — no auth in scope. delivered@resend.dev used as safe test recipient for enquiry POST.",
+  "seed_data_creation": "One test enquiry created: id=5f2aea92-d384-4b3d-b132-3f9aa461facf, email=delivered@resend.dev (Resend sink address).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Apollo image migration to local /images/apollo/ (28 files) is complete and verified across 21 routes with 0 broken/CDN images. index.html preload was patched during this iteration. Any future audit should scan public/*.html in addition to src/**/*.{js,jsx}. Backend regression clean: /api/health, POST /api/enquiries, sitemap.xml, robots.txt, legacy redirects all green.",
+  "rca of the issue": "During iteration 20 verification, one CDN reference was still live: /app/frontend/public/index.html line 18 <link rel='preload' as='image' href='https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg'>. Reproduction: grep -r 'apollobuilders.com.au/wp-content' /app/frontend/. Mitigation: replaced with '/images/apollo/Berwick-New-Build-5-e1762576152191.jpg'. Re-verified: Playwright scan of all 21 routes finds 0 CDN img srcs, 0 broken images."
+}

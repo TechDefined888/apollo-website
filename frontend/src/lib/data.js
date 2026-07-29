@@ -7,7 +7,7 @@ export const brand = {
   phoneRaw: "+61422339622",
   email: "info@apollobuilders.com.au",
   region: "Melbourne's South & South-East",
-  logo: "https://apollobuilders.com.au/wp-content/uploads/2023/09/photo_2025-12-03_10-38-14-e1764907039294.png",
+  logo: "/images/apollo/photo_2025-12-03_10-38-14-e1764907039294.png",
 };
 
 // Trust points — exact wording from the current live site
@@ -26,20 +26,20 @@ export const projects = [
     name: "Drouin New Build",
     suburb: "Drouin",
     type: "New Home Build",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg",
+    image: "/images/apollo/drouin-new-build-3.jpg",
     imageAlt: "Drouin new home build interior — Apollo Builders custom family home, Melbourne South-East",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg",
+    hero: "/images/apollo/Drouin-New-Build-10.jpg",
     description:
       "A modern family home built from the ground up, featuring open-plan living, high ceilings, and premium finishes.",
     scope: ["Custom-designed family home", "Open-plan living areas", "High ceilings & premium finishes", "Complete project management from planning to handover"],
     gallery: [
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-3.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9-1.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-4-1.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-7.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg",
+      "/images/apollo/drouin-new-build-3.jpg",
+      "/images/apollo/drouin-new-build-9.jpg",
+      "/images/apollo/drouin-new-build-9-1.jpg",
+      "/images/apollo/drouin-new-build-4-1.jpg",
+      "/images/apollo/drouin-new-build-7.jpg",
+      "/images/apollo/Drouin-New-Build-10.jpg",
+      "/images/apollo/Drouin-New-Build.jpg",
     ],
   },
   {
@@ -47,17 +47,17 @@ export const projects = [
     name: "Bentleigh East Renovation",
     suburb: "Bentleigh East",
     type: "Full Home Renovation",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
+    image: "/images/apollo/bentleigh-east-new-1-1-1024x627.jpg",
     imageAlt: "Bentleigh East full home renovation — kitchen, bathroom and living transformation",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
+    hero: "/images/apollo/bentleigh-east-new-1-1-1024x627.jpg",
     description:
       "A complete transformation including kitchen, bathroom and living areas — bright, functional and contemporary.",
     scope: ["Full home renovation", "New kitchen with custom cabinetry", "New bathroom fit-out", "Updated living areas — open, bright and contemporary"],
     gallery: [
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-2-1.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2026/06/Bentleigh-East-5.png",
-      "https://apollobuilders.com.au/wp-content/uploads/2026/06/bentleigh-east-new-4-1.jpg",
+      "/images/apollo/bentleigh-east-new-1-1-1024x627.jpg",
+      "/images/apollo/bentleigh-east-new-2-1.jpg",
+      "/images/apollo/Bentleigh-East-5.png",
+      "/images/apollo/bentleigh-east-new-4-1.jpg",
     ],
   },
   {
@@ -65,17 +65,17 @@ export const projects = [
     name: "Endevour Hills Renovation",
     suburb: "Endeavour Hills",
     type: "Full Renovation + Alfresco",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-1-1024x686.jpg",
+    image: "/images/apollo/endevour-hills-after-1-1024x686.jpg",
     imageAlt: "Endeavour Hills renovation — new kitchen, bathroom and decked alfresco",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
+    hero: "/images/apollo/endevour-hills-after-4.jpg",
     description:
       "Full home renovation featuring new kitchen, bathroom and decked alfresco area for seamless indoor-outdoor living.",
     scope: ["New kitchen with modern layout", "Bathroom renovation", "Decked alfresco area", "Seamless indoor-outdoor flow"],
     gallery: [
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-1-1024x686.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-3.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2026/06/endevour-hills-after-5.jpg",
+      "/images/apollo/endevour-hills-after-1-1024x686.jpg",
+      "/images/apollo/endevour-hills-after-3.jpg",
+      "/images/apollo/endevour-hills-after-4.jpg",
+      "/images/apollo/endevour-hills-after-5.jpg",
     ],
   },
   {
@@ -83,16 +83,16 @@ export const projects = [
     name: "Berwick New Build",
     suburb: "Berwick",
     type: "Two-Storey New Build",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg",
+    image: "/images/apollo/Berwick-New-Build-5-e1762576152191.jpg",
     imageAlt: "Berwick two-storey new home build by Apollo Builders",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg",
+    hero: "/images/apollo/Berwick-New-Build-5-e1762576152191.jpg",
     description:
       "Stylish two-storey home combining functionality and design excellence, built for modern family living.",
     scope: ["Two-storey custom design", "Modern family living layout", "Premium exterior & interior finishes", "Full project management"],
     gallery: [
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-5-e1762576152191.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-e1762574957206.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-build-1-2.jpg",
+      "/images/apollo/Berwick-New-Build-5-e1762576152191.jpg",
+      "/images/apollo/Berwick-New-Build-e1762574957206.jpg",
+      "/images/apollo/Berwick-New-build-1-2.jpg",
     ],
   },
   {
@@ -101,15 +101,15 @@ export const projects = [
     suburb: "Altona Meadows",
     type: "Home Renovation",
     image:
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
+      "/images/apollo/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
     imageAlt: "Altona Meadows renovation — open-plan design and luxury finishes",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
+    hero: "/images/apollo/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
     description:
       "Modern makeover with open-plan design, luxury finishes and improved flow throughout.",
     scope: ["Open-plan reconfiguration", "Luxury finishes throughout", "Improved flow between living zones", "Contemporary kitchen and bathroom"],
     gallery: [
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-1-1-e1762576302550.jpg",
+      "/images/apollo/Altona-Meadows-after-3-1-e1763617143254-1024x633.jpg",
+      "/images/apollo/Altona-Meadows-after-1-1-e1762576302550.jpg",
     ],
   },
   {
@@ -117,18 +117,18 @@ export const projects = [
     name: "Clyde New Build",
     suburb: "Clyde",
     type: "New Home Build",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1-1024x683.jpg",
+    image: "/images/apollo/Clyde-new-build-1-1024x683.jpg",
     imageAlt: "Clyde new home build — modern family living by Apollo Builders",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1-1024x683.jpg",
+    hero: "/images/apollo/Clyde-new-build-1-1024x683.jpg",
     description:
       "New construction designed for comfort, efficiency and modern family life in Clyde.",
     scope: ["Custom-designed new home", "Energy-efficient construction", "Contemporary family living", "Turn-key project delivery"],
     gallery: [
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1-1024x683.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-2-1-e1762576012818.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-3-1.jpg",
-      "https://apollobuilders.com.au/wp-content/uploads/2026/06/Clyde-new-build-3-1.jpg",
+      "/images/apollo/Clyde-new-build-1-1024x683.jpg",
+      "/images/apollo/Clyde-new-build-1.jpg",
+      "/images/apollo/Clyde-new-build-2-1-e1762576012818.jpg",
+      "/images/apollo/Clyde-new-build-3-1.jpg",
+      "/images/apollo/Clyde-new-build-3-1.jpg",
     ],
   },
 ];
@@ -136,27 +136,27 @@ export const projects = [
 // Editorial before/after imagery pool — real Apollo Builders project photography
 export const gallery = [
   {
-    src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9.jpg",
+    src: "/images/apollo/drouin-new-build-9.jpg",
     alt: "Drouin new build exterior — Apollo Builders custom home",
   },
   {
-    src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
+    src: "/images/apollo/endevour-hills-after-4.jpg",
     alt: "Endeavour Hills kitchen renovation after — Apollo Builders",
   },
   {
-    src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/photo_2025-11-21_12-38-05.webp",
+    src: "/images/apollo/photo_2025-11-21_12-38-05.webp",
     alt: "Full home renovation Melbourne South East — Apollo Builders",
   },
   {
-    src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg",
+    src: "/images/apollo/Drouin-New-Build-10.jpg",
     alt: "Drouin new home build interior — Apollo Builders",
   },
   {
-    src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-7.jpg",
+    src: "/images/apollo/drouin-new-build-7.jpg",
     alt: "Bathroom renovation Melbourne South East — Apollo Builders",
   },
   {
-    src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg",
+    src: "/images/apollo/Drouin-New-Build.jpg",
     alt: "Knockdown and rebuild Melbourne — Apollo Builders",
   },
 ];
@@ -168,7 +168,7 @@ export const services = [
     number: "01",
     title: "New Home Builds",
     tagline: "Custom-designed family homes, knockdown-rebuilds and duplexes.",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9.jpg",
+    image: "/images/apollo/drouin-new-build-9.jpg",
     imageAlt: "New home builder Melbourne South-East — custom Drouin family home",
     body:
       "Dreaming of a home that's completely your own? We design and construct custom new builds that reflect your lifestyle, budget and vision. From planning and permits through to handover, we take care of every stage.",
@@ -184,7 +184,7 @@ export const services = [
     number: "02",
     title: "Home Renovations",
     tagline: "Full renovations, extensions and outdoor living spaces.",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/photo_2025-11-21_12-38-05.webp",
+    image: "/images/apollo/photo_2025-11-21_12-38-05.webp",
     imageAlt: "Full home renovation and extension — Apollo Builders",
     body:
       "Transform your existing home with our expert renovation team. Whether it's a full makeover or modernising key spaces, we deliver precision workmanship and reliable results.",
@@ -200,7 +200,7 @@ export const services = [
     number: "03",
     title: "Bathroom Renovations",
     tagline: "Waterproofing, tiling, plumbing, lighting and finishes.",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-7.jpg",
+    image: "/images/apollo/drouin-new-build-7.jpg",
     imageAlt: "Bathroom renovation Melbourne South-East — Apollo Builders",
     body:
       "A great bathroom blends comfort, functionality and style. We handle every aspect of your bathroom renovation — from waterproofing and tiling to plumbing, lighting and finishes.",
@@ -215,7 +215,7 @@ export const services = [
     number: "04",
     title: "Kitchen Renovations",
     tagline: "Custom cabinetry, benchtops and open-plan redesigns.",
-    image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg",
+    image: "/images/apollo/endevour-hills-after-4.jpg",
     imageAlt: "Kitchen renovation Melbourne — Apollo Builders",
     body:
       "Your kitchen is the heart of your home; make it one you'll love every day. Our team designs and builds kitchens that combine beauty, practicality and quality craftsmanship.",

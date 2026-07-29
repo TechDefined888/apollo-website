@@ -27,7 +27,7 @@ export default function About() {
         <Reveal>
           <div className="frame aspect-[16/9] md:aspect-[21/9]">
             <img
-              src="https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg"
+              src="/images/apollo/Drouin-New-Build.jpg"
               alt="Apollo Builders — knockdown and rebuild specialist project in Drouin"
             />
           </div>

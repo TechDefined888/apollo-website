@@ -12,7 +12,7 @@ export const servicePages = {
     tagline: "We build new homes across Melbourne's South-East.",
     metaDescription:
       "Build a custom new home in Melbourne with Apollo Builders. Fixed-price planning, quality workmanship and clear communication from start to finish.",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-9-1.jpg",
+    hero: "/images/apollo/drouin-new-build-9-1.jpg",
     intro: {
       heading: "Quality New Homes Builder Across Melbourne's South-East",
       body: [
@@ -21,9 +21,9 @@ export const servicePages = {
       ],
     },
     collage: [
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-Build-e1762574957206.jpg", alt: "Apollo Builders Berwick new home build exterior" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2026/06/drouin-new-build-9.jpg", alt: "New Home Build Services in Melbourne South-East" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1.jpg", alt: "New home build Clyde by Apollo Builders" },
+      { src: "/images/apollo/Berwick-New-Build-e1762574957206.jpg", alt: "Apollo Builders Berwick new home build exterior" },
+      { src: "/images/apollo/drouin-new-build-9.jpg", alt: "New Home Build Services in Melbourne South-East" },
+      { src: "/images/apollo/Clyde-new-build-1.jpg", alt: "New home build Clyde by Apollo Builders" },
     ],
     designSection: {
       heading: "Custom New Home Builds Designed Around You",
@@ -52,7 +52,7 @@ export const servicePages = {
           "Our New Home Builds include knockdown and rebuild projects that allow you to maximise your block while enjoying a brand-new, modern home. We handle demolition, planning approvals, and construction, ensuring your new home meets current standards while making the most of your land.",
           "This approach often delivers better long-term value than extensive renovations on older structures.",
         ],
-        image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build.jpg",
+        image: "/images/apollo/Drouin-New-Build.jpg",
         imageAlt: "Knockdown and rebuild specialists — Apollo Builders",
       },
       {
@@ -61,7 +61,7 @@ export const servicePages = {
           "Apollo Builders also delivers New Home Builds for duplexes and multi-unit developments. Whether you're an owner-builder, investor, or developer, we provide practical building solutions that balance design, cost, and buildability.",
           "Our team understands the additional planning, engineering, and coordination required for multi-dwelling projects and ensures all work complies with council requirements and building regulations.",
         ],
-        image: "https://apollobuilders.com.au/wp-content/uploads/2025/10/contemporary-villa-with-pool-garden-sleek-design-scaled.jpg",
+        image: "/images/apollo/contemporary-villa-with-pool-garden-sleek-design-scaled.jpg",
         imageAlt: "Contemporary duplex new home build with pool and garden",
       },
     ],
@@ -79,7 +79,7 @@ export const servicePages = {
     ],
     fullyManagedOutro:
       "This integrated approach ensures consistency, accountability, and a smoother building experience.",
-    fullyManagedImage: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-1.jpg",
+    fullyManagedImage: "/images/apollo/Clyde-new-build-1.jpg",
     whyChooseHeading: "Why Choose Apollo Builders For New Home Builds?",
     whyChooseIntro:
       "Building a new home requires trust, experience, and attention to detail. Homeowners choose Apollo Builders for New Home Builds because we offer:",
@@ -107,7 +107,7 @@ export const servicePages = {
     tagline: "Renovating your dream homes across Melbourne's South-East.",
     metaDescription:
       "Complete home renovations across Melbourne's South-East by Apollo Builders. Extensions, layout reconfigurations, premium finishes and end-to-end project management.",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/remodeling-app.webp",
+    hero: "/images/apollo/remodeling-app.webp",
     intro: {
       heading: "Quality Home Renovations Across Melbourne's South-East",
       body: [
@@ -117,9 +117,9 @@ export const servicePages = {
       ],
     },
     collage: [
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/photo_2025-11-21_12-38-05.webp", alt: "Home renovations by Apollo Builders" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Drouin-New-Build-10.jpg", alt: "Renovated home in Drouin" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/remodeling-app.webp", alt: "Contemporary home renovation" },
+      { src: "/images/apollo/photo_2025-11-21_12-38-05.webp", alt: "Home renovations by Apollo Builders" },
+      { src: "/images/apollo/Drouin-New-Build-10.jpg", alt: "Renovated home in Drouin" },
+      { src: "/images/apollo/remodeling-app.webp", alt: "Contemporary home renovation" },
     ],
     designSection: {
       heading: "Home Renovations Designed for the Way You Live",
@@ -158,7 +158,7 @@ export const servicePages = {
         bodyAfter: [
           "A well-planned renovation delivers the benefits of a new home without the stress of moving.",
         ],
-        image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/drouin-new-build-4-1.jpg",
+        image: "/images/apollo/drouin-new-build-4-1.jpg",
         imageAlt: "Renovated home interior — Apollo Builders",
       },
     ],
@@ -176,7 +176,7 @@ export const servicePages = {
     ],
     fullyManagedOutro:
       "This end-to-end approach ensures your renovation runs smoothly, stays on budget and delivers lasting value for your home.",
-    fullyManagedImage: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Altona-Meadows-after-1-1-e1762576302550.jpg",
+    fullyManagedImage: "/images/apollo/Altona-Meadows-after-1-1-e1762576302550.jpg",
     costSection: {
       heading: "How Much Does a Home Renovation Cost in Melbourne?",
       intro: "The cost of a home renovation depends on several factors, including:",
@@ -218,7 +218,7 @@ export const servicePages = {
     tagline: "Renovating kitchens across Melbourne's South-East.",
     metaDescription:
       "Professional kitchen renovations in Melbourne by Apollo Builders. Custom cabinetry, open-plan redesigns and full kitchen rebuilds.",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-3.jpg",
+    hero: "/images/apollo/endevour-hills-after-3.jpg",
     intro: {
       heading: "Quality Kitchen Renovations Across Melbourne's South-East",
       body: [
@@ -227,9 +227,9 @@ export const servicePages = {
       ],
     },
     collage: [
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-4.jpg", alt: "Kitchen renovation Endevour Hills by Apollo Builders" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Berwick-New-build-1-2.jpg", alt: "Kitchen renovation Berwick" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-2-1.jpg", alt: "Kitchen renovation Bentleigh East" },
+      { src: "/images/apollo/endevour-hills-after-4.jpg", alt: "Kitchen renovation Endevour Hills by Apollo Builders" },
+      { src: "/images/apollo/Berwick-New-build-1-2.jpg", alt: "Kitchen renovation Berwick" },
+      { src: "/images/apollo/bentleigh-east-new-2-1.jpg", alt: "Kitchen renovation Bentleigh East" },
     ],
     designSection: {
       heading: "Kitchen Renovations Designed For The Way You Live",
@@ -257,7 +257,7 @@ export const servicePages = {
           "Cabinetry and benchtops are central to any kitchen renovation. Our Kitchen Renovations include custom cabinetry solutions designed to maximise storage while maintaining a clean, functional aesthetic.",
           "We help you select materials and finishes that suit your style, budget, and long-term needs. From durable benchtops to practical storage solutions, every detail is carefully considered to ensure a lasting result.",
         ],
-        image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-2-1-e1762576012818.jpg",
+        image: "/images/apollo/Clyde-new-build-2-1-e1762576012818.jpg",
         imageAlt: "Custom cabinetry kitchen renovation — Apollo Builders",
       },
       {
@@ -266,7 +266,7 @@ export const servicePages = {
           "Many homeowners choose Kitchen Renovations to create a more open, connected living space. Open-plan designs improve flow, natural light, and usability, making kitchens feel larger and more inviting.",
           "Apollo Builders has extensive experience redesigning kitchens to integrate seamlessly with dining and living areas, creating spaces that are ideal for entertaining and family life.",
         ],
-        image: "https://apollobuilders.com.au/wp-content/uploads/2025/11/bentleigh-east-new-1-1-1024x627.jpg",
+        image: "/images/apollo/bentleigh-east-new-1-1-1024x627.jpg",
         imageAlt: "Open-plan kitchen redesign by Apollo Builders",
       },
     ],
@@ -284,7 +284,7 @@ export const servicePages = {
     ],
     fullyManagedOutro:
       "This end-to-end approach ensures your kitchen renovation is delivered efficiently and to a high standard.",
-    fullyManagedImage: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-3.jpg",
+    fullyManagedImage: "/images/apollo/endevour-hills-after-3.jpg",
     costSection: {
       heading: "What Affects The Cost Of Kitchen Renovations In Melbourne?",
       intro:
@@ -326,11 +326,11 @@ export const servicePages = {
     tagline: "Custom bathroom renovations designed and built by experienced Melbourne builders.",
     metaDescription:
       "Expert bathroom renovations in Melbourne by Apollo Builders. Complete design, waterproofing, plumbing and finishes delivered on time.",
-    hero: "https://apollobuilders.com.au/wp-content/uploads/2026/06/Bentleigh-East-5.png",
+    hero: "/images/apollo/Bentleigh-East-5.png",
     beforeAfter: {
       heading: "Before & After Bathroom Transformations",
       body: "See how Apollo Builders transforms outdated bathrooms into modern, functional and beautifully finished spaces. This Bentleigh bathroom renovation transformed a dated and underutilised space into a modern, light-filled bathroom featuring premium finishes, improved functionality and contemporary design. The renovation included updated tiling, a new vanity, frameless shower screen and modern fixtures to create a space that is both practical and visually appealing for everyday living.",
-      image: "https://apollobuilders.com.au/wp-content/uploads/2026/06/Bentleigh-East-5.png",
+      image: "/images/apollo/Bentleigh-East-5.png",
       imageAlt: "Bentleigh bathroom renovation before and after transformation",
     },
     intro: {
@@ -341,9 +341,9 @@ export const servicePages = {
       ],
     },
     collage: [
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/Clyde-new-build-3-1.jpg", alt: "Bathroom renovations Clyde by Apollo Builders" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2025/11/endevour-hills-after-5.jpg", alt: "Bathroom renovations Endevour Hills" },
-      { src: "https://apollobuilders.com.au/wp-content/uploads/2026/06/bentleigh-east-new-4-1.jpg", alt: "Bathroom renovations Bentleigh East" },
+      { src: "/images/apollo/Clyde-new-build-3-1.jpg", alt: "Bathroom renovations Clyde by Apollo Builders" },
+      { src: "/images/apollo/endevour-hills-after-5.jpg", alt: "Bathroom renovations Endevour Hills" },
+      { src: "/images/apollo/bentleigh-east-new-4-1.jpg", alt: "Bathroom renovations Bentleigh East" },
     ],
     inclusionsHeading: "Complete Bathroom Renovations From Conception to Completion",
     inclusionsIntro:
@@ -365,7 +365,7 @@ export const servicePages = {
         "Our Bathroom Renovations are designed around how you actually use the space. We consider layout, storage, lighting, ventilation, and material selection to ensure your new bathroom is comfortable, functional, and easy to maintain.",
         "Apollo Builders works closely with homeowners to tailor each bathroom renovation to their style preferences, budget, and long-term needs.",
       ],
-      image: "https://apollobuilders.com.au/wp-content/uploads/2026/06/bentleigh-east-new-4-1.jpg",
+      image: "/images/apollo/bentleigh-east-new-4-1.jpg",
       imageAlt: "Bathroom design tailored for everyday living",
     },
     focusBlocks: [
@@ -385,7 +385,7 @@ export const servicePages = {
         bodyAfter: [
           "Whether you're updating a compact bathroom or creating a luxury retreat, our experienced team manages every stage of the renovation process with a focus on quality, functionality and long-term value.",
         ],
-        image: "https://apollobuilders.com.au/wp-content/uploads/2026/06/endevour-hills-after-5.jpg",
+        image: "/images/apollo/endevour-hills-after-5.jpg",
         imageAlt: "Bathroom renovation services Melbourne",
       },
     ],
