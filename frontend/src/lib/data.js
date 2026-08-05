@@ -219,8 +219,12 @@ export const projects = [
     relatedServices: ["new-home-builds"],
     scope: ["Two-storey custom design", "Modern family living layout", "Premium exterior & interior finishes", "Full project management"],
     gallery: [
+      // Cleaned 2026-08 — removed Berwick-New-Build-e1762574957206.jpg from
+      // gallery: perceptual hash matched Berwick-New-Build-5 at 98% (hamming
+      // distance 5/256, file sizes within 0.15%). WordPress re-encoded the
+      // same exterior photo under two timestamps. Kept the -5- version as
+      // the higher-quality hero + 1 unique interior.
       "/images/apollo/Berwick-New-Build-5-e1762576152191.jpg",
-      "/images/apollo/Berwick-New-Build-e1762574957206.jpg",
       "/images/apollo/Berwick-New-build-1-2.jpg",
     ],
   },
