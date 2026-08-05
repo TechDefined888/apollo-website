@@ -65,13 +65,14 @@ export const projects = [
     relatedServices: ["new-home-builds"],
     scope: ["Custom-designed family home", "Open-plan living areas", "High ceilings & premium finishes", "Complete project management from planning to handover"],
     gallery: [
+      // Cleaned 2026-08 — removed drouin-new-build-9.jpg + drouin-new-build-9-1.jpg
+      // (different property — white-render exterior with light stone column, not the
+      // actual Drouin build) and Drouin-New-Build.jpg (byte-for-byte duplicate of
+      // Drouin-New-Build-10.jpg). Order preserved: interior progression → exterior finale.
       "/images/apollo/drouin-new-build-3.jpg",
-      "/images/apollo/drouin-new-build-9.jpg",
-      "/images/apollo/drouin-new-build-9-1.jpg",
       "/images/apollo/drouin-new-build-4-1.jpg",
       "/images/apollo/drouin-new-build-7.jpg",
       "/images/apollo/Drouin-New-Build-10.jpg",
-      "/images/apollo/Drouin-New-Build.jpg",
     ],
   },
   {
