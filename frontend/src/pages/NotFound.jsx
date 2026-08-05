@@ -88,7 +88,7 @@ export default function NotFound() {
             Return to homepage <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
           <Link
-            to="/contact-us"
+            to="/contact-us/"
             data-testid="not-found-contact-cta"
             className="btn-ghost"
           >

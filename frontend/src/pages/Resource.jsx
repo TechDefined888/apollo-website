@@ -32,7 +32,7 @@ export function ResourceIndex() {
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {articles.map((a) => (
             <li key={a.slug} className="border-t border-[color:var(--hair)] pt-8">
-              <Link to={`/resources/${a.slug}`} className="group block">
+              <Link to={`/resources/${a.slug}/`} className="group block">
                 <div className="frame aspect-[16/10]">
                   <img src={a.image} alt={a.alt} loading="lazy" />
                 </div>
@@ -55,7 +55,7 @@ export function ResourceIndex() {
 export default function Resource() {
   const { slug } = useParams();
   const a = resourceArticles[slug];
-  if (!a) return <Navigate to="/resources" replace />;
+  if (!a) return <Navigate to="/resources/" replace />;
 
   const path = `/resources/${slug}`;
   const jsonLd = {
@@ -108,7 +108,7 @@ export default function Resource() {
             Planning a project? Apollo Builders provides no-obligation fixed price quotes across
             Melbourne&rsquo;s South-East.
           </p>
-          <Link to="/contact-us" className="btn-navy">
+          <Link to="/contact-us/" className="btn-navy">
             Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </div>
@@ -118,13 +118,13 @@ export default function Resource() {
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[14px]">
             {Object.values(suburbData).map((s) => (
               <li key={s.name}>
-                <Link to={`/suburbs/${s.name.toLowerCase().replace(/\s+/g, "-")}`} className="link-under text-[color:var(--ink-black)]">
+                <Link to={`/suburbs/${s.name.toLowerCase().replace(/\s+/g, "-")}/`} className="link-under text-[color:var(--ink-black)]">
                   {s.name}
                 </Link>
               </li>
             ))}
             <li key="clayton">
-              <Link to="/builders-clayton" className="link-under text-[color:var(--ink-black)]">
+              <Link to="/builders-clayton/" className="link-under text-[color:var(--ink-black)]">
                 Clayton
               </Link>
             </li>

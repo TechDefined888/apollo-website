@@ -1,60 +1,80 @@
-# Apollo Builders — edge routing rules for static SPA hosts that respect
-# the Netlify-style `_redirects` convention (Netlify, Cloudflare Pages,
-# Render, etc). Purpose: return REAL HTTP 404 for unknown routes while
-# still serving React Router index.html (200) for known routes.
+# Apollo Builders — edge routing rules.
 #
-# Behaviour:
-#   • Physical files under /images, /static, /robots.txt, /sitemap.xml,
-#     etc are served directly (200) — _redirects only applies when no
-#     file matches the request path.
-#   • Every canonical SPA route below is rewritten to /index.html with
-#     a 200 status so React Router can render the correct page.
-#   • Anything else falls through the final wildcard and is served as
-#     /404.html with a real HTTP 404 status.
+# Two responsibilities:
+#   1. Enforce trailing-slash canonical URLs — every slash-less canonical
+#      path 301-redirects to its trailing-slash equivalent.
+#   2. Serve the SPA (`/index.html` 200) for the canonical trailing-slash
+#      paths, and a real HTTP 404 for anything else.
 #
-# If the deployment edge does NOT respect this file, it is harmless —
-# the CRA build ignores it and the React SPA still handles unknown
-# routes client-side via the NotFound page (noindex, nofollow).
+# Order matters — first match wins on Netlify / Cloudflare Pages /
+# Render / other Netlify-convention edges. On edges that ignore
+# `_redirects` entirely the client-side `<TrailingSlashRedirect>` and
+# `<meta rel="canonical">` still enforce the single canonical URL.
 
-# ── Core pages ──────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════
+# 1. 301: no-slash → slash (canonical URL enforcement)
+# ══════════════════════════════════════════════════════════════════════
+/about-us                      /about-us/                     301!
+/services                      /services/                     301!
+/new-home-builds               /new-home-builds/              301!
+/home-renovations              /home-renovations/             301!
+/bathroom-renovations          /bathroom-renovations/         301!
+/kitchen-renovations           /kitchen-renovations/          301!
+/contact-us                    /contact-us/                   301!
+/our-projects                  /our-projects/                 301!
+/our-projects/:slug            /our-projects/:slug/           301!
+/kitchen-renovation-landing    /kitchen-renovation-landing/   301!
+/renovation-quote              /renovation-quote/             301!
+/consult                       /consult/                      301!
+/burnt-by-builders             /burnt-by-builders/            301!
+/thank-you                     /thank-you/                    301!
+/suburbs/:slug                 /suburbs/:slug/                301!
+/resources                     /resources/                    301!
+/resources/:slug               /resources/:slug/              301!
+/privacy-policy                /privacy-policy/               301!
+/cookie-policy                 /cookie-policy/                301!
+/terms-of-use                  /terms-of-use/                 301!
+/builders-clayton              /builders-clayton/             301!
+
+# Legacy redirects preserved (from WordPress-era backlinks).
+/about                         /about-us/                     301
+/contact                       /contact-us/                   301
+/services/:slug                /:slug/                        301
+
+# ══════════════════════════════════════════════════════════════════════
+# 2. 200: canonical trailing-slash paths → SPA (rewrite, no redirect)
+# ══════════════════════════════════════════════════════════════════════
 /                              /index.html   200
-/about-us                      /index.html   200
-/services                      /index.html   200
-/new-home-builds               /index.html   200
-/home-renovations              /index.html   200
-/bathroom-renovations          /index.html   200
-/kitchen-renovations           /index.html   200
-/contact-us                    /index.html   200
 
-# ── Project portfolio ───────────────────────────────────────────────
-/our-projects                  /index.html   200
+/about-us/                     /index.html   200
+/services/                     /index.html   200
+/new-home-builds/              /index.html   200
+/home-renovations/             /index.html   200
+/bathroom-renovations/         /index.html   200
+/kitchen-renovations/          /index.html   200
+/contact-us/                   /index.html   200
+
+/our-projects/                 /index.html   200
 /our-projects/*                /index.html   200
 
-# ── Conversion landing pages ────────────────────────────────────────
-/kitchen-renovation-landing    /index.html   200
-/renovation-quote              /index.html   200
-/consult                       /index.html   200
-/burnt-by-builders             /index.html   200
-/thank-you                     /index.html   200
+/kitchen-renovation-landing/   /index.html   200
+/renovation-quote/             /index.html   200
+/consult/                      /index.html   200
+/burnt-by-builders/            /index.html   200
+/thank-you/                    /index.html   200
 /thanks                        /index.html   200
 
-# ── SEO landing pages ───────────────────────────────────────────────
 /suburbs/*                     /index.html   200
-/resources                     /index.html   200
+/resources/                    /index.html   200
 /resources/*                   /index.html   200
 
-# ── Location SEO landing pages ──────────────────────────────────────
-/builders-clayton              /index.html   200
+/privacy-policy/               /index.html   200
+/cookie-policy/                /index.html   200
+/terms-of-use/                 /index.html   200
 
-# ── Legal ───────────────────────────────────────────────────────────
-/privacy-policy                /index.html   200
-/cookie-policy                 /index.html   200
-/terms-of-use                  /index.html   200
+/builders-clayton/             /index.html   200
 
-# ── Legacy compatibility (client-side <Navigate>) ───────────────────
-/about                         /index.html   200
-/contact                       /index.html   200
-/services/*                    /index.html   200
-
-# ── Everything else → real HTTP 404 ─────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════
+# 3. Fall-through: real HTTP 404 for unknown paths
+# ══════════════════════════════════════════════════════════════════════
 /*                             /404.html     404

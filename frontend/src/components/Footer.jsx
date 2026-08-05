@@ -38,18 +38,18 @@ export default function Footer() {
             <ul className="mt-6 space-y-3 text-[15px]">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/${s.slug}`} className="link-under inline-flex items-center gap-2">
+                  <Link to={`/${s.slug}/`} className="link-under inline-flex items-center gap-2">
                     {s.title}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/our-projects" className="link-under inline-flex items-center gap-2">
+                <Link to="/our-projects/" className="link-under inline-flex items-center gap-2">
                   Our Projects
                 </Link>
               </li>
               <li className="pt-4">
-                <Link to="/contact-us" className="link-under inline-flex items-center gap-2 text-[color:var(--gold)] font-semibold text-[12px] tracking-[0.22em] uppercase">
+                <Link to="/contact-us/" className="link-under inline-flex items-center gap-2 text-[color:var(--gold)] font-semibold text-[12px] tracking-[0.22em] uppercase">
                   Enquire <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
                 </Link>
               </li>
@@ -75,16 +75,16 @@ export default function Footer() {
             <div className="tracking-eyebrow text-[color:var(--gold)] mt-12">Areas We Service</div>
             <ul className="mt-6 grid grid-cols-2 gap-y-2 gap-x-4 text-[14px]" data-testid="footer-areas-list">
               {[
-                { label: "Bentleigh",       href: "/suburbs/bentleigh" },
-                { label: "Bentleigh East",  href: "/suburbs/bentleigh-east" },
-                { label: "Berwick",         href: "/suburbs/berwick" },
-                { label: "Brighton",        href: "/suburbs/brighton" },
-                { label: "Cheltenham",      href: "/suburbs/cheltenham" },
-                { label: "Clayton",         href: "/builders-clayton" },
-                { label: "Clyde",           href: "/suburbs/clyde" },
-                { label: "Glen Waverley",   href: "/suburbs/glen-waverley" },
-                { label: "Hampton",         href: "/suburbs/hampton" },
-                { label: "Mentone",         href: "/suburbs/mentone" },
+                { label: "Bentleigh",       href: "/suburbs/bentleigh/" },
+                { label: "Bentleigh East",  href: "/suburbs/bentleigh-east/" },
+                { label: "Berwick",         href: "/suburbs/berwick/" },
+                { label: "Brighton",        href: "/suburbs/brighton/" },
+                { label: "Cheltenham",      href: "/suburbs/cheltenham/" },
+                { label: "Clayton",         href: "/builders-clayton/" },
+                { label: "Clyde",           href: "/suburbs/clyde/" },
+                { label: "Glen Waverley",   href: "/suburbs/glen-waverley/" },
+                { label: "Hampton",         href: "/suburbs/hampton/" },
+                { label: "Mentone",         href: "/suburbs/mentone/" },
               ].map((a) => (
                 <li key={a.href}>
                   <Link
@@ -98,7 +98,7 @@ export default function Footer() {
               ))}
             </ul>
             <div className="tracking-eyebrow text-[color:var(--gold)] mt-8">
-              <Link to="/resources" className="link-under">Resources</Link>
+              <Link to="/resources/" className="link-under">Resources</Link>
             </div>
             <p className="mt-6 text-[14px] leading-relaxed text-[color:var(--paper)]/80">
               {suburbs.join(" · ")}
@@ -110,17 +110,17 @@ export default function Footer() {
           <div>© {new Date().getFullYear()} Apollo Builders</div>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <li>
-              <Link to="/privacy-policy" data-testid="footer-privacy" className="link-under">
+              <Link to="/privacy-policy/" data-testid="footer-privacy" className="link-under">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link to="/cookie-policy" data-testid="footer-cookies" className="link-under">
+              <Link to="/cookie-policy/" data-testid="footer-cookies" className="link-under">
                 Cookie Policy
               </Link>
             </li>
             <li>
-              <Link to="/terms-of-use" data-testid="footer-terms" className="link-under">
+              <Link to="/terms-of-use/" data-testid="footer-terms" className="link-under">
                 Terms of Use
               </Link>
             </li>

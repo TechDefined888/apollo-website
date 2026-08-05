@@ -5,10 +5,10 @@ import { brand } from "@/lib/data";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/about-us", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/our-projects", label: "Projects" },
-  { to: "/contact-us", label: "Contact" },
+  { to: "/about-us/", label: "About" },
+  { to: "/services/", label: "Services" },
+  { to: "/our-projects/", label: "Projects" },
+  { to: "/contact-us/", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -82,7 +82,7 @@ export default function Nav() {
                   {brand.phone}
                 </a>
                 <Link
-                  to="/contact-us"
+                  to="/contact-us/"
                   data-testid="nav-cta"
                   className="btn-gold hidden md:inline-flex"
                 >
@@ -127,7 +127,7 @@ export default function Nav() {
             >
               {brand.phone}
             </a>
-            <Link to="/contact-us" className="btn-gold w-max">Enquire</Link>
+            <Link to="/contact-us/" className="btn-gold w-max">Enquire</Link>
           </nav>
         </div>
       )}

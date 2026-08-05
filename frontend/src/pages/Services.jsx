@@ -84,7 +84,7 @@ export default function Services() {
 
                   <div className="mt-10">
                     <Link
-                      to="/contact-us"
+                      to="/contact-us/"
                       data-testid={`service-cta-${s.slug}`}
                       className="btn-navy"
                     >
@@ -103,7 +103,7 @@ export default function Services() {
           <h2 className="font-display text-[32px] md:text-5xl tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.05]">
             Not sure which service fits? We&rsquo;ll walk your site and advise honestly.
           </h2>
-          <Link to="/contact-us" className="btn-gold on-light">
+          <Link to="/contact-us/" className="btn-gold on-light">
             Book a Consultation <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

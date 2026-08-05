@@ -50,7 +50,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <Reveal key={p.slug} y={30} delay={(i % 2) * 0.08}>
               <Link
-                to={`/our-projects/${p.slug}`}
+                to={`/our-projects/${p.slug}/`}
                 data-testid={`project-card-${p.slug}`}
                 className="group block"
               >
@@ -90,7 +90,7 @@ export default function Projects() {
           <h2 className="font-display text-[32px] md:text-5xl tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.05]">
             Have a project of your own in mind? We&rsquo;d love to help bring it to life.
           </h2>
-          <Link to="/contact-us" data-testid="projects-cta" className="btn-navy">
+          <Link to="/contact-us/" data-testid="projects-cta" className="btn-navy">
             Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

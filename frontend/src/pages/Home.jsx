@@ -94,7 +94,7 @@ function Hero() {
             transition={{ duration: 1, ease, delay: 1.15 }}
             className="flex items-center gap-6 md:gap-8"
           >
-            <Link to="/contact-us" data-testid="hero-cta" className="btn-gold">
+            <Link to="/contact-us/" data-testid="hero-cta" className="btn-gold">
               Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
             <a
@@ -420,7 +420,7 @@ function CTA() {
           </p>
         </Reveal>
         <Reveal className="md:col-span-4" delay={0.06}>
-          <Link to="/contact-us" data-testid="final-cta-btn" className="btn-gold">
+          <Link to="/contact-us/" data-testid="final-cta-btn" className="btn-gold">
             Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

@@ -22,6 +22,7 @@ import ThankYou from "@/pages/ThankYou";
 import Legal from "@/pages/Legal";
 import BuildersClayton from "@/pages/BuildersClayton";
 import NotFound from "@/pages/NotFound";
+import TrailingSlashRedirect from "@/components/TrailingSlashRedirect";
 import { Toaster } from "sonner";
 
 function ScrollTop() {
@@ -59,7 +60,7 @@ function SmoothScroll({ children }) {
 // Legacy nested services URL → flat top-level URL (URL parity with live site)
 function ServiceSlugRedirect() {
   const { slug } = useParams();
-  return <Navigate to={`/${slug}`} replace />;
+  return <Navigate to={`/${slug}/`} replace />;
 }
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
     <div className="App grain">
       <HelmetProvider>
         <BrowserRouter>
+          <TrailingSlashRedirect />
           <SmoothScroll>
             <ScrollTop />
             <a href="#main" className="skip-nav">Skip to main content</a>
@@ -109,8 +111,8 @@ function App() {
                 <Route path="/terms-of-use" element={<Legal />} />
 
                 {/* Legacy client-side redirects — preserve any bookmarks/backlinks */}
-                <Route path="/about" element={<Navigate to="/about-us" replace />} />
-                <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
+                <Route path="/about" element={<Navigate to="/about-us/" replace />} />
+                <Route path="/contact" element={<Navigate to="/contact-us/" replace />} />
                 <Route path="/services/:slug" element={<ServiceSlugRedirect />} />
 
                 {/* 404 fallback — renders NotFound with noindex,nofollow to

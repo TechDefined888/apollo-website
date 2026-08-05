@@ -31,7 +31,7 @@ export default function ProjectDetail() {
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
-    return <Navigate to="/our-projects" replace />;
+    return <Navigate to="/our-projects/" replace />;
   }
 
   const others = projects.filter((p) => p.slug !== slug).slice(0, 3);
@@ -118,7 +118,7 @@ export default function ProjectDetail() {
         >
           <Link to="/" className="link-under">Home</Link>
           <span className="mx-2 opacity-40">/</span>
-          <Link to="/our-projects" className="link-under">Our Projects</Link>
+          <Link to="/our-projects/" className="link-under">Our Projects</Link>
           <span className="mx-2 opacity-40">/</span>
           <span className="text-[color:var(--ink-black)]">{project.name}</span>
         </nav>
@@ -432,7 +432,7 @@ export default function ProjectDetail() {
                   {relatedServiceObjects.map((svc) => (
                     <li key={svc.slug}>
                       <Link
-                        to={`/${svc.slug}`}
+                        to={`/${svc.slug}/`}
                         data-testid={`project-service-link-${svc.slug}`}
                         className="group flex items-center justify-between border-b border-[color:var(--hair)] py-4 text-[color:var(--ink-black)] hover:text-[color:var(--gold-dark)] transition-colors"
                       >
@@ -458,27 +458,27 @@ export default function ProjectDetail() {
               </p>
               <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[14px]">
                 <li>
-                  <Link to="/builders-clayton" className="link-under text-[color:var(--ink-black)]">
+                  <Link to="/builders-clayton/" className="link-under text-[color:var(--ink-black)]">
                     Builders Clayton
                   </Link>
                 </li>
                 <li>
-                  <Link to="/suburbs/brighton" className="link-under text-[color:var(--ink-black)]">
+                  <Link to="/suburbs/brighton/" className="link-under text-[color:var(--ink-black)]">
                     Brighton
                   </Link>
                 </li>
                 <li>
-                  <Link to="/suburbs/bentleigh-east" className="link-under text-[color:var(--ink-black)]">
+                  <Link to="/suburbs/bentleigh-east/" className="link-under text-[color:var(--ink-black)]">
                     Bentleigh East
                   </Link>
                 </li>
                 <li>
-                  <Link to="/suburbs/glen-waverley" className="link-under text-[color:var(--ink-black)]">
+                  <Link to="/suburbs/glen-waverley/" className="link-under text-[color:var(--ink-black)]">
                     Glen Waverley
                   </Link>
                 </li>
                 <li>
-                  <Link to="/our-projects" className="link-under text-[color:var(--ink-black)]">
+                  <Link to="/our-projects/" className="link-under text-[color:var(--ink-black)]">
                     All projects
                   </Link>
                 </li>
@@ -498,7 +498,7 @@ export default function ProjectDetail() {
                 Other recent projects.
               </h2>
             </div>
-            <Link to="/our-projects" className="btn-navy">
+            <Link to="/our-projects/" className="btn-navy">
               View All <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </div>
@@ -506,7 +506,7 @@ export default function ProjectDetail() {
             {others.map((p) => (
               <Link
                 key={p.slug}
-                to={`/our-projects/${p.slug}`}
+                to={`/our-projects/${p.slug}/`}
                 data-testid={`related-project-${p.slug}`}
                 className="group block"
               >
@@ -533,7 +533,7 @@ export default function ProjectDetail() {
           <h2 className="font-display text-[32px] md:text-5xl tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.05]">
             Inspired by this project? Let&rsquo;s discuss yours.
           </h2>
-          <Link to="/contact-us" data-testid="project-cta" className="btn-navy">
+          <Link to="/contact-us/" data-testid="project-cta" className="btn-navy">
             Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

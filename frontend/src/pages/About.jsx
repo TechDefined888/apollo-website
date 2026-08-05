@@ -138,7 +138,7 @@ export default function About() {
           <h3 className="font-display text-[28px] md:text-[42px] tracking-[-0.02em] text-[color:var(--ink-black)] max-w-2xl leading-[1.1]">
             Available every step of the way with your construction project.
           </h3>
-          <Link to="/contact-us" data-testid="about-cta" className="btn-navy">
+          <Link to="/contact-us/" data-testid="about-cta" className="btn-navy">
             Get a Free Estimate <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>

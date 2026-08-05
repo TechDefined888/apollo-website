@@ -29,7 +29,7 @@ export default function ServicePage() {
   const { pathname } = useLocation();
   const slug = pathname.replace(/^\/+|\/+$/g, "");
   const data = servicePages[slug];
-  if (!data) return <Navigate to="/services" replace />;
+  if (!data) return <Navigate to="/services/" replace />;
 
   const canonical = `/${data.slug}/`;
   const related = (data.relatedProjects || [])
@@ -72,7 +72,7 @@ export default function ServicePage() {
       {/* Hero */}
       <section className="pt-16 md:pt-24 pb-16 md:pb-20 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
-          <Link to="/services" className="link-under">Services</Link>
+          <Link to="/services/" className="link-under">Services</Link>
           <span className="mx-2 opacity-40">/</span>
           <span>{data.h1}</span>
         </div>
@@ -83,7 +83,7 @@ export default function ServicePage() {
           {data.tagline}
         </p>
         <div className="mt-10">
-          <Link to="/contact-us" data-testid={`service-hero-cta-${data.slug}`} className="btn-navy">
+          <Link to="/contact-us/" data-testid={`service-hero-cta-${data.slug}`} className="btn-navy">
             Get A Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </div>
@@ -179,7 +179,7 @@ export default function ServicePage() {
                 </p>
               ))}
               <div className="mt-10">
-                <Link to="/contact-us" className="btn-navy">
+                <Link to="/contact-us/" className="btn-navy">
                   Get A Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
                 </Link>
               </div>
@@ -415,7 +415,7 @@ export default function ServicePage() {
                   Related projects.
                 </h2>
               </div>
-              <Link to="/our-projects" className="btn-navy">
+              <Link to="/our-projects/" className="btn-navy">
                 View All <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
             </div>
@@ -423,7 +423,7 @@ export default function ServicePage() {
               {related.map((p) => (
                 <Link
                   key={p.slug}
-                  to={`/our-projects/${p.slug}`}
+                  to={`/our-projects/${p.slug}/`}
                   data-testid={`service-related-${p.slug}`}
                   className="group block"
                 >
@@ -481,7 +481,7 @@ export default function ServicePage() {
               </p>
               <div className="mt-8">
                 <Link
-                  to="/contact-us"
+                  to="/contact-us/"
                   data-testid={`service-faq-cta-${data.slug}`}
                   className="link-under inline-flex items-center gap-2 text-[13px] tracking-[0.18em] uppercase text-[color:var(--gold-dark)] font-semibold"
                 >
@@ -524,10 +524,10 @@ export default function ServicePage() {
               {data.finalCta.body}
             </p>
             <div className="mt-12 flex flex-wrap justify-center gap-4">
-              <Link to="/contact-us" data-testid={`service-final-cta-${data.slug}`} className="btn-gold">
+              <Link to="/contact-us/" data-testid={`service-final-cta-${data.slug}`} className="btn-gold">
                 Get A Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
-              <Link to="/our-projects" className="btn-ghost-light">
+              <Link to="/our-projects/" className="btn-ghost-light">
                 View Our Projects
               </Link>
             </div>
@@ -535,7 +535,7 @@ export default function ServicePage() {
             <p className="mt-12 text-[13px] tracking-[0.14em] uppercase text-[color:var(--paper)]/50">
               Serving{" "}
               <Link
-                to="/builders-clayton"
+                to="/builders-clayton/"
                 data-testid={`service-clayton-link-${data.slug}`}
                 className="text-[color:var(--gold)] hover:text-[color:var(--paper)] transition-colors"
               >

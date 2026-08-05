@@ -392,7 +392,7 @@ export default function BuildersClayton() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              to="/contact-us"
+              to="/contact-us/"
               data-testid="clayton-hero-quote"
               className="btn-gold"
             >
@@ -400,7 +400,7 @@ export default function BuildersClayton() {
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
             </Link>
             <Link
-              to="/consult"
+              to="/consult/"
               data-testid="clayton-hero-consult"
               className="btn-ghost-light"
             >
@@ -592,7 +592,7 @@ export default function BuildersClayton() {
             intro="Building a custom home lets you create a residence tailored specifically to your lifestyle, family and future plans — designed around how you actually live, not a project-builder template."
             body="Apollo Builders specialises in custom-designed homes that combine practical layouts, premium finishes and exceptional workmanship. Every project is individually planned to maximise the potential of the Clayton site — orientation, block shape, easements, overlooking rules and setbacks all inform the design before a single line is drawn. Whether you're building your forever home, replacing a tired brick veneer with a contemporary double-storey, or delivering a premium investment property near Monash, our team works collaboratively with you throughout every stage of the project."
             features={customHomeFeatures}
-            href="/new-home-builds"
+            href="/new-home-builds/"
             cta="Explore new home builds"
             testId="custom-homes"
           />
@@ -608,7 +608,7 @@ export default function BuildersClayton() {
           intro="If you love your location but your home no longer meets your needs, a renovation can completely transform the way you live — without the stamp duty, agent fees and school-zone disruption of moving."
           body="Apollo Builders delivers comprehensive home renovations that improve functionality, comfort and long-term property value. From structural alterations and load-bearing wall removals through to complete internal transformations, we help Clayton homeowners modernise their homes while preserving the features they love. Most of our Clayton work involves opening up compartmentalised 1970s and 1980s floor plans into single connected living zones, upgrading tired kitchens and bathrooms, and lifting overall energy performance with better insulation, glazing and lighting."
           features={renovationServices}
-          href="/home-renovations"
+          href="/home-renovations/"
           cta="Explore home renovations"
           testId="renovations"
         />
@@ -624,7 +624,7 @@ export default function BuildersClayton() {
             intro="Growing families often need additional space without the expense and disruption of moving out of the neighbourhood, schools and community they've built."
             body="Apollo Builders designs and constructs seamless home extensions that integrate naturally with your existing property. Every extension is carefully planned to improve internal flow, increase living space and maximise natural light — while maintaining the home's overall aesthetic and staying compliant with City of Monash planning requirements. Whether you need a rear addition to enlarge the family living area, a second storey to add bedrooms without touching the yard, or a self-contained studio for guests or a home business, we scope the extension against your long-term needs, not just the immediate brief."
             features={extensionTypes}
-            href="/home-renovations"
+            href="/home-renovations/"
             cta="Talk to us about your extension"
             testId="extensions"
           />
@@ -640,7 +640,7 @@ export default function BuildersClayton() {
           intro="The kitchen is the centre of family life — where mornings begin, dinners happen and everyone eventually ends up standing around the island bench."
           body="Apollo Builders creates beautiful, functional kitchens designed around modern living. We combine thoughtful layouts with premium materials to deliver kitchens for Clayton homes that are both practical for a busy household and visually impressive when you have guests over. Our kitchen renovations pay close attention to the details that most builders skimp on — properly braced stone benchtops, soft-close hardware you'll notice every day, integrated appliances specified before cabinetry is ordered, and lighting layered across task, ambient and feature zones."
           features={kitchenServices}
-          href="/kitchen-renovations"
+          href="/kitchen-renovations/"
           cta="Explore kitchen renovations"
           testId="kitchens"
         />
@@ -656,7 +656,7 @@ export default function BuildersClayton() {
             intro="A professionally renovated bathroom adds comfort, daily functionality and measurable value to your home — done properly, it will still look and perform brilliantly a decade from now."
             body="Apollo Builders delivers complete bathroom renovations using quality materials and skilled workmanship. From luxurious ensuites to practical family bathrooms across Clayton, every renovation is completed with careful attention to waterproofing, tiling and finishing details that budget renovators tend to cut corners on. We work with proven fixture brands, licensed plumbers and tilers who've been on our jobs for years, and we don't take shortcuts on the waterproofing membrane — that single detail is the difference between a bathroom that lasts 20 years and one that fails at 5."
             features={bathroomServices}
-            href="/bathroom-renovations"
+            href="/bathroom-renovations/"
             cta="Explore bathroom renovations"
             testId="bathrooms"
           />
@@ -682,7 +682,7 @@ export default function BuildersClayton() {
           {recentProjects.map((p) => (
             <li key={p.slug}>
               <Link
-                to={`/our-projects/${p.slug}`}
+                to={`/our-projects/${p.slug}/`}
                 data-testid={`clayton-project-${p.slug}`}
                 className="group block border border-[color:var(--hair)] bg-white hover:border-[color:var(--gold)] transition-colors"
               >
@@ -716,7 +716,7 @@ export default function BuildersClayton() {
         </ul>
         <div className="mt-12">
           <Link
-            to="/our-projects"
+            to="/our-projects/"
             data-testid="clayton-all-projects-link"
             className="btn-navy"
           >
@@ -821,7 +821,7 @@ export default function BuildersClayton() {
             </p>
             <div className="mt-8">
               <Link
-                to="/contact-us"
+                to="/contact-us/"
                 data-testid="clayton-faq-cta"
                 className="link-under inline-flex items-center gap-2 text-[13px] tracking-[0.18em] uppercase text-[color:var(--gold-dark)] font-semibold"
               >
@@ -889,9 +889,9 @@ export default function BuildersClayton() {
         </ul>
         <div className="mt-12 flex flex-wrap items-center gap-4 text-[color:var(--ink-soft)] text-[14px]">
           <span>More coverage:</span>
-          <Link to="/suburbs/glen-waverley" className="link-under">Glen Waverley</Link>
-          <Link to="/suburbs/bentleigh-east" className="link-under">Bentleigh East</Link>
-          <Link to="/our-projects" className="link-under">See our recent projects</Link>
+          <Link to="/suburbs/glen-waverley/" className="link-under">Glen Waverley</Link>
+          <Link to="/suburbs/bentleigh-east/" className="link-under">Bentleigh East</Link>
+          <Link to="/our-projects/" className="link-under">See our recent projects</Link>
         </div>
       </section>
 
@@ -928,7 +928,7 @@ export default function BuildersClayton() {
             delay={0.05}
           >
             <Link
-              to="/contact-us"
+              to="/contact-us/"
               data-testid="clayton-final-cta-quote"
               className="btn-gold w-full md:w-auto justify-center"
             >
@@ -936,7 +936,7 @@ export default function BuildersClayton() {
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
             </Link>
             <Link
-              to="/consult"
+              to="/consult/"
               data-testid="clayton-final-cta-consult"
               className="btn-ghost-light w-full md:w-auto justify-center"
             >
@@ -952,14 +952,14 @@ export default function BuildersClayton() {
             </a>
             <div className="mt-2 text-[color:var(--paper)]/60 text-[13px]">
               <Link
-                to="/about-us"
+                to="/about-us/"
                 className="hover:text-[color:var(--gold)] transition-colors"
               >
                 About Apollo Builders
               </Link>
               <span className="mx-2 opacity-50">·</span>
               <Link
-                to="/our-projects"
+                to="/our-projects/"
                 className="hover:text-[color:var(--gold)] transition-colors"
               >
                 Recent projects
@@ -984,7 +984,7 @@ export default function BuildersClayton() {
             Call
           </a>
           <Link
-            to="/contact-us"
+            to="/contact-us/"
             className="flex-1 flex items-center justify-center gap-2 py-4 text-[13px] tracking-[0.15em] uppercase bg-[color:var(--gold)] text-[color:var(--ink-black)] font-semibold"
           >
             Free Quote

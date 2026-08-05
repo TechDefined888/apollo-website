@@ -108,7 +108,7 @@ export default function Legal() {
           <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
             Have a question about this page?
           </div>
-          <Link to="/contact-us" data-testid="legal-contact-cta" className="btn-navy">
+          <Link to="/contact-us/" data-testid="legal-contact-cta" className="btn-navy">
             Contact Apollo Builders <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
           </Link>
         </Reveal>
