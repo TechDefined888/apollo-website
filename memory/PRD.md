@@ -115,6 +115,17 @@ Redesign the Apollo Builders website with a premium, luxury architecture / desig
 ## Recent testing runs
 
 - `/app/test_reports/iteration_17.json` — 100% backend / 95% frontend (JSON-LD gap remedied post-report; retest optional).
+- **2026-08-05 (later) — SEO Authority Upgrade (P1-P7 from client brief).**
+  - **P1 — Project pages upgraded to SEO case studies.** Rewrote `ProjectDetail.jsx` as a shared 6-section case-study template (Hero → Overview → Project Details + Scope → Goals/Challenges → Construction Story → Outcome → Gallery → Related Services & Locations → Other Projects → CTA). Data-driven — sections render when data is present, fall back gracefully otherwise.
+  - Extended 5 priority projects in `data.js` with unique 300-500 word case-study copy: `bentleigh-east-renovation` (713 words), `berwick-new-build` (679), `clyde-new-build` (654), `drouin-new-build` (686), `endevour-hills-renovation` (695). Each project now has: `seoIntro`, `overview[]` (3 paragraphs), `services[]`, `goals[]`, `challenges[]`, `outcome[]`, `relatedServices[]`, `completionYear`. `altona-meadows-renovation` retained as basic gallery page (no fictional detail invented).
+  - Added shared `projectProcess` array (5-stage construction story) used across all case-study pages.
+  - **P2 — Internal linking hub.** Every renovation project → home-renovations + kitchen-renovations + bathroom-renovations. Every new build → new-home-builds. Every project → /builders-clayton + Brighton/Bentleigh East/Glen Waverley + All Projects.
+  - **P3 — Service page FAQ.** Added 4 FAQs per service in `data.js/services[].faqs` (per brief: cost, timeframe, project management, planning). Rendered via Accordion + FAQPage JSON-LD schema on all 4 service pages. Reactive to click; verified accordion expand.
+  - **P4 — Trust signals.** Existing `whyUs` array + Why Choose Apollo section on service pages retained. Clayton page has full 10-point Why Choose section. No fictional certifications or claims invented.
+  - **P5 — Metadata upgrade.** Project titles now format `<Project> — <Type> in <Suburb> | Apollo Builders`. Meta descriptions on projects use dedicated `seoIntro` field.
+  - **P6 — Image SEO.** Every project `imageAlt` upgraded with `by Apollo Builders` + location + type. Gallery image alt texts include `<Project name>, <Suburb> — Apollo Builders photograph #N`.
+  - **P7 — Schema upgrade.** Every project page now emits: BreadcrumbList + Article (headline, image, author, publisher, mainEntityOfPage, about, articleSection) + legacy CreativeWork (backwards compat). Service pages emit: BreadcrumbList + Service + LocalBusiness + FAQPage (when faqs present). Verified in Playwright.
+  - **Technical audit passes:** No broken links (13 routes tested, all 200). Sitemap contains all project + service URLs. Canonicals correct (Yoast trailing-slash). All indexable (no noindex on production pages). Mobile responsive. Existing URLs preserved including intentional `endevour-hills-renovation` misspelling.
 - **2026-08-05 — Builders Clayton SEO landing page shipped.**
   - New page `/app/frontend/src/pages/BuildersClayton.jsx` at route `/builders-clayton` (added to `App.js`, `public/sitemap.xml`, `public/_redirects` allow-list).
   - Content: 2,035 words of unique, keyword-relevant copy targeting "Builders Clayton" + 19 secondary keywords. 14 H2, 16 H3, single H1.

@@ -2,11 +2,18 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import { ArrowUpRight, CheckCircle2, MapPin, Shield } from "lucide-react";
 import { Reveal, MaskLines } from "@/components/Reveal";
 import { servicePages } from "@/lib/servicePages";
-import { projects } from "@/lib/data";
+import { projects, services as siteServices } from "@/lib/data";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 import SEO, {
   breadcrumbSchema,
   serviceSchema,
   localBusiness,
+  faqSchema,
 } from "@/components/SEO";
 
 /**
@@ -29,6 +36,10 @@ export default function ServicePage() {
     .map((s) => projects.find((p) => p.slug === s))
     .filter(Boolean);
 
+  // Per-service FAQs sourced from data.js/services (single source of truth).
+  const serviceRecord = siteServices.find((s) => s.slug === data.slug);
+  const faqs = serviceRecord?.faqs || [];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -44,6 +55,7 @@ export default function ServicePage() {
         body: data.intro.body.join(" "),
       }),
       localBusiness(),
+      ...(faqs.length ? [faqSchema(faqs)] : []),
     ],
   };
 
@@ -450,6 +462,56 @@ export default function ServicePage() {
           </Reveal>
         </section>
       )}
+
+      {/* Frequently Asked Questions — per service */}
+      {faqs.length ? (
+        <section
+          data-testid={`service-faqs-${data.slug}`}
+          className="bg-[color:var(--cream)] border-y border-[color:var(--hair)] py-20 md:py-28"
+        >
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10">
+            <Reveal className="md:col-span-4">
+              <div className="tracking-eyebrow text-[color:var(--gold-dark)]">FAQ</div>
+              <h2 className="mt-4 font-display text-[30px] md:text-[42px] leading-[1.05] tracking-[-0.02em] text-[color:var(--ink-black)]">
+                Frequently asked questions.
+              </h2>
+              <p className="mt-6 text-[color:var(--ink-soft)] text-[15px] leading-[1.7] max-w-md">
+                Straight answers to the questions we hear most often
+                from Melbourne south-east homeowners planning a {data.h1.toLowerCase()} project.
+              </p>
+              <div className="mt-8">
+                <Link
+                  to="/contact-us"
+                  data-testid={`service-faq-cta-${data.slug}`}
+                  className="link-under inline-flex items-center gap-2 text-[13px] tracking-[0.18em] uppercase text-[color:var(--gold-dark)] font-semibold"
+                >
+                  Have another question?
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal className="md:col-span-8" delay={0.05}>
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((f, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`svc-faq-${data.slug}-${i}`}
+                    data-testid={`service-faq-item-${data.slug}-${i}`}
+                    className="border-b border-[color:var(--hair)] first:border-t"
+                  >
+                    <AccordionTrigger className="font-display text-left text-[19px] md:text-[22px] py-6 text-[color:var(--ink-black)] hover:no-underline">
+                      {f.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-[color:var(--ink-soft)] text-[15px] leading-[1.7] pb-8 max-w-2xl">
+                      {f.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* Final CTA */}
       <section className="bg-[color:var(--ink-black)] text-[color:var(--paper)] py-24 md:py-32">
