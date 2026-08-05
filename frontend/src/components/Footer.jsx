@@ -73,11 +73,26 @@ export default function Footer() {
             </ul>
 
             <div className="tracking-eyebrow text-[color:var(--gold)] mt-12">Areas We Service</div>
-            <ul className="mt-6 grid grid-cols-2 gap-y-2 gap-x-4 text-[14px]">
-              {["brighton","bentleigh","bentleigh-east","berwick","clyde","hampton","mentone","cheltenham","glen-waverley"].map((s) => (
-                <li key={s}>
-                  <Link to={`/suburbs/${s}`} className="link-under">
-                    {s.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ")}
+            <ul className="mt-6 grid grid-cols-2 gap-y-2 gap-x-4 text-[14px]" data-testid="footer-areas-list">
+              {[
+                { label: "Bentleigh",       href: "/suburbs/bentleigh" },
+                { label: "Bentleigh East",  href: "/suburbs/bentleigh-east" },
+                { label: "Berwick",         href: "/suburbs/berwick" },
+                { label: "Brighton",        href: "/suburbs/brighton" },
+                { label: "Cheltenham",      href: "/suburbs/cheltenham" },
+                { label: "Clayton",         href: "/builders-clayton" },
+                { label: "Clyde",           href: "/suburbs/clyde" },
+                { label: "Glen Waverley",   href: "/suburbs/glen-waverley" },
+                { label: "Hampton",         href: "/suburbs/hampton" },
+                { label: "Mentone",         href: "/suburbs/mentone" },
+              ].map((a) => (
+                <li key={a.href}>
+                  <Link
+                    to={a.href}
+                    data-testid={`footer-area-${a.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="link-under"
+                  >
+                    {a.label}
                   </Link>
                 </li>
               ))}

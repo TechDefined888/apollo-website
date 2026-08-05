@@ -123,6 +123,11 @@ export default function Resource() {
                 </Link>
               </li>
             ))}
+            <li key="clayton">
+              <Link to="/builders-clayton" className="link-under text-[color:var(--ink-black)]">
+                Clayton
+              </Link>
+            </li>
           </ul>
         </div>
       </article>

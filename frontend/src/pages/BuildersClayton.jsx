@@ -312,7 +312,6 @@ export default function BuildersClayton() {
       localBusiness(),
       breadcrumbSchema([
         { name: "Home", path: "/" },
-        { name: "Areas We Service", path: "/suburbs/" },
         { name: "Builders Clayton", path },
       ]),
       faqSchema(faqs),
@@ -350,7 +349,9 @@ export default function BuildersClayton() {
           className="absolute inset-0 bg-gradient-to-br from-[color:var(--ink-black)]/85 via-[color:var(--ink-black)]/60 to-[color:var(--ink-black)]/85"
         />
         <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 py-24 md:py-36 lg:py-44 text-[color:var(--paper)]">
-          {/* Breadcrumb */}
+          {/* Breadcrumb — no Areas We Service parent page exists on the
+              current site, so we use the two-level Home → Builders Clayton
+              hierarchy as specified in the SEO brief. */}
           <nav
             aria-label="Breadcrumb"
             className="text-[12px] tracking-[0.18em] uppercase text-[color:var(--paper)]/70"
@@ -359,8 +360,6 @@ export default function BuildersClayton() {
             <Link to="/" className="hover:text-[color:var(--gold)] transition-colors">
               Home
             </Link>
-            <span className="mx-3 opacity-40">/</span>
-            <span className="opacity-70">Areas We Service</span>
             <span className="mx-3 opacity-40">/</span>
             <span className="text-[color:var(--gold)]">Builders Clayton</span>
           </nav>

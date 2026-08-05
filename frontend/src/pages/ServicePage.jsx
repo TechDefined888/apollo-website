@@ -469,6 +469,18 @@ export default function ServicePage() {
                 View Our Projects
               </Link>
             </div>
+            {/* Local coverage — one subtle line linking to location pages. */}
+            <p className="mt-12 text-[13px] tracking-[0.14em] uppercase text-[color:var(--paper)]/50">
+              Serving{" "}
+              <Link
+                to="/builders-clayton"
+                data-testid={`service-clayton-link-${data.slug}`}
+                className="text-[color:var(--gold)] hover:text-[color:var(--paper)] transition-colors"
+              >
+                Clayton
+              </Link>
+              , Brighton, Glen Waverley &amp; Melbourne's south-east.
+            </p>
           </Reveal>
         </div>
       </section>
