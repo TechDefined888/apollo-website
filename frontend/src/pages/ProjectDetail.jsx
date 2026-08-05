@@ -98,7 +98,7 @@ export default function ProjectDetail() {
   return (
     <div data-testid={`project-detail-${project.slug}`}>
       <SEO
-        title={`${project.name} — ${project.type} in ${project.suburb} | Apollo Builders`}
+        title={`${project.name} — ${project.type} | Apollo Builders`}
         description={
           project.seoIntro ||
           `${project.name}: ${project.description} Delivered by Apollo Builders in ${project.suburb}, Melbourne South-East.`
