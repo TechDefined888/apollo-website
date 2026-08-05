@@ -288,7 +288,9 @@ export const projects = [
     relatedServices: ["new-home-builds"],
     scope: ["Custom-designed new home", "Energy-efficient construction", "Contemporary family living", "Turn-key project delivery"],
     gallery: [
-      "/images/apollo/Clyde-new-build-1-1024x683.jpg",
+      // Cleaned 2026-08 — removed Clyde-new-build-1-1024x683.jpg from gallery
+      // (pixel-identical duplicate of Clyde-new-build-1.jpg, just a smaller
+      // WordPress-generated thumbnail). Higher-resolution -1.jpg retained.
       "/images/apollo/Clyde-new-build-1.jpg",
       "/images/apollo/Clyde-new-build-2-1-e1762576012818.jpg",
       "/images/apollo/Clyde-new-build-3-1.jpg",
