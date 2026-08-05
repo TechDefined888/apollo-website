@@ -115,6 +115,16 @@ Redesign the Apollo Builders website with a premium, luxury architecture / desig
 ## Recent testing runs
 
 - `/app/test_reports/iteration_17.json` — 100% backend / 95% frontend (JSON-LD gap remedied post-report; retest optional).
+- **2026-08-05 — Builders Clayton SEO landing page shipped.**
+  - New page `/app/frontend/src/pages/BuildersClayton.jsx` at route `/builders-clayton` (added to `App.js`, `public/sitemap.xml`, `public/_redirects` allow-list).
+  - Content: 2,035 words of unique, keyword-relevant copy targeting "Builders Clayton" + 19 secondary keywords. 14 H2, 16 H3, single H1.
+  - SEO tags: exact meta title & description per brief; canonical `/builders-clayton/` (Yoast trailing slash); indexable; OG + Twitter cards; JSON-LD @graph containing LocalBusiness (GeneralContractor+LocalBusiness+HomeAndConstructionBusiness+Organization), BreadcrumbList, FAQPage.
+  - Sections: Hero (large image + navy overlay + breadcrumb + 3 CTAs), Intro, Why Build in Clayton, Local Considerations (3 pillars: Planning & Permits / Housing Stock / Value & Longevity), 5 Service blocks (Custom Homes, Renovations, Extensions, Kitchens, Bathrooms) each with feature list + service link, Recent Projects (3 cards with real Apollo photography), Why Choose Apollo (10 numbered points on navy band), Our Building Process (5-step process on white cards), FAQ (4 accordion Qs), Areas We Service (12 nearby suburbs), Final CTA (navy band with Get Free Quote / Book Consultation / Phone).
+  - Internal linking: 14 unique internal links, includes all 7 required destinations (custom homes, renovations, kitchens, bathrooms, about, contact, projects) plus cross-linking to /suburbs/glen-waverley + /suburbs/bentleigh-east + 3 project detail pages.
+  - Images: 4 total — 1 eager-loaded hero + 3 lazy-loaded project cards; every alt text mentions Clayton in context.
+  - CTAs: 12 total CTAs across the page: 3 hero, 5 service-block explore links, 1 FAQ CTA, 3 final-CTA (fixed-price quote / consultation / phone), plus a sticky mobile bottom bar (Call / Free Quote) visible only <md breakpoints.
+  - Design lock preserved: Fraunces + Inter Tight, Navy/paper/cream/gold tokens, hair borders, alternating cream/paper section bands, gold CheckCircle2 icons on feature lists, MaskLines reveal on hero, standard btn-gold/btn-navy/btn-ghost-light classes.
+  - Verified via Playwright on preview: all data-testids present, FAQ accordion expands, mobile sticky CTA renders, all internal routes still return 200.
 - **2026-07-29 — 404 SPA fix + edge defense in depth.**
   - **Client-side (works everywhere, live now):** `/app/frontend/src/pages/NotFound.jsx` renders on the `*` catch-all with `robots="noindex, nofollow"`, `googlebot="noindex, nofollow"`, `prerender-status-code="404"`. Canonical intentionally omitted. Verified on preview: unknown paths render 404 body; known paths (`/`, `/about-us`, `/services`, `/contact-us`, `/kitchen-renovations`) unchanged.
   - **Edge layer (defense in depth, activates on any deploy edge that respects the convention):**

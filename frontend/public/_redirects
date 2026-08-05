@@ -43,6 +43,9 @@
 /resources                     /index.html   200
 /resources/*                   /index.html   200
 
+# ── Location SEO landing pages ──────────────────────────────────────
+/builders-clayton              /index.html   200
+
 # ── Legal ───────────────────────────────────────────────────────────
 /privacy-policy                /index.html   200
 /cookie-policy                 /index.html   200

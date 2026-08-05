@@ -44,6 +44,9 @@
   <url><loc>https://apollobuilders.com.au/resources/knockdown-rebuild-melbourne</loc><priority>0.6</priority></url>
   <url><loc>https://apollobuilders.com.au/resources/choosing-a-builder-melbourne</loc><priority>0.6</priority></url>
 
+  <!-- Location SEO landing pages — flat URLs for high-intent local queries -->
+  <url><loc>https://apollobuilders.com.au/builders-clayton/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
   <!-- Legal pages — low priority but indexable for E-E-A-T -->
   <url><loc>https://apollobuilders.com.au/privacy-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://apollobuilders.com.au/cookie-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

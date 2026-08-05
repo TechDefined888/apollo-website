@@ -20,6 +20,7 @@ import Consult from "@/pages/Consult";
 import BurntByBuilders from "@/pages/BurntByBuilders";
 import ThankYou from "@/pages/ThankYou";
 import Legal from "@/pages/Legal";
+import BuildersClayton from "@/pages/BuildersClayton";
 import NotFound from "@/pages/NotFound";
 import { Toaster } from "sonner";
 
@@ -98,6 +99,9 @@ function App() {
                 <Route path="/suburbs/:slug" element={<Suburb />} />
                 <Route path="/resources" element={<ResourceIndex />} />
                 <Route path="/resources/:slug" element={<Resource />} />
+
+                {/* Location SEO landing pages — flat URLs for local intent */}
+                <Route path="/builders-clayton" element={<BuildersClayton />} />
 
                 {/* Legal pages */}
                 <Route path="/privacy-policy" element={<Legal />} />
