@@ -23,6 +23,7 @@ import Legal from "@/pages/Legal";
 import BuildersClayton from "@/pages/BuildersClayton";
 import NotFound from "@/pages/NotFound";
 import TrailingSlashRedirect from "@/components/TrailingSlashRedirect";
+import Analytics from "@/components/Analytics";
 import { Toaster } from "sonner";
 
 function ScrollTop() {
@@ -69,6 +70,7 @@ function App() {
       <HelmetProvider>
         <BrowserRouter>
           <TrailingSlashRedirect />
+          <Analytics />
           <SmoothScroll>
             <ScrollTop />
             <a href="#main" className="skip-nav">Skip to main content</a>
