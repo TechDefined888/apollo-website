@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://apollobuilders.com.au/sitemap.xml
+Sitemap: https://www.apollobuilders.com.au/sitemap.xml

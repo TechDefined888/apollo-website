@@ -65,7 +65,7 @@ export default function Resource() {
         "@type": "Article",
         headline: a.title,
         image: a.image,
-        publisher: { "@type": "Organization", name: "Apollo Builders", url: "https://apollobuilders.com.au/" },
+        publisher: { "@type": "Organization", name: "Apollo Builders", url: "https://www.apollobuilders.com.au/" },
         author: { "@type": "Organization", name: "Apollo Builders" },
       },
       breadcrumbSchema([

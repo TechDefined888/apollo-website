@@ -13,7 +13,7 @@ export default function SEO({
   jsonLd = null,
   noindex = false,
 }) {
-  const base = "https://apollobuilders.com.au";
+  const base = "https://www.apollobuilders.com.au";
 
   // Normalise path: ensure leading slash + trailing slash
   let normalised = path.startsWith("/") ? path : `/${path}`;
@@ -120,17 +120,17 @@ export const localBusiness = () => ({
     "HomeAndConstructionBusiness",
     "Organization",
   ],
-  "@id": "https://apollobuilders.com.au/#business",
+  "@id": "https://www.apollobuilders.com.au/#business",
 
   name: "Apollo Builders",
   legalName: "Apollo Builders",
-  url: "https://apollobuilders.com.au/",
+  url: "https://www.apollobuilders.com.au/",
 
   logo:
-    "https://apollobuilders.com.au/images/apollo/photo_2025-12-03_10-38-14-e1764907039294.png",
+    "https://www.apollobuilders.com.au/images/apollo/photo_2025-12-03_10-38-14-e1764907039294.png",
 
   image:
-    "https://apollobuilders.com.au/images/apollo/photo_2025-12-03_10-38-14-e1764907039294.png",
+    "https://www.apollobuilders.com.au/images/apollo/photo_2025-12-03_10-38-14-e1764907039294.png",
 
   telephone: "+61422339622",
   email: "info@apollobuilders.com.au",
@@ -184,7 +184,7 @@ export const serviceSchema = (svc) => ({
 
   provider: {
     "@type": "GeneralContractor",
-    "@id": "https://apollobuilders.com.au/#business",
+    "@id": "https://www.apollobuilders.com.au/#business",
     name: "Apollo Builders",
   },
 
@@ -219,6 +219,6 @@ export const breadcrumbSchema = (crumbs) => ({
     "@type": "ListItem",
     position: i + 1,
     name: c.name,
-    item: `https://apollobuilders.com.au${c.path}`,
+    item: `https://www.apollobuilders.com.au${c.path}`,
   })),
 });

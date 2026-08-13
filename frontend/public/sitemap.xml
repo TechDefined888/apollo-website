@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core pages — mirrors live apollobuilders.com.au URL structure (Yoast trailing slash) -->
-  <url><loc>https://apollobuilders.com.au/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://apollobuilders.com.au/about-us/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://apollobuilders.com.au/services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://apollobuilders.com.au/contact-us/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/about-us/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/services/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/contact-us/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Service pages — flat top-level URLs preserved from live site -->
-  <url><loc>https://apollobuilders.com.au/new-home-builds/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://apollobuilders.com.au/home-renovations/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://apollobuilders.com.au/bathroom-renovations/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://apollobuilders.com.au/kitchen-renovations/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/new-home-builds/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/home-renovations/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/bathroom-renovations/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/kitchen-renovations/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- Project portfolio — 6 real projects preserved -->
-  <url><loc>https://apollobuilders.com.au/our-projects/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://apollobuilders.com.au/our-projects/drouin-new-build/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/our-projects/bentleigh-east-renovation/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/our-projects/berwick-new-build/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/our-projects/endevour-hills-renovation/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/our-projects/altona-meadows-renovation/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/our-projects/clyde-new-build/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/drouin-new-build/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/bentleigh-east-renovation/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/berwick-new-build/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/endevour-hills-renovation/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/altona-meadows-renovation/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/our-projects/clyde-new-build/</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
 
   <!-- Conversion landing pages — indexed on live site -->
-  <url><loc>https://apollobuilders.com.au/kitchen-renovation-landing/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/renovation-quote/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/consult/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/burnt-by-builders/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/kitchen-renovation-landing/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/renovation-quote/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/consult/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/burnt-by-builders/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <url>
-  <loc>https://apollobuilders.com.au/melbourne-home-builders/</loc>
+  <loc>https://www.apollobuilders.com.au/melbourne-home-builders/</loc>
   <changefreq>monthly</changefreq>
   <priority>0.9</priority>
   </url>
 
   <!-- New SEO landing pages (additive to what's live today) -->
-  <url><loc>https://apollobuilders.com.au/suburbs/brighton/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/bentleigh/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/bentleigh-east/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/berwick/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/clyde/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/hampton/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/mentone/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/cheltenham/</loc><priority>0.7</priority></url>
-  <url><loc>https://apollobuilders.com.au/suburbs/glen-waverley/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/brighton/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/bentleigh/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/bentleigh-east/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/berwick/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/clyde/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/hampton/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/mentone/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/cheltenham/</loc><priority>0.7</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/suburbs/glen-waverley/</loc><priority>0.7</priority></url>
 
-  <url><loc>https://apollobuilders.com.au/resources/</loc><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/resources/kitchen-renovation-cost-melbourne/</loc><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/resources/bathroom-renovation-timeline/</loc><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/resources/knockdown-rebuild-melbourne/</loc><priority>0.6</priority></url>
-  <url><loc>https://apollobuilders.com.au/resources/choosing-a-builder-melbourne/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/resources/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/resources/kitchen-renovation-cost-melbourne/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/resources/bathroom-renovation-timeline/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/resources/knockdown-rebuild-melbourne/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/resources/choosing-a-builder-melbourne/</loc><priority>0.6</priority></url>
 
   <!-- Location SEO landing pages — flat URLs for high-intent local queries -->
-  <url><loc>https://apollobuilders.com.au/builders-clayton/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/builders-clayton/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Legal pages — low priority but indexable for E-E-A-T -->
-  <url><loc>https://apollobuilders.com.au/privacy-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://apollobuilders.com.au/cookie-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://apollobuilders.com.au/terms-of-use/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/privacy-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/cookie-policy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.apollobuilders.com.au/terms-of-use/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

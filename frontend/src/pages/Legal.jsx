@@ -26,7 +26,7 @@ export default function Legal() {
         "@type": "WebPage",
         name: data.h1,
         description: data.metaDescription,
-        url: `https://apollobuilders.com.au${canonical}`,
+        url: `https://www.apollobuilders.com.au${canonical}`,
         publisher: { "@type": "Organization", name: "Apollo Builders" },
         dateModified: "2026-07-29",
       },

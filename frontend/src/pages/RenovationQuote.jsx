@@ -101,7 +101,7 @@ export default function RenovationQuote() {
             {
               "@type": "WebPage",
               name: "Renovation Quote — Apollo Builders",
-              url: "https://apollobuilders.com.au/renovation-quote/",
+              url: "https://www.apollobuilders.com.au/renovation-quote/",
               description:
                 "Multi-step renovation quote calculator. Provides fixed-price quotes for kitchen, bathroom, extension and full-home renovations across Melbourne's South-East.",
               publisher: { "@type": "Organization", name: "Apollo Builders" },

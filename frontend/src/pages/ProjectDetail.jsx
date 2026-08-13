@@ -36,7 +36,7 @@ export default function ProjectDetail() {
 
   const others = projects.filter((p) => p.slug !== slug).slice(0, 3);
   const path = `/our-projects/${project.slug}/`;
-  const canonicalUrl = `https://apollobuilders.com.au${path}`;
+  const canonicalUrl = `https://www.apollobuilders.com.au${path}`;
   const hasCaseStudy =
     Array.isArray(project.overview) && project.overview.length > 0;
 
@@ -59,20 +59,20 @@ export default function ProjectDetail() {
         headline: `${project.name} — ${project.type} in ${project.suburb}`,
         description: project.seoIntro || project.description,
         image: (project.gallery || [project.hero]).map(
-          (src) => `https://apollobuilders.com.au${src}`
+          (src) => `https://www.apollobuilders.com.au${src}`
         ),
         mainEntityOfPage: canonicalUrl,
         author: {
           "@type": "Organization",
           name: "Apollo Builders",
-          url: "https://apollobuilders.com.au",
+          url: "https://www.apollobuilders.com.au",
         },
         publisher: {
           "@type": "Organization",
           name: "Apollo Builders",
           logo: {
             "@type": "ImageObject",
-            url: "https://apollobuilders.com.au/logo512.png",
+            url: "https://www.apollobuilders.com.au/logo512.png",
           },
         },
         about: {

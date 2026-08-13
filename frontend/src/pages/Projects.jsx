@@ -17,7 +17,7 @@ export default function Projects() {
         itemListElement: projects.map((p, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          url: `https://apollobuilders.com.au/our-projects/${p.slug}/`,
+          url: `https://www.apollobuilders.com.au/our-projects/${p.slug}/`,
           name: p.name,
         })),
       },
