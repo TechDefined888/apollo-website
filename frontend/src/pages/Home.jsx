@@ -162,12 +162,19 @@ function Intro() {
           >
             Quality renovations &amp; custom homes across Melbourne&rsquo;s South-East.
           </h2>
-          <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[16px] md:text-[18px] leading-[1.7]">
-            Apollo Builders specialises in high-quality renovations, extensions
-            and custom home builds. From the initial consultation through to
-            completion, we focus on quality workmanship, clear communication
-            and delivering projects that stand the test of time.
-          </p>
+            <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[16px] md:text-[18px] leading-[1.7]">
+              Apollo Builders specialises in high-quality renovations, extensions
+              and custom home builds. As experienced{" "}
+              <Link
+                to="/melbourne-home-builders/"
+                className="link-under"
+              >
+                Melbourne home builders
+              </Link>
+              , we work with homeowners from the initial consultation through to
+              completion, focusing on quality workmanship, clear communication
+              and delivering projects that stand the test of time.
+            </p>
         </Reveal>
       </div>
     </section>
