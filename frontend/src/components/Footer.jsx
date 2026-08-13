@@ -44,6 +44,14 @@ export default function Footer() {
                 </li>
               ))}
               <li>
+                <Link
+                  to="/melbourne-home-builders/"
+                  className="link-under inline-flex items-center gap-2"
+                >
+                  Melbourne Home Builders
+                </Link>
+              </li>
+              <li>
                 <Link to="/our-projects/" className="link-under inline-flex items-center gap-2">
                   Our Projects
                 </Link>
