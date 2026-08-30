@@ -7,7 +7,7 @@ export const brand = {
   phoneRaw: "+61422339622",
   email: "info@apollobuilders.com.au",
   region: "Melbourne's South & South-East",
-  logo: "/images/apollo/apollo-builders-logo.png",
+  logo: "/images/apollo/apollo-builders-logo.svg",
 };
 
 // Trust points — exact wording from the current live site
