@@ -14,7 +14,7 @@ export default function Footer() {
             <img
               src={brand.logo}
               alt="Apollo Builders"
-              className="h-16 w-auto brightness-0 invert opacity-95"
+              className="h-16 w-auto"
             />
             <h3 className="font-display text-[36px] md:text-[46px] mt-8 leading-[1.05] tracking-[-0.02em]">
               Renovations &amp;<br /> custom homes,<br />
