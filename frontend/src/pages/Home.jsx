@@ -1,40 +1,66 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { MaskLines, Reveal } from "@/components/Reveal";
 import {
-  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import ServicesInteractive from "@/components/ServicesInteractive";
 import BlueprintProcess from "@/components/BlueprintProcess";
-import { projects, whyUs, faqs, testimonials, trustPoints } from "@/lib/data";
+import {
+  projects,
+  whyUs,
+  faqs,
+  testimonials,
+  trustPoints,
+} from "@/lib/data";
 import SEO, { localBusiness, faqSchema } from "@/components/SEO";
 
 const ease = [0.16, 1, 0.3, 1];
 
 /* ═════════════════════════════════════════════════════════════════
-   HERO — cinematic real project photograph, no 3D overlay
+   HERO
    ═════════════════════════════════════════════════════════════════ */
 function Hero() {
   const wrap = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: wrap,
     offset: ["start start", "end start"],
   });
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.15]);
 
-  // Subtle mouse parallax on background only (photo, not overlay)
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 });
-  const sy = useSpring(my, { stiffness: 60, damping: 20 });
+
+  const sx = useSpring(mx, {
+    stiffness: 60,
+    damping: 20,
+  });
+
+  const sy = useSpring(my, {
+    stiffness: 60,
+    damping: 20,
+  });
+
   const px = useTransform(sx, [-1, 1], [-10, 10]);
   const py = useTransform(sy, [-1, 1], [-6, 6]);
 
   const onMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
+
     mx.set(((e.clientX - rect.left) / rect.width) * 2 - 1);
     my.set(((e.clientY - rect.top) / rect.height) * 2 - 1);
   };
@@ -47,7 +73,15 @@ function Hero() {
       className="relative w-full overflow-hidden h-[62vh] sm:h-[58vh] md:h-[60vh] lg:h-[62vh] min-h-[420px] max-h-[640px] bg-[color:var(--ink-black)] text-[color:var(--paper)]"
       aria-labelledby="hero-heading"
     >
-      <motion.div className="absolute inset-0" style={{ y, scale, x: px, translateY: py }}>
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          y,
+          scale,
+          x: px,
+          translateY: py,
+        }}
+      >
         <img
           src="/images/apollo/Berwick-New-Build-5-e1762576152191.jpg"
           alt="Berwick two-storey new home build by Apollo Builders — Melbourne South-East"
@@ -55,14 +89,18 @@ function Hero() {
           fetchPriority="high"
         />
       </motion.div>
-      {/* Single cinematic overlay — cleaner, deeper */}
+
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,15,26,0.60)_0%,rgba(10,15,26,0.50)_40%,rgba(10,15,26,0.90)_100%)]" />
 
       <div className="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 flex flex-col justify-center py-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease, delay: 0.15 }}
+          transition={{
+            duration: 1,
+            ease,
+            delay: 0.15,
+          }}
           className="tracking-eyebrow text-[color:var(--gold)]"
           data-testid="hero-eyebrow"
         >
@@ -74,34 +112,75 @@ function Hero() {
           data-testid="hero-heading"
           className="font-display text-[color:var(--paper)] mt-4 md:mt-5 font-normal text-[38px] sm:text-[48px] md:text-[60px] lg:text-[76px] leading-[1.02] tracking-[-0.03em] max-w-[15ch]"
         >
-          <MaskLines lines={["Custom Home Builders", "in Melbourne South-East."]} delay={0.2} />
+          <MaskLines
+            lines={[
+              "Custom Home Builders",
+              "in Melbourne South-East.",
+            ]}
+            delay={0.2}
+          />
         </h1>
 
         <div className="mt-6 md:mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-8">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease, delay: 1.0 }}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1,
+              ease,
+              delay: 1.0,
+            }}
             className="max-w-md text-[color:var(--paper)]/92 text-[14px] md:text-[15px] leading-[1.6]"
             data-testid="hero-sub"
           >
-            Quality renovations and custom homes across Melbourne&rsquo;s South-East —
-            delivered with fixed price quotes and clear communication.
+            Quality renovations and custom homes across Melbourne&rsquo;s
+            South-East — delivered with fixed price quotes and clear
+            communication.
           </motion.p>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease, delay: 1.15 }}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1,
+              ease,
+              delay: 1.15,
+            }}
             className="flex items-center gap-6 md:gap-8"
           >
-            <Link to="/contact-us/" data-testid="hero-cta" className="btn-gold">
-              Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+            <Link
+              to="/contact-us/"
+              data-testid="hero-cta"
+              className="btn-gold"
+            >
+              Get a Free Quote
+              <ArrowUpRight
+                className="h-4 w-4"
+                strokeWidth={1.5}
+              />
             </Link>
+
             <a
               href="#projects"
               className="hidden md:inline-flex items-center gap-3 text-[11px] tracking-[0.22em] uppercase font-semibold text-[color:var(--paper)]/85 hover:text-[color:var(--gold)] transition-colors"
             >
-              View Projects <ArrowDown className="h-3.5 w-3.5" strokeWidth={1.5} />
+              View Projects
+              <ArrowDown
+                className="h-3.5 w-3.5"
+                strokeWidth={1.5}
+              />
             </a>
           </motion.div>
         </div>
@@ -111,7 +190,7 @@ function Hero() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   TRUST BAND — quiet, sits between hero and intro
+   TRUST BAND
    ═════════════════════════════════════════════════════════════════ */
 function TrustBand() {
   return (
@@ -130,6 +209,7 @@ function TrustBand() {
               <span className="tracking-eyebrow text-[color:var(--gold-dark)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
+
               <span className="text-[color:var(--ink)] text-[14px] md:text-[15px]">
                 {t}
               </span>
@@ -142,7 +222,7 @@ function TrustBand() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   INTRO — quiet editorial pitch
+   INTRO
    ═════════════════════════════════════════════════════════════════ */
 function Intro() {
   return (
@@ -153,28 +233,37 @@ function Intro() {
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
         <Reveal className="md:col-span-4">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">01 — Introduction</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
+            01 — Introduction
+          </div>
         </Reveal>
-        <Reveal className="md:col-span-8" delay={0.06}>
+
+        <Reveal
+          className="md:col-span-8"
+          delay={0.06}
+        >
           <h2
             id="intro-heading"
             className="font-display text-[30px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] max-w-[18ch]"
           >
-            Quality renovations &amp; custom homes across Melbourne&rsquo;s South-East.
+            Quality renovations &amp; custom homes across Melbourne&rsquo;s
+            South-East.
           </h2>
-            <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[16px] md:text-[18px] leading-[1.7]">
-              Apollo Builders specialises in high-quality renovations, extensions
-              and custom home builds. As experienced{" "}
-              <Link
-                to="/melbourne-home-builders/"
-                className="link-under"
-              >
-                Melbourne home builders
-              </Link>
-              , we work with homeowners from the initial consultation through to
-              completion, focusing on quality workmanship, clear communication
-              and delivering projects that stand the test of time.
-            </p>
+
+          <p className="mt-10 max-w-2xl text-[color:var(--ink)] text-[16px] md:text-[18px] leading-[1.7]">
+            Apollo Builders specialises in high-quality renovations,
+            extensions and custom home builds. As experienced{" "}
+            <Link
+              to="/melbourne-home-builders/"
+              className="link-under"
+            >
+              Melbourne home builders
+            </Link>
+            , we work with homeowners from the initial consultation through
+            to completion, focusing on quality workmanship, clear
+            communication and delivering projects that stand the test of
+            time.
+          </p>
         </Reveal>
       </div>
     </section>
@@ -182,7 +271,7 @@ function Intro() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   PROJECTS — editorial magazine layout
+   PROJECTS
    ═════════════════════════════════════════════════════════════════ */
 function Projects() {
   return (
@@ -195,9 +284,15 @@ function Projects() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end mb-16 md:mb-24">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">03 — Projects</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
+              03 — Projects
+            </div>
           </Reveal>
-          <Reveal className="md:col-span-8" delay={0.06}>
+
+          <Reveal
+            className="md:col-span-8"
+            delay={0.06}
+          >
             <h2
               id="projects-heading"
               className="font-display text-[30px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)]"
@@ -211,6 +306,7 @@ function Projects() {
           {projects.map((p, i) => {
             const reverse = i % 2 === 1;
             const idx = String(i + 1).padStart(2, "0");
+
             return (
               <article
                 key={p.slug}
@@ -220,34 +316,47 @@ function Projects() {
                 <Reveal
                   y={40}
                   className={`col-span-12 md:col-span-8 ${
-                    reverse ? "md:col-start-5 md:order-2" : ""
+                    reverse
+                      ? "md:col-start-5 md:order-2"
+                      : ""
                   }`}
                 >
                   <div className="frame aspect-[16/10]">
-                    <img src={p.image} alt={p.imageAlt} loading="lazy" />
+                    <img
+                      src={p.image}
+                      alt={p.imageAlt}
+                      loading="lazy"
+                    />
                   </div>
                 </Reveal>
+
                 <Reveal
                   y={20}
                   delay={0.08}
                   className={`col-span-12 md:col-span-4 ${
-                    reverse ? "md:col-start-1 md:row-start-1 md:order-1" : ""
+                    reverse
+                      ? "md:col-start-1 md:row-start-1 md:order-1"
+                      : ""
                   }`}
                 >
                   <div className="flex items-baseline gap-5">
                     <span className="font-display text-[color:var(--gold)] text-3xl md:text-4xl">
                       {idx}
                     </span>
+
                     <span className="tracking-eyebrow text-[color:var(--gold-dark)]">
                       {p.suburb}
                     </span>
                   </div>
+
                   <h3 className="font-display text-[28px] md:text-[34px] leading-[1.1] tracking-[-0.02em] text-[color:var(--ink-black)] mt-5">
                     {p.name}
                   </h3>
+
                   <p className="text-[color:var(--ink-soft)] mt-5 leading-[1.7] max-w-md">
                     {p.description}
                   </p>
+
                   <div className="mt-8 text-[11px] tracking-[0.22em] uppercase text-[color:var(--ink)]/70">
                     {p.type}
                   </div>
@@ -262,7 +371,7 @@ function Projects() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   WHY US — numbered list
+   WHY US
    ═════════════════════════════════════════════════════════════════ */
 function Why() {
   return (
@@ -273,7 +382,10 @@ function Why() {
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <Reveal className="md:col-span-4">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">04 — Why Apollo</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
+            04 — Why Apollo
+          </div>
+
           <h2
             id="why-heading"
             className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] mt-4"
@@ -281,13 +393,18 @@ function Why() {
             Why homeowners choose Apollo.
           </h2>
         </Reveal>
+
         <ul className="md:col-span-8 md:pl-10 mt-6 md:mt-0">
           {whyUs.map((line, i) => (
-            <Reveal key={line} delay={i * 0.04}>
+            <Reveal
+              key={line}
+              delay={i * 0.04}
+            >
               <li className="grid grid-cols-12 items-baseline gap-4 py-7 border-b border-[color:var(--hair)] first:border-t">
                 <span className="col-span-2 md:col-span-1 font-display text-[color:var(--gold)] text-xl md:text-2xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
+
                 <span className="col-span-10 md:col-span-11 font-display text-[color:var(--ink-black)] text-xl md:text-[24px] leading-[1.25] tracking-[-0.01em]">
                   {line}
                 </span>
@@ -301,7 +418,7 @@ function Why() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   TESTIMONIALS — restrained single-column editorial
+   TESTIMONIALS
    ═════════════════════════════════════════════════════════════════ */
 function Testimonials() {
   return (
@@ -313,9 +430,15 @@ function Testimonials() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16 md:mb-24">
           <Reveal className="md:col-span-4">
-            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">06 — Homeowners</div>
+            <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
+              06 — Homeowners
+            </div>
           </Reveal>
-          <Reveal className="md:col-span-8" delay={0.06}>
+
+          <Reveal
+            className="md:col-span-8"
+            delay={0.06}
+          >
             <h2
               id="testimonials-heading"
               className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] max-w-[16ch]"
@@ -337,6 +460,7 @@ function Testimonials() {
                 <div className="col-span-12 md:col-span-3 tracking-eyebrow text-[color:var(--gold-dark)]">
                   {t.name}
                 </div>
+
                 <p className="col-span-12 md:col-span-9 font-display text-[color:var(--ink-black)] text-[22px] md:text-[28px] leading-[1.35] tracking-[-0.015em]">
                   &ldquo;{t.quote}&rdquo;
                 </p>
@@ -350,7 +474,7 @@ function Testimonials() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   FAQ — minimal accordion
+   FAQ
    ═════════════════════════════════════════════════════════════════ */
 function FAQ() {
   return (
@@ -361,7 +485,10 @@ function FAQ() {
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <Reveal className="md:col-span-5">
-          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">07 — Questions</div>
+          <div className="tracking-eyebrow text-[color:var(--gold-dark)]">
+            07 — Questions
+          </div>
+
           <h2
             id="faq-heading"
             className="font-display text-[30px] md:text-[42px] lg:text-[48px] leading-[1.05] tracking-[-0.025em] text-[color:var(--ink-black)] mt-4"
@@ -369,8 +496,13 @@ function FAQ() {
             Answers before you ask.
           </h2>
         </Reveal>
+
         <div className="md:col-span-7 md:pl-10">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+          >
             {faqs.map((f, i) => (
               <AccordionItem
                 key={i}
@@ -381,6 +513,7 @@ function FAQ() {
                 <AccordionTrigger className="font-display text-left text-[20px] md:text-[24px] py-7 text-[color:var(--ink-black)] hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
+
                 <AccordionContent className="text-[color:var(--ink-soft)] text-[15px] leading-[1.7] pb-8 max-w-2xl">
                   {f.a}
                 </AccordionContent>
@@ -411,24 +544,43 @@ function CTA() {
           loading="lazy"
         />
       </div>
+
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A] via-transparent to-[#0A0F1A]" />
+
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
         <Reveal className="md:col-span-8">
-          <div className="tracking-eyebrow text-[color:var(--gold)]">Enquire</div>
+          <div className="tracking-eyebrow text-[color:var(--gold)]">
+            Enquire
+          </div>
+
           <h2
             id="cta-heading"
             className="font-display text-[38px] md:text-[60px] lg:text-[76px] leading-[0.98] tracking-[-0.03em] font-normal mt-5 max-w-[18ch]"
           >
             Ready to start your renovation or new build?
           </h2>
+
           <p className="mt-8 max-w-md text-[color:var(--paper)]/85 text-[16px] md:text-[17px] leading-[1.65]">
             Speak with Apollo Builders about your project — expert advice, a
             realistic timeline and a no-obligation fixed price quote.
           </p>
         </Reveal>
-        <Reveal className="md:col-span-4" delay={0.06}>
-          <Link to="/contact-us/" data-testid="final-cta-btn" className="btn-gold">
-            Get a Free Quote <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+
+        <Reveal
+          className="md:col-span-4"
+          delay={0.06}
+        >
+          <Link
+            to="/contact-us/"
+            data-testid="final-cta-btn"
+            className="btn-gold"
+          >
+            Get a Free Quote
+
+            <ArrowUpRight
+              className="h-4 w-4"
+              strokeWidth={1.5}
+            />
           </Link>
         </Reveal>
       </div>
@@ -442,7 +594,10 @@ function CTA() {
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": [localBusiness(), faqSchema(faqs)],
+    "@graph": [
+      localBusiness(),
+      faqSchema(faqs),
+    ],
   };
 
   return (
@@ -453,22 +608,51 @@ export default function Home() {
         path="/"
         jsonLd={jsonLd}
       />
+
       <Hero />
+
       <TrustBand />
+
       <Intro />
+
       <ServicesInteractive
         order={[
-          { slug: "home-renovations", label: "House Renovations" },
-          { slug: "new-home-builds", label: "New Builds" },
-          { slug: "bathroom-renovations", label: "Bathroom Renovations" },
-          { slug: "kitchen-renovations", label: "Kitchen Renovations" },
+          {
+            slug: "home-renovations-melbourne",
+            sourceSlug: "home-renovations",
+            label: "House Renovations",
+          },
+          {
+            slug: "house-extensions-melbourne",
+            sourceSlug: "home-renovations",
+            label: "House Extensions",
+          },
+          {
+            slug: "new-home-builders-melbourne",
+            sourceSlug: "new-home-builds",
+            label: "New Builds",
+          },
+          {
+            slug: "bathroom-renovations",
+            label: "Bathroom Renovations",
+          },
+          {
+            slug: "kitchen-renovations",
+            label: "Kitchen Renovations",
+          },
         ]}
       />
+
       <Projects />
+
       <Why />
+
       <BlueprintProcess />
+
       <Testimonials />
+
       <FAQ />
+
       <CTA />
     </div>
   );

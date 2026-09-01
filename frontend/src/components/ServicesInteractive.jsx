@@ -5,31 +5,61 @@ import { ArrowUpRight, Plus } from "lucide-react";
 import { services } from "@/lib/data";
 
 /**
- * Interactive services — four large horizontal panels that expand on hover
- * (desktop) or tap (mobile), revealing a large project photo, scope list,
- * and a link to the deep-dive service page.
+ * Interactive services — large horizontal panels that expand on hover
+ * (desktop) or tap (mobile), revealing a project photo, scope list,
+ * and a link to the relevant service page.
  *
- * @param {Array<string|{slug:string,label:string}>} order  optional custom
- *   ordering. Entries may be plain slugs OR `{slug, label}` objects when a
- *   caller (e.g. the homepage) needs a display label that differs from the
- *   page's canonical title. The linked URL, page H1 and SEO title are
- *   untouched — only the widget label is swapped.
+ * order supports:
+ * - "home-renovations"
+ * - { slug: "home-renovations", label: "House Renovations" }
+ * - {
+ *     slug: "home-renovations-melbourne",
+ *     sourceSlug: "home-renovations",
+ *     label: "House Renovations"
+ *   }
+ *
+ * `sourceSlug` lets us reuse existing service content/images while linking
+ * the card to a different SEO landing page.
  */
 export default function ServicesInteractive({ order }) {
   const [active, setActive] = useState(0);
+
   const items = useMemo(() => {
     if (!order?.length) return services;
-    const bySlug = new Map(services.map((s) => [s.slug, s]));
+
+    const bySlug = new Map(
+      services.map((service) => [service.slug, service])
+    );
+
     return order
       .map((entry, idx) => {
-        const slug = typeof entry === "string" ? entry : entry.slug;
-        const svc = bySlug.get(slug);
-        if (!svc) return null;
-        const label = typeof entry === "object" && entry.label ? entry.label : svc.title;
-        // Renumber to match the caller-supplied order so the "01/02/03/04"
-        // eyebrow stays in sequence with the reordered cards.
+        const slug =
+          typeof entry === "string"
+            ? entry
+            : entry.slug;
+
+        const sourceSlug =
+          typeof entry === "object" && entry.sourceSlug
+            ? entry.sourceSlug
+            : slug;
+
+        const service = bySlug.get(sourceSlug);
+
+        if (!service) return null;
+
+        const label =
+          typeof entry === "object" && entry.label
+            ? entry.label
+            : service.title;
+
         const number = String(idx + 1).padStart(2, "0");
-        return { ...svc, title: label, number };
+
+        return {
+          ...service,
+          slug,
+          title: label,
+          number,
+        };
       })
       .filter(Boolean);
   }, [order]);
@@ -45,23 +75,41 @@ export default function ServicesInteractive({ order }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10% 0px" }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{
+              once: true,
+              margin: "-10% 0px",
+            }}
+            transition={{
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="md:col-span-8"
           >
-            <div className="tracking-eyebrow text-[color:var(--gold)]">02 — Services</div>
+            <div className="tracking-eyebrow text-[color:var(--gold)]">
+              02 — Services
+            </div>
+
             <h2
               id="services-heading"
               className="font-display text-[30px] md:text-[42px] lg:text-[50px] leading-[1.05] tracking-[-0.02em] mt-5"
             >
-              Renovations, extensions <br /> and new builds.
+              Renovations, extensions <br />
+              and new builds.
             </h2>
           </motion.div>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10% 0px" }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
+            viewport={{
+              once: true,
+              margin: "-10% 0px",
+            }}
+            transition={{
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.06,
+            }}
             className="md:col-span-4 text-[color:var(--paper)]/75 max-w-sm md:pb-3"
           >
             Hover a service to explore the work.
@@ -69,7 +117,7 @@ export default function ServicesInteractive({ order }) {
         </div>
       </div>
 
-      {/* Expanding panels */}
+      {/* Desktop expanding panels */}
       <div
         className="relative border-t border-[color:var(--paper)]/12"
         role="tablist"
@@ -77,32 +125,42 @@ export default function ServicesInteractive({ order }) {
       >
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
           <div className="hidden md:flex w-full h-[520px] gap-2">
-            {items.map((s, i) => {
-              const isActive = active === i;
+            {items.map((service, index) => {
+              const isActive = active === index;
+
               return (
                 <button
-                  key={s.slug}
-                  data-testid={`service-tile-${s.slug}`}
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
+                  key={service.slug}
+                  data-testid={`service-tile-${service.slug}`}
+                  onMouseEnter={() => setActive(index)}
+                  onFocus={() => setActive(index)}
                   role="tab"
                   aria-selected={isActive}
                   className="relative overflow-hidden group text-left transition-[flex] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--gold)] ring-inset"
-                  style={{ flex: isActive ? "6 1 0%" : "1 1 0%" }}
+                  style={{
+                    flex: isActive
+                      ? "6 1 0%"
+                      : "1 1 0%",
+                  }}
                 >
                   <img
-                    src={s.image}
-                    alt={s.imageAlt}
+                    src={service.image}
+                    alt={service.imageAlt}
                     className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-                      isActive ? "opacity-70" : "opacity-30"
+                      isActive
+                        ? "opacity-70"
+                        : "opacity-30"
                     }`}
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1A] via-[#0A0F1A]/70 to-[#0A0F1A]/40" />
+
                   <div className="relative z-10 h-full p-8 flex flex-col justify-between">
                     <div>
                       <div className="tracking-eyebrow text-[color:var(--gold)]">
-                        {s.number}
+                        {service.number}
                       </div>
+
                       <h3
                         className={`font-display leading-[1.02] tracking-[-0.02em] text-[color:var(--paper)] whitespace-nowrap transition-all duration-700 ${
                           isActive
@@ -110,38 +168,61 @@ export default function ServicesInteractive({ order }) {
                             : "absolute bottom-8 left-8 origin-bottom-left -rotate-90 translate-y-[-8px] translate-x-[8px] text-[22px] lg:text-[26px]"
                         }`}
                       >
-                        {s.title}
+                        {service.title}
                       </h3>
                     </div>
 
                     <AnimatePresence>
                       {isActive && (
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+                          initial={{
+                            opacity: 0,
+                            y: 20,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          transition={{
+                            duration: 0.6,
+                            ease: [0.16, 1, 0.3, 1],
+                            delay: 0.15,
+                          }}
                           className="max-w-md"
                         >
                           <p className="text-[color:var(--paper)]/85 text-base leading-relaxed">
-                            {s.tagline}
+                            {service.tagline}
                           </p>
+
                           <ul className="mt-6 space-y-1.5">
-                            {s.scope.map((item) => (
+                            {service.scope.map((item) => (
                               <li
                                 key={item}
                                 className="text-[13px] text-[color:var(--paper)]/70 flex items-baseline gap-3"
                               >
-                                <span className="text-[color:var(--gold)]">—</span>
+                                <span className="text-[color:var(--gold)]">
+                                  —
+                                </span>
+
                                 {item}
                               </li>
                             ))}
                           </ul>
+
                           <Link
-                            to={`/${s.slug}/`}
+                            to={`/${service.slug}/`}
                             className="mt-7 inline-flex items-center gap-2 text-[color:var(--gold)] text-[12px] tracking-[0.22em] uppercase font-semibold link-under"
                           >
-                            Discover <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
+                            Discover
+
+                            <ArrowUpRight
+                              className="h-3.5 w-3.5"
+                              strokeWidth={2}
+                            />
                           </Link>
                         </motion.div>
                       )}
@@ -153,59 +234,94 @@ export default function ServicesInteractive({ order }) {
           </div>
         </div>
 
-        {/* Mobile — stacked expandable */}
+        {/* Mobile stacked expandable */}
         <div className="md:hidden">
-          {items.map((s, i) => {
-            const open = active === i;
+          {items.map((service, index) => {
+            const open = active === index;
+
             return (
-              <div key={s.slug} className="border-b border-[color:var(--paper)]/12">
+              <div
+                key={service.slug}
+                className="border-b border-[color:var(--paper)]/12"
+              >
                 <button
-                  onClick={() => setActive(open ? -1 : i)}
-                  data-testid={`service-tile-${s.slug}-mobile`}
+                  onClick={() =>
+                    setActive(open ? -1 : index)
+                  }
+                  data-testid={`service-tile-${service.slug}-mobile`}
                   className="w-full text-left px-6 py-6 flex items-baseline justify-between gap-4"
                   aria-expanded={open}
                 >
                   <div className="flex items-baseline gap-4">
                     <span className="text-[color:var(--gold)] text-[13px] tracking-[0.2em]">
-                      {s.number}
+                      {service.number}
                     </span>
+
                     <h3 className="font-display text-2xl tracking-[-0.02em]">
-                      {s.title}
+                      {service.title}
                     </h3>
                   </div>
+
                   <Plus
                     className={`h-4 w-4 text-[color:var(--gold)] transition-transform duration-500 ${
                       open ? "rotate-45" : ""
                     }`}
                   />
                 </button>
+
                 <AnimatePresence>
                   {open && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      initial={{
+                        height: 0,
+                        opacity: 0,
+                      }}
+                      animate={{
+                        height: "auto",
+                        opacity: 1,
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                       className="overflow-hidden px-6 pb-8"
                     >
                       <div className="frame aspect-[16/10] mb-5">
-                        <img src={s.image} alt={s.imageAlt} />
+                        <img
+                          src={service.image}
+                          alt={service.imageAlt}
+                        />
                       </div>
+
                       <p className="text-[color:var(--paper)]/85 text-[15px]">
-                        {s.tagline}
+                        {service.tagline}
                       </p>
+
                       <ul className="mt-4 space-y-1.5">
-                        {s.scope.map((it) => (
-                          <li key={it} className="text-[13px] text-[color:var(--paper)]/70">
-                            — {it}
+                        {service.scope.map((item) => (
+                          <li
+                            key={item}
+                            className="text-[13px] text-[color:var(--paper)]/70"
+                          >
+                            — {item}
                           </li>
                         ))}
                       </ul>
+
                       <Link
-                        to={`/${s.slug}/`}
+                        to={`/${service.slug}/`}
                         className="mt-5 inline-flex items-center gap-2 text-[color:var(--gold)] text-[12px] tracking-[0.22em] uppercase font-semibold"
                       >
-                        Discover <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
+                        Discover
+
+                        <ArrowUpRight
+                          className="h-3.5 w-3.5"
+                          strokeWidth={2}
+                        />
                       </Link>
                     </motion.div>
                   )}

@@ -33,6 +33,14 @@ import BuildersClayton from "@/pages/BuildersClayton";
 import MelbourneHomeBuilders from "@/pages/MelbourneHomeBuilders";
 import NotFound from "@/pages/NotFound";
 
+/* New Melbourne SEO pages */
+import HomeRenovationsMelbourne from "@/pages/HomeRenovationsMelbourne";
+import HouseExtensionsMelbourne from "@/pages/HouseExtensionsMelbourne";
+import CustomHomeBuildersMelbourne from "@/pages/CustomHomeBuildersMelbourne";
+import NewHomeBuildersMelbourne from "@/pages/NewHomeBuildersMelbourne";
+import KnockDownRebuildMelbourne from "@/pages/KnockDownRebuildMelbourne";
+import DesignBuildMelbourne from "@/pages/DesignBuildMelbourne";
+
 import TrailingSlashRedirect from "@/components/TrailingSlashRedirect";
 import Analytics from "@/components/Analytics";
 import { Toaster } from "sonner";
@@ -114,13 +122,15 @@ function App() {
                 <Route path="/about-us" element={<About />} />
                 <Route path="/services" element={<Services />} />
 
-                {/* Service pages */}
+                {/* Existing service pages */}
                 <Route path="/new-home-builds" element={<ServicePage />} />
                 <Route path="/home-renovations" element={<ServicePage />} />
+
                 <Route
                   path="/bathroom-renovations"
                   element={<ServicePage />}
                 />
+
                 <Route
                   path="/kitchen-renovations"
                   element={<ServicePage />}
@@ -130,6 +140,7 @@ function App() {
 
                 {/* Project pages */}
                 <Route path="/our-projects" element={<Projects />} />
+
                 <Route
                   path="/our-projects/:slug"
                   element={<ProjectDetail />}
@@ -163,10 +174,42 @@ function App() {
                   element={<ThankYou variant="consult" />}
                 />
 
-                {/* Main Melbourne SEO landing page */}
+                {/* Existing Melbourne SEO landing page */}
                 <Route
                   path="/melbourne-home-builders"
                   element={<MelbourneHomeBuilders />}
+                />
+
+                {/* New Melbourne SEO landing pages */}
+
+                <Route
+                  path="/home-renovations-melbourne"
+                  element={<HomeRenovationsMelbourne />}
+                />
+
+                <Route
+                  path="/house-extensions-melbourne"
+                  element={<HouseExtensionsMelbourne />}
+                />
+
+                <Route
+                  path="/custom-home-builders-melbourne"
+                  element={<CustomHomeBuildersMelbourne />}
+                />
+
+                <Route
+                  path="/new-home-builders-melbourne"
+                  element={<NewHomeBuildersMelbourne />}
+                />
+
+                <Route
+                  path="/knock-down-rebuild-melbourne"
+                  element={<KnockDownRebuildMelbourne />}
+                />
+
+                <Route
+                  path="/design-build-builders-melbourne"
+                  element={<DesignBuildMelbourne />}
                 />
 
                 {/* SEO / resource pages */}
