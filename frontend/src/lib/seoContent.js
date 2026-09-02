@@ -36,20 +36,457 @@ export const suburbData = {
     keywords: ["home builders Bentleigh East", "renovation builder Bentleigh East", "kitchen renovation Bentleigh East", "bathroom renovation Bentleigh East"],
   },
   bentleigh: {
-    name: "Bentleigh", state: "VIC", postcode: "3204",
+    name: "Bentleigh",
+    state: "VIC",
+    postcode: "3204",
     council: "City of Glen Eira",
-    zone: "General Residential Zone; select Neighbourhood Residential pockets",
-    profile: "Bentleigh, roughly 13 km south-east of the CBD, is a busy family suburb with a well-known Centre Road shopping strip, strong public and private school options, and easy Frankston line access.",
-    housing: "Housing is a mix of interwar Californian bungalows, post-war weatherboard homes and more recent townhouses. Original homes commonly have small kitchens and single bathrooms, making the suburb a hotspot for full home renovations and structural extensions.",
-    overlays: "Some streets sit within Neighbourhood Character Overlays under the Glen Eira Planning Scheme. Heritage protection is limited compared to Brighton but character controls still influence facade treatment, roof form and front setbacks.",
-    renovations: [
-      "Kitchen renovations opening up small closed 1950s layouts",
-      "Bathroom and ensuite renovations in interwar and post-war homes",
-      "Rear extensions and structural additions to add family living zones",
-      "Knockdown-rebuild new homes",
+
+    detailed: true,
+
+    seoTitle: "Custom Home Builders Bentleigh | Apollo Builders",
+
+    metaDescription:
+      "Build your custom home in Bentleigh with Apollo Builders. From knockdown rebuilds to new custom homes and renovations, we deliver tailored homes across Bentleigh VIC 3204.",
+
+    primaryKeyword: "custom home builders Bentleigh",
+
+    keywords: [
+      "home builders Bentleigh",
+      "custom builders Bentleigh",
+      "Bentleigh builders",
+      "new homes Bentleigh",
+      "knockdown rebuild Bentleigh",
+      "custom homes Bentleigh",
+      "luxury home builders Bentleigh",
+      "house extensions Bentleigh",
+      "home renovations Bentleigh",
     ],
-    lifestyle: "Popular with families and first-home upgraders; typical brief includes open-plan living, larger kitchens, dedicated laundry and outdoor entertaining area.",
-    keywords: ["home builders Bentleigh", "renovation builder Bentleigh", "kitchen renovation Bentleigh", "bathroom renovation Bentleigh"],
+
+    h1: "Custom Home Builders in Bentleigh",
+
+    intro:
+      "Building a new home in Bentleigh is an opportunity to create a property that works specifically for the way you live. Whether you are replacing an older house with a new custom residence, undertaking a knockdown rebuild or transforming an existing property through an extension or renovation, Apollo Builders can help you bring the project together from concept through to construction.",
+
+    introParagraphs: [
+      "Located approximately 13 kilometres south-east of Melbourne's CBD, Bentleigh is an established residential suburb within the City of Glen Eira. The suburb is centred around the well-known Centre Road shopping and commercial precinct, with Bentleigh Station providing access to the Frankston railway line.",
+
+      "Bentleigh's established residential streets, proximity to transport, local shopping and community facilities make it an attractive location for homeowners looking to improve, replace or build on their existing property.",
+
+      "At Apollo Builders, we design and build homes around the individual site, your requirements and your long-term plans.",
+    ],
+
+    heroCta: {
+      label: "Looking to build in Bentleigh? Talk to Apollo Builders about your project.",
+      link: "/contact-us/",
+    },
+
+    sections: [
+      {
+        title: "Building a New Home in Bentleigh",
+
+        paragraphs: [
+          "Bentleigh contains a mixture of established homes, newer residences and areas experiencing gradual redevelopment. That makes the suburb particularly suitable for homeowners who want to replace an existing dwelling with a home designed for modern living.",
+
+          "Rather than adapting your lifestyle around an existing floor plan, a custom build allows you to consider how every part of the property will be used.",
+        ],
+
+        bullets: [
+          "The dimensions and orientation of your block",
+          "Natural light and ventilation",
+          "Your preferred number of bedrooms and bathrooms",
+          "Open-plan living and entertaining areas",
+          "Kitchen and storage requirements",
+          "Indoor-outdoor living",
+          "Garaging and vehicle access",
+          "Landscaping and private outdoor areas",
+          "Your family's current and future requirements",
+          "The character of the surrounding streetscape",
+        ],
+
+        subsections: [
+          {
+            paragraphs: [
+              "A successful custom home is not simply about making a house larger. It is about making better use of the available site.",
+
+              "Apollo Builders works with homeowners to develop practical and considered homes that balance design, functionality and the requirements of the site.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Knockdown Rebuild in Bentleigh",
+
+        paragraphs: [
+          "For many Bentleigh homeowners, a knockdown rebuild can be an alternative to extensively renovating an older property.",
+
+          "Instead of continuing to modify an existing floor plan, a knockdown rebuild allows the site to be cleared and a new home designed from the ground up.",
+
+          "This can be particularly useful where the existing house no longer provides the space, layout, energy performance or functionality required by the homeowner.",
+
+          "A Bentleigh knockdown rebuild can provide the opportunity to create:",
+        ],
+
+        bullets: [
+          "A modern family home",
+          "Multiple living zones",
+          "A larger kitchen and dining area",
+          "Additional bedrooms",
+          "Ensuite and bathroom upgrades",
+          "Better storage",
+          "Improved natural light",
+          "Purpose-designed outdoor areas",
+          "Contemporary building services and finishes",
+          "A layout designed specifically around the block",
+        ],
+
+        subsections: [
+          {
+            paragraphs: [
+              "However, not every property can simply be demolished and rebuilt without considering planning and building requirements.",
+
+              "The applicable planning controls, zones and overlays can differ between individual properties. Victorian Government planning tools allow property-specific planning information to be checked through VicPlan and property planning reports.",
+
+              "Apollo Builders can help you understand the construction pathway for your proposed project and coordinate the relevant professionals and approvals required for your build.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Custom Homes Designed for Bentleigh Properties",
+
+        paragraphs: [
+          "Every block presents different opportunities and limitations.",
+
+          "The dimensions of the site, its orientation, existing structures, access, neighbouring properties and applicable planning controls can all influence the design of a new home.",
+
+          "That is why we don't believe in forcing a standard house design onto every Bentleigh property.",
+
+          "A custom home should respond to the site.",
+
+          "For example, the position of living areas can be considered around the available natural light, while bedrooms can be positioned to provide privacy and comfortable separation from living spaces.",
+
+          "Outdoor areas can also be incorporated into the design rather than treated as an afterthought.",
+
+          "The result is a home that is designed specifically for its location and the people who will live there.",
+        ],
+      },
+
+      {
+        title: "Renovations and Extensions in Bentleigh",
+
+        paragraphs: [
+          "A knockdown rebuild isn't the right solution for every homeowner.",
+
+          "If your existing Bentleigh property has good bones, an extension or renovation may provide a more appropriate way to improve the home.",
+
+          "Apollo Builders can assist with residential building projects that may include:",
+        ],
+
+        subsections: [
+          {
+            title: "Ground-floor extensions",
+            paragraphs: [
+              "Create additional space without completely replacing the existing property.",
+            ],
+          },
+
+          {
+            title: "Rear extensions",
+            paragraphs: [
+              "Increase the size of kitchens, dining areas and living spaces while creating a stronger connection to the backyard.",
+            ],
+          },
+
+          {
+            title: "Second-storey additions",
+            paragraphs: [
+              "Add bedrooms, bathrooms and living areas where additional floor area is required.",
+            ],
+          },
+
+          {
+            title: "Whole-home renovations",
+            paragraphs: [
+              "Modernise an existing home while retaining elements that are important to you.",
+            ],
+          },
+
+          {
+            title: "Kitchen and living upgrades",
+            paragraphs: [
+              "Create more functional and connected spaces for everyday family life and entertaining.",
+            ],
+          },
+
+          {
+            paragraphs: [
+              "The appropriate approach depends on the existing property, the available site and the homeowner's objectives.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Living in Bentleigh",
+
+        paragraphs: [
+          "Bentleigh has a strong local activity centre focused around Centre Road, providing shopping, services, dining and other everyday amenities.",
+
+          "The suburb's transport connections are another important part of its location. Bentleigh Station sits on the Frankston railway line, while local walking and cycling connections continue to be improved around the station and surrounding streets.",
+
+          "The Centre Road precinct is also subject to ongoing streetscape and activity-centre planning. Glen Eira's current planning material identifies different precincts and built-form expectations within the activity centre, including areas where future development is expected to respond to existing heritage and non-heritage buildings and transition toward adjoining residential areas.",
+
+          "For homeowners, this reinforces the importance of treating every building project as an individual site rather than assuming that the same design or planning approach applies across Bentleigh.",
+        ],
+      },
+
+      {
+        title: "Understanding Your Bentleigh Building Site",
+
+        paragraphs: [
+          "Before committing to a design, it is important to understand the property itself.",
+
+          "Two blocks in Bentleigh can have very different planning and development considerations.",
+
+          "Depending on the property, relevant considerations may include:",
+        ],
+
+        bullets: [
+          "Planning zone",
+          "Overlays",
+          "Site dimensions",
+          "Existing dwelling",
+          "Setbacks",
+          "Site coverage",
+          "Private open space",
+          "Vehicle access",
+          "Neighbouring properties",
+          "Heritage considerations where applicable",
+          "Building regulations",
+          "Stormwater requirements",
+          "Demolition requirements",
+          "Planning permit requirements",
+        ],
+
+        subsections: [
+          {
+            paragraphs: [
+              "The Victorian Government's VicPlan system provides property-specific information about planning zones and overlays, while a Planning Property Report can provide a more detailed summary for an individual address.",
+
+              "For this reason, Apollo Builders does not make blanket claims about planning requirements across all of Bentleigh.",
+
+              "Your specific property needs to be assessed on its own characteristics and applicable controls.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Building Around Bentleigh's Established Character",
+
+        paragraphs: [
+          "Bentleigh is not a newly developed outer-suburban estate. It is an established Melbourne suburb with a mixture of older and newer residential development.",
+
+          "That creates an interesting opportunity for homeowners undertaking a new build.",
+
+          "A contemporary home does not necessarily need to ignore the surrounding neighbourhood.",
+
+          "Good design can combine modern functionality with an appropriate response to the existing streetscape.",
+
+          "Depending on the site and project brief, this might involve considering:",
+        ],
+
+        bullets: [
+          "Front façade proportions",
+          "Building scale",
+          "Setbacks",
+          "Materials",
+          "Landscaping",
+          "Window placement",
+          "Privacy",
+          "Roof form",
+          "Relationship with neighbouring homes",
+        ],
+
+        subsections: [
+          {
+            paragraphs: [
+              "Glen Eira's planning work for Bentleigh recognises different built-form conditions throughout the activity centre and adjoining residential areas, meaning design responses should be considered in relation to the specific location.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Why Choose Apollo Builders?",
+
+        paragraphs: [
+          "Choosing a builder is one of the biggest decisions you'll make during a new home or renovation project.",
+
+          "Apollo Builders takes a project-focused approach, working with homeowners to understand the property, design objectives and construction requirements before moving into the build.",
+
+          "We focus on creating homes that combine:",
+        ],
+
+        subsections: [
+          {
+            title: "Design",
+            paragraphs: [
+              "A home designed around your lifestyle and the characteristics of your property.",
+            ],
+          },
+
+          {
+            title: "Functionality",
+            paragraphs: [
+              "Layouts that work for everyday living rather than simply looking impressive on paper.",
+            ],
+          },
+
+          {
+            title: "Quality",
+            paragraphs: [
+              "Careful attention to construction, materials and finishes throughout the project.",
+            ],
+          },
+
+          {
+            title: "Communication",
+            paragraphs: [
+              "A clear process so you understand what is happening throughout the project.",
+            ],
+          },
+
+          {
+            title: "Long-term value",
+            paragraphs: [
+              "A home designed to remain practical and enjoyable well beyond the completion date.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Our Bentleigh Building Services",
+
+        paragraphs: [
+          "Apollo Builders can assist with a range of residential building projects throughout Bentleigh.",
+        ],
+
+        subsections: [
+          {
+            title: "Custom Home Building",
+            paragraphs: [
+              "Design and construction of a new home tailored to your site, lifestyle and requirements.",
+            ],
+          },
+
+          {
+            title: "Knockdown Rebuilds",
+            paragraphs: [
+              "Replace an existing dwelling with a new custom-designed home.",
+            ],
+          },
+
+          {
+            title: "Home Extensions",
+            paragraphs: [
+              "Create additional living space while retaining and improving your existing property.",
+            ],
+          },
+
+          {
+            title: "Home Renovations",
+            paragraphs: [
+              "Modernise and improve existing homes with carefully considered renovations.",
+            ],
+          },
+
+          {
+            title: "New Home Design & Build",
+            paragraphs: [
+              "Coordinate the design and construction process to create a cohesive project from beginning to completion.",
+            ],
+          },
+        ],
+      },
+
+      {
+        title: "Start Planning Your Bentleigh Home",
+
+        paragraphs: [
+          "Whether you're considering a knockdown rebuild, custom home, renovation or extension, the first step is understanding what is possible on your property.",
+
+          "Your block, existing home, planning controls and personal requirements all need to be considered before a final design is developed.",
+
+          "Apollo Builders can help you move from an initial idea to a considered building plan.",
+
+          "If you're planning to build or renovate in Bentleigh VIC 3204, contact Apollo Builders to discuss your property and project requirements.",
+
+          "Build something designed for your block.",
+        ],
+
+        cta: {
+          label: "Speak with Apollo Builders today.",
+          link: "/contact-us/",
+        },
+      },
+    ],
+
+    faqs: [
+      {
+        q: "Is Apollo Builders a home builder in Bentleigh?",
+        a: "Yes. Apollo Builders provides residential building services for homeowners in Bentleigh, including custom homes, knockdown rebuilds, renovations and extensions.",
+      },
+
+      {
+        q: "Can I knock down and rebuild my house in Bentleigh?",
+        a: "A knockdown rebuild may be possible, but the requirements depend on the individual property. Planning zones, overlays and other site-specific controls need to be checked before proceeding. Victorian Government planning tools such as VicPlan can be used to investigate the planning information applicable to a particular property.",
+      },
+
+      {
+        q: "How much does it cost to build a home in Bentleigh?",
+        a: "The cost of a new home varies considerably depending on the size and complexity of the design, site conditions, materials, finishes, engineering, approvals and other project requirements. A site-specific assessment is required before providing a meaningful construction estimate.",
+      },
+
+      {
+        q: "Can Apollo Builders build a custom home on my existing Bentleigh block?",
+        a: "Yes. A custom home can be designed around the characteristics of your existing property, subject to the applicable planning and building requirements.",
+      },
+
+      {
+        q: "Can you extend an existing house in Bentleigh?",
+        a: "Yes. Extensions can be considered where they provide a suitable solution for the existing property. The design needs to take into account the existing structure, site conditions, planning requirements and your intended use of the additional space.",
+      },
+
+      {
+        q: "Does Bentleigh have specific planning requirements?",
+        a: "Planning requirements can vary between properties. It is therefore important not to assume that one planning rule applies throughout Bentleigh. The applicable zone, overlays and other planning information should be checked for the specific property through the Victorian planning system.",
+      },
+
+      {
+        q: "Why build a custom home instead of buying an existing house?",
+        a: "A custom home gives you control over the layout, spaces, finishes and functionality of the property. Rather than compromising around an existing floor plan, you can design the home around your lifestyle and the characteristics of your block.",
+      },
+
+      {
+        q: "How do I get started with a Bentleigh building project?",
+        a: "Start by discussing your property, project goals and preferred outcome with Apollo Builders. From there, the appropriate design, planning and construction pathway can be considered for your individual site.",
+      },
+    ],
+
+    finalCta: {
+      heading: "Build Your Bentleigh Home With Apollo Builders",
+
+      text:
+        "Your home should respond to the property it sits on and the people who live in it. Whether you're looking at a custom home, knockdown rebuild, renovation or extension in Bentleigh, Apollo Builders can help you develop a building solution around your property and requirements.",
+
+      label: "Contact Apollo Builders today to discuss your Bentleigh project.",
+
+      link: "/contact-us/",
+    },
   },
   berwick: {
     name: "Berwick", state: "VIC", postcode: "3806",
