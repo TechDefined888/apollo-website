@@ -45,7 +45,7 @@ export default function Nav() {
                 <img
                   src={brand.logo}
                   alt="Apollo Builders"
-                  className="h-18 md:h-20 w-auto"
+                  className="h-14 md:h-20 w-auto"
                 />
                 <span className="hidden lg:inline font-display text-[19px] md:text-[20px] tracking-tight text-[color:var(--paper)]">
                   Apollo Builders
