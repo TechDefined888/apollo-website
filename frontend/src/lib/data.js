@@ -400,7 +400,7 @@ export const services = [
     number: "02",
     title: "Home Renovations",
     tagline: "Full renovations, extensions and outdoor living spaces.",
-    image: "/images/apollo/photo_2025-11-21_12-38-05.webp",
+    image: "/images/apollo/Home.jpeg",
     imageAlt: "Full home renovation and extension in Melbourne's south-east by Apollo Builders",
     body:
       "Transform your existing home with our expert renovation team. Whether it's a full makeover or modernising key spaces, we deliver precision workmanship and reliable results.",
