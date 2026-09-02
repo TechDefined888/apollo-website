@@ -9,6 +9,20 @@
       "entrypoint": "server.py"
     }
   },
+
+  "redirects": [
+    {
+      "source": "/design-build-builders-melbourne",
+      "destination": "/design-build-melbourne/",
+      "permanent": true
+    },
+    {
+      "source": "/design-build-builders-melbourne/",
+      "destination": "/design-build-melbourne/",
+      "permanent": true
+    }
+  ],
+
   "headers": [
     {
       "source": "/(.*)",
@@ -32,6 +46,7 @@
       ]
     }
   ],
+
   "rewrites": [
     {
       "source": "/api(/.*)?",
