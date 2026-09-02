@@ -49,7 +49,7 @@ export default function Footer() {
             <img
               src={brand.logo}
               alt="Apollo Builders"
-              className="h-60 w-auto"
+              className="h-80 w-auto"
             />
 
             <h3 className="font-display text-[36px] md:text-[46px] mt-8 leading-[1.05] tracking-[-0.02em]">
