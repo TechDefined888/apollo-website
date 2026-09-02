@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "@/App.css";
+
 import {
   BrowserRouter,
   Routes,
@@ -8,6 +9,7 @@ import {
   Navigate,
   useParams,
 } from "react-router-dom";
+
 import Lenis from "lenis";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -123,8 +125,15 @@ function App() {
                 <Route path="/services" element={<Services />} />
 
                 {/* Existing service pages */}
-                <Route path="/new-home-builds" element={<ServicePage />} />
-                <Route path="/home-renovations" element={<ServicePage />} />
+                <Route
+                  path="/new-home-builds"
+                  element={<ServicePage />}
+                />
+
+                <Route
+                  path="/home-renovations"
+                  element={<ServicePage />}
+                />
 
                 <Route
                   path="/bathroom-renovations"
@@ -136,10 +145,16 @@ function App() {
                   element={<ServicePage />}
                 />
 
-                <Route path="/contact-us" element={<Contact />} />
+                <Route
+                  path="/contact-us"
+                  element={<Contact />}
+                />
 
                 {/* Project pages */}
-                <Route path="/our-projects" element={<Projects />} />
+                <Route
+                  path="/our-projects"
+                  element={<Projects />}
+                />
 
                 <Route
                   path="/our-projects/:slug"
@@ -157,7 +172,10 @@ function App() {
                   element={<RenovationQuote />}
                 />
 
-                <Route path="/consult" element={<Consult />} />
+                <Route
+                  path="/consult"
+                  element={<Consult />}
+                />
 
                 <Route
                   path="/burnt-by-builders"
@@ -174,14 +192,13 @@ function App() {
                   element={<ThankYou variant="consult" />}
                 />
 
-                {/* Existing Melbourne SEO landing page */}
+                {/* Melbourne Home Builders SEO page */}
                 <Route
                   path="/melbourne-home-builders"
                   element={<MelbourneHomeBuilders />}
                 />
 
                 {/* New Melbourne SEO landing pages */}
-
                 <Route
                   path="/home-renovations-melbourne"
                   element={<HomeRenovationsMelbourne />}
@@ -207,15 +224,38 @@ function App() {
                   element={<KnockDownRebuildMelbourne />}
                 />
 
+                {/* Design & Build Melbourne - NEW canonical URL */}
                 <Route
-                  path="/design-build-builders-melbourne"
+                  path="/design-build-melbourne"
                   element={<DesignBuildMelbourne />}
                 />
 
+                {/* OLD Design & Build URL → NEW URL */}
+                <Route
+                  path="/design-build-builders-melbourne"
+                  element={
+                    <Navigate
+                      to="/design-build-melbourne/"
+                      replace
+                    />
+                  }
+                />
+
                 {/* SEO / resource pages */}
-                <Route path="/suburbs/:slug" element={<Suburb />} />
-                <Route path="/resources" element={<ResourceIndex />} />
-                <Route path="/resources/:slug" element={<Resource />} />
+                <Route
+                  path="/suburbs/:slug"
+                  element={<Suburb />}
+                />
+
+                <Route
+                  path="/resources"
+                  element={<ResourceIndex />}
+                />
+
+                <Route
+                  path="/resources/:slug"
+                  element={<Resource />}
+                />
 
                 {/* Location SEO landing page */}
                 <Route
@@ -224,19 +264,40 @@ function App() {
                 />
 
                 {/* Legal pages */}
-                <Route path="/privacy-policy" element={<Legal />} />
-                <Route path="/cookie-policy" element={<Legal />} />
-                <Route path="/terms-of-use" element={<Legal />} />
+                <Route
+                  path="/privacy-policy"
+                  element={<Legal />}
+                />
+
+                <Route
+                  path="/cookie-policy"
+                  element={<Legal />}
+                />
+
+                <Route
+                  path="/terms-of-use"
+                  element={<Legal />}
+                />
 
                 {/* Legacy redirects */}
                 <Route
                   path="/about"
-                  element={<Navigate to="/about-us/" replace />}
+                  element={
+                    <Navigate
+                      to="/about-us/"
+                      replace
+                    />
+                  }
                 />
 
                 <Route
                   path="/contact"
-                  element={<Navigate to="/contact-us/" replace />}
+                  element={
+                    <Navigate
+                      to="/contact-us/"
+                      replace
+                    />
+                  }
                 />
 
                 <Route
@@ -245,13 +306,19 @@ function App() {
                 />
 
                 {/* 404 */}
-                <Route path="*" element={<NotFound />} />
+                <Route
+                  path="*"
+                  element={<NotFound />}
+                />
               </Routes>
             </main>
 
             <Footer />
 
-            <Toaster position="bottom-right" theme="light" />
+            <Toaster
+              position="bottom-right"
+              theme="light"
+            />
           </SmoothScroll>
         </BrowserRouter>
       </HelmetProvider>

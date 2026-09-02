@@ -487,7 +487,7 @@ export default function HouseExtensionsMelbourne() {
               },
               {
                 title: "Design & Build Melbourne",
-                path: "/design-build-builders-melbourne/",
+                path: "/design-build-melbourne/",
               },
               {
                 title: "Custom Home Builders Melbourne",

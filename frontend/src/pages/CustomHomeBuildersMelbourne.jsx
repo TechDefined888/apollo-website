@@ -397,7 +397,7 @@ export default function CustomHomeBuildersMelbourne() {
               },
               {
                 title: "Design & Build Melbourne",
-                path: "/design-build-builders-melbourne/",
+                path: "/design-build-melbourne/",
               },
             ].map((item) => (
               <Link

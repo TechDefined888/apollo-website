@@ -445,7 +445,7 @@ export default function KnockDownRebuildMelbourne() {
               },
               {
                 title: "Design & Build Melbourne",
-                path: "/design-build-builders-melbourne/",
+                path: "/design-build-melbourne/",
               },
             ].map((item) => (
               <Link

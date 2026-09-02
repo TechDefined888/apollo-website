@@ -688,7 +688,7 @@ export default function HomeRenovationsMelbourne() {
               },
               {
                 title: "Design & Build Melbourne",
-                path: "/design-build-builders-melbourne/",
+                path: "/design-build-melbourne/",
               },
               {
                 title: "View Our Projects",

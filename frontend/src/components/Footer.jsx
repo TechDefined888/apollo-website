@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { brand, suburbs, services } from "@/lib/data";
+
 import {
   Instagram,
   Facebook,
@@ -31,7 +32,7 @@ const seoServiceLinks = [
   },
   {
     label: "Design & Build Melbourne",
-    to: "/design-build-builders-melbourne/",
+    to: "/design-build-melbourne/",
   },
 ];
 
@@ -161,6 +162,7 @@ export default function Footer() {
             <ul className="mt-6 space-y-4 text-[15px]">
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4" strokeWidth={1.25} />
+
                 <a
                   href={`tel:${brand.phoneRaw}`}
                   className="link-under"
@@ -171,6 +173,7 @@ export default function Footer() {
 
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4" strokeWidth={1.25} />
+
                 <a
                   href={`mailto:${brand.email}`}
                   className="link-under"
