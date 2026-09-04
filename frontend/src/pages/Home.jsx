@@ -615,33 +615,43 @@ export default function Home() {
 
       <Intro />
 
-      <ServicesInteractive
-        order={[
-          {
-            slug: "home-renovations-melbourne",
-            sourceSlug: "home-renovations",
-            label: "House Renovations",
-          },
-          {
-            slug: "house-extensions-melbourne",
-            sourceSlug: "home-renovations",
-            label: "House Extensions",
-          },
-          {
-            slug: "new-home-builders-melbourne",
-            sourceSlug: "new-home-builds",
-            label: "New Builds",
-          },
-          {
-            slug: "bathroom-renovations",
-            label: "Bathroom Renovations",
-          },
-          {
-            slug: "kitchen-renovations",
-            label: "Kitchen Renovations",
-          },
-        ]}
-      />
+  <ServicesInteractive
+    order={[
+      {
+        slug: "home-renovations-melbourne",
+        sourceSlug: "home-renovations",
+        label: "House Renovations",
+        image: "/images/apollo/house.jpeg",
+        imageAlt:
+          "House renovation in Melbourne South-East by Apollo Builders",
+      },
+
+      {
+        slug: "house-extensions-melbourne",
+        sourceSlug: "home-renovations",
+        label: "House Extensions",
+        image: "/images/apollo/Home.jpeg",
+        imageAlt:
+          "House extension in Melbourne South-East by Apollo Builders",
+      },
+
+      {
+        slug: "new-home-builders-melbourne",
+        sourceSlug: "new-home-builds",
+        label: "New Builds",
+      },
+
+      {
+        slug: "bathroom-renovations",
+        label: "Bathroom Renovations",
+      },
+
+      {
+        slug: "kitchen-renovations",
+        label: "Kitchen Renovations",
+      },
+    ]}
+  />
 
       <Projects />
 

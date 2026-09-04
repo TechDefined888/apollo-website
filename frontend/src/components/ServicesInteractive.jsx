@@ -9,17 +9,22 @@ import { services } from "@/lib/data";
  * (desktop) or tap (mobile), revealing a project photo, scope list,
  * and a link to the relevant service page.
  *
- * order supports:
+ * Supports:
  * - "home-renovations"
- * - { slug: "home-renovations", label: "House Renovations" }
  * - {
- *     slug: "home-renovations-melbourne",
- *     sourceSlug: "home-renovations",
+ *     slug: "home-renovations",
  *     label: "House Renovations"
  *   }
+ * - {
+ *     slug: "house-extensions-melbourne",
+ *     sourceSlug: "home-renovations",
+ *     label: "House Extensions",
+ *     image: "/images/apollo/house-extensions.jpg",
+ *     imageAlt: "House extension by Apollo Builders"
+ *   }
  *
- * `sourceSlug` lets us reuse existing service content/images while linking
- * the card to a different SEO landing page.
+ * `sourceSlug` lets us reuse text/scope from an existing service,
+ * while `image` and `imageAlt` can override the image per card.
  */
 export default function ServicesInteractive({ order }) {
   const [active, setActive] = useState(0);
@@ -33,13 +38,12 @@ export default function ServicesInteractive({ order }) {
 
     return order
       .map((entry, idx) => {
-        const slug =
-          typeof entry === "string"
-            ? entry
-            : entry.slug;
+        const isObject = typeof entry === "object";
+
+        const slug = isObject ? entry.slug : entry;
 
         const sourceSlug =
-          typeof entry === "object" && entry.sourceSlug
+          isObject && entry.sourceSlug
             ? entry.sourceSlug
             : slug;
 
@@ -48,9 +52,19 @@ export default function ServicesInteractive({ order }) {
         if (!service) return null;
 
         const label =
-          typeof entry === "object" && entry.label
+          isObject && entry.label
             ? entry.label
             : service.title;
+
+        const image =
+          isObject && entry.image
+            ? entry.image
+            : service.image;
+
+        const imageAlt =
+          isObject && entry.imageAlt
+            ? entry.imageAlt
+            : service.imageAlt;
 
         const number = String(idx + 1).padStart(2, "0");
 
@@ -59,6 +73,8 @@ export default function ServicesInteractive({ order }) {
           slug,
           title: label,
           number,
+          image,
+          imageAlt,
         };
       })
       .filter(Boolean);
@@ -117,7 +133,7 @@ export default function ServicesInteractive({ order }) {
         </div>
       </div>
 
-      {/* Desktop expanding panels */}
+      {/* Desktop */}
       <div
         className="relative border-t border-[color:var(--paper)]/12"
         role="tablist"
@@ -130,7 +146,7 @@ export default function ServicesInteractive({ order }) {
 
               return (
                 <button
-                  key={service.slug}
+                  key={`${service.slug}-${index}`}
                   data-testid={`service-tile-${service.slug}`}
                   onMouseEnter={() => setActive(index)}
                   onFocus={() => setActive(index)}
@@ -234,14 +250,14 @@ export default function ServicesInteractive({ order }) {
           </div>
         </div>
 
-        {/* Mobile stacked expandable */}
+        {/* Mobile */}
         <div className="md:hidden">
           {items.map((service, index) => {
             const open = active === index;
 
             return (
               <div
-                key={service.slug}
+                key={`${service.slug}-${index}`}
                 className="border-b border-[color:var(--paper)]/12"
               >
                 <button
@@ -294,6 +310,7 @@ export default function ServicesInteractive({ order }) {
                         <img
                           src={service.image}
                           alt={service.imageAlt}
+                          className="h-full w-full object-cover"
                         />
                       </div>
 
