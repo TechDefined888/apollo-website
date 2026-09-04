@@ -366,16 +366,22 @@ export const services = [
     number: "01",
     title: "New Home Builds",
     tagline: "Custom-designed family homes, knockdown-rebuilds and duplexes.",
-    image: "/images/apollo/drouin-new-build-9.jpg",
-    imageAlt: "New home builder Melbourne South-East — custom Drouin family home by Apollo Builders",
+
+    image: "/images/apollo/new-builds-homepage.jpeg",
+
+    imageAlt:
+      "Custom new home build in Melbourne South-East by Apollo Builders",
+
     body:
       "Dreaming of a home that's completely your own? We design and construct custom new builds that reflect your lifestyle, budget and vision. From planning and permits through to handover, we take care of every stage.",
+
     scope: [
       "Custom-designed family homes",
       "Knockdown & rebuild projects",
       "Duplex and multi-unit developments",
       "Project management from start to finish",
     ],
+
     faqs: [
       {
         q: "How much does a custom home build cost in Melbourne's south-east?",
