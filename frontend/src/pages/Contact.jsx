@@ -6,7 +6,7 @@ import { Reveal, MaskLines } from "@/components/Reveal";
 import { brand, projectTypes, suburbs } from "@/lib/data";
 import SEO, { localBusiness, breadcrumbSchema } from "@/components/SEO";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = "/api";
 const initial = { name: "", phone: "", address: "", email: "", project_type: "", message: "", website: "" };
 
 export default function Contact() {
