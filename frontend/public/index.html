@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
     <head>
+        
+                <!-- Google Tag Manager -->
+        <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NHWK3LHN');
+        </script>
+        <!-- End Google Tag Manager -->
+
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0A192F" />
@@ -18,7 +30,7 @@
           font-src 'self' https://fonts.gstatic.com data:;
           img-src 'self' https: data: blob:;
           connect-src 'self' https://www.apollobuilders.com.au https://premium-apollo.emergent.host https://premium-apollo.preview.emergentagent.com https://ap.emergent.sh https://*.i.posthog.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com;
-          frame-src 'none';
+          frame-src 'self' https://www.googletagmanager.com;
           object-src 'none';
           base-uri 'self';
           form-action 'self';
@@ -52,6 +64,17 @@
             />
     </head>
     <body>
+
+        <noscript>
+            <iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-NHWK3LHN"
+                height="0"
+                width="0"
+                style="display:none;visibility:hidden">
+            </iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
         <script>
